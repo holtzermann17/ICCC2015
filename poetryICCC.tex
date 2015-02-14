@@ -3,9 +3,6 @@
 \usepackage{times}
 \usepackage{helvet}
 \usepackage{courier}
-\usepackage[firstpage]{draftwatermark}
-\SetWatermarkText{\shortstack{Draft\\\today\currenttime}}
-\SetWatermarkScale{0.75}
 \usepackage[T1]{fontenc}
 \usepackage{csquotes}
 \usepackage[utf8]{inputenc}
@@ -14,6 +11,11 @@
 \usepackage[ddmmyyyy]{datetime}
 \renewcommand*{\multicitedelim}{\addsemicolon\space}%
 \usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.98}
+\usepackage[firstpage]{draftwatermark}
+\SetWatermarkColor{light-gray}
+\SetWatermarkText{\shortstack{Draft\\\today\currenttime}}
+\SetWatermarkScale{0.75}
 \usepackage[
   bookmarks=false,
   pdfpagelabels=false,
@@ -26,7 +28,7 @@
 
 \DeclareLanguageMapping{british}{british-apa}
 % \addbibresource{papers.bib}
-\addbibresource{mathsICCC.bib} %
+\addbibresource{poetryICCC.bib} %
 %% \urlstyle{tt}
 \AtBeginBibliography{\def\UrlFont{\footnotesize\tt}}
 \renewcommand*{\finalnamedelim}{%
@@ -52,10 +54,8 @@
 % /Author (ICCC)}
 % The file iccc.sty is the style file for ICCC proceedings.
 
-\title{Chasing the blend}
-\author{Several\\
-check if this should be blind submission?
-}
+\title{Computational Poetry Workshop}
+\author{JC, AJ, RS, TL, JM, CG, SC}
 \setcounter{secnumdepth}{0}
 
 \begin{document} 
@@ -78,11 +78,18 @@ machine and human mathematical creativity.
 \input{evaluation}
 \input{conclusions}
 
-\nocite{Weil60}
-\nocite{Boden90}
-\nocite{nunez05}
-\nocite{Lak00}
-\nocite{Gog05,Gog99}
+\nocite{poincare29}
+\nocite{csik88}
+\nocite{rhodes61}
+\nocite{mackinnon70}
+\nocite{jordanous11iccc}
+\nocite{jordanous10}
+\nocite{mcgraw93}
+\nocite{perezyperez10MM}
+\nocite{saunders12}
+\nocite{sosa09}
+\nocite{coltonwiggins12}
+\nocite{pease10}
 
 \printbibliography
 
