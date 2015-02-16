@@ -1,0 +1,10 @@
+\begin{figure}
+\resizebox{\columnwidth}{!}{%
+%% For final:
+%\input{figures/circle_arcs_tikz_code}
+%% For quick compiling
+\includegraphics{figures/cycles_shortcut}
+}
+
+\caption{Several illustrative cycles \label{fig:cycles}}
+\end{figure}

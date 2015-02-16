@@ -1,0 +1,77 @@
+% Note: first outer text, then inner text
+
+\def\upshift#1{\raisebox{2.5ex}}
+\def\downshift#1{\raisebox{-2.5ex}}
+
+\tikzset{
+%%
+  pics/uarc/.style args={#1:#2:#3:#4:#5:#6:#7}{
+    code={
+      \draw[pic actions, postaction={decorate,
+                         decoration={text along path,
+                                     raise={-2ex},
+                                     text align={right indent=#6},
+                                     text={#4}}},
+                         postaction={decorate,
+                         decoration={text along path,
+                                     reverse path,
+                                     raise={-2.2ex},
+                                     text align={left indent=#7},
+                                     text={#5}}}]
+             (#1:#3) arc(#1:#2:#3);
+    }
+  },
+%%
+  pics/darc/.style args={#1:#2:#3:#4:#5:#6:#7}{
+    code={
+      \draw[pic actions, postaction={decorate,
+                         decoration={text along path,
+                                     reverse path,
+                                     raise={.7ex},
+                                     text align={left indent=#6},
+                                     text={#4}}},
+                         postaction={decorate,
+                         decoration={text along path,
+                                     raise={1ex},
+                                     text align={left indent=#7},
+                                     text={#5}}}]
+             (#1:#3) arc(#1:#2:#3);
+    }},
+%%
+  pics/rarc/.style args={#1:#2:#3:#4:#5:#6:#7}{
+    code={
+      \draw[pic actions, postaction={decorate,
+                         decoration={text along path,
+                                     raise={-2ex},
+                                     text align={right indent=#6},
+                                     text={#4}}},
+                         postaction={decorate,
+                         decoration={text along path,
+                                     raise={1ex},
+                                     text align={left indent=#7},
+                                     text={#5}}}]
+             (#1:#3) arc(#1:#2:#3);
+    }
+  },
+%%
+  pics/larc/.style args={#1:#2:#3:#4:#5:#6:#7}{
+    code={
+      \draw[pic actions, postaction={decorate,
+                         decoration={text along path,
+                                     reverse path,
+                                     raise={.7ex},
+                                     text align={left indent=#6},
+                                     text={#4}}},
+                         postaction={decorate,
+                         decoration={text along path,
+                                     reverse path,
+                                     raise={-2.1ex},
+                                     text align={left indent=#7},
+                                     text={#5}}}]
+             (#1:#3) arc(#1:#2:#3);
+    }
+  }
+}
+
+%% Another option for placing a node at some point on the path
+% node [above,pos=.95,sloped, fill=none] {#5}

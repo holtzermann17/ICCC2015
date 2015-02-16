@@ -1,0 +1,46 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.4 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{apa}{apa}
+    \entry{king2000writing}{book}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=e9ed4ffe164211fdba14a55166020fa1}{King}{K\bibinitperiod}{Stephen}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=e9ed4ffe164211fdba14a55166020fa1}{King}{K\bibinitperiod}{Stephen}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{2}{%
+        {Simon}%
+        {Schuster}%
+      }
+      \strng{namehash}{e9ed4ffe164211fdba14a55166020fa1}
+      \strng{fullhash}{e9ed4ffe164211fdba14a55166020fa1}
+      \field{sortinit}{K}
+      \field{sortinithash}{33bf4c961fa093ee6a297ccbd88eacc0}
+      \field{labelyear}{2000}
+      \field{datelabelsource}{year}
+      \field{labeltitle}{On writing}
+      \field{title}{On writing}
+      \field{year}{2000}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

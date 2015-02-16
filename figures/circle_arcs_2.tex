@@ -1,0 +1,29 @@
+\documentclass[tikz,border=5]{standalone}
+\usetikzlibrary{quotes,decorations.text}
+
+\def\upshift#1{\raisebox{2.5ex}}
+\def\downshift#1{\raisebox{-2.5ex}}
+
+\tikzset{
+%%
+  pics/uarc/.style args={#1:#2:#3:#4:#5}{
+    code={
+      \draw[pic actions, postaction={decorate,decoration={text along path,text align=center,text={|\downshift|#4}}}] (#1:#3) arc(#1:#2:#3) node [above,pos=1.0, fill=none] {#5};
+    }
+  },
+%%
+  pics/darc/.style args={#1:#2:#3:#4:#5}{
+    code={
+      \draw[pic actions, postaction={decorate,decoration={text along path,text align=center,text={|\downshift|#4}}}] (#1:#3) arc(#1:#2:#3) node [below,pos=1.0, fill=none] {#5};
+    }
+  }
+}
+\begin{document}
+\begin{tikzpicture}
+  \draw[thick] (4,0) pic[red, -latex]{darc=100:260:1.3cm:Chicken:Lay}
+                     pic[red, -latex]{uarc=280:450:1.3cm:Egg:Hatch};
+
+  \draw[thick] (8,0) pic[red, -latex]{darc=100:260:1.3cm:Statement:Speak}
+                     pic[red, -latex]{uarc=280:450:1.3cm:Response:Listen};
+\end{tikzpicture}
+\end{document}

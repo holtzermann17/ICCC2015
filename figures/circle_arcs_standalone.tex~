@@ -1,0 +1,8 @@
+\documentclass[tikz,border=10]{standalone}
+\usetikzlibrary{quotes,decorations.text}
+
+\usepackage{circle_arcs_setup}
+
+\begin{document}
+\input{circle_arcs}
+\end{document}

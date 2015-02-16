@@ -1,0 +1,17 @@
+\def\upshift#1{\raisebox{2.5ex}}
+\def\downshift#1{\raisebox{-2.5ex}}
+
+\tikzset{
+%%
+  pics/uarc/.style args={#1:#2:#3:#4:#5}{
+    code={
+      \draw[pic actions, postaction={decorate,decoration={text along path,text align=center,text={|\downshift|#4}}}] (#1:#3) arc(#1:#2:#3) node [above,pos=1.0, fill=none] {#5};
+    }
+  },
+%%
+  pics/darc/.style args={#1:#2:#3:#4:#5}{
+    code={
+      \draw[pic actions, postaction={decorate,decoration={text along path,text align=center,text={|\downshift|#4}}}] (#1:#3) arc(#1:#2:#3) node [below,pos=1.0, fill=none] {#5};
+    }
+  }
+}
