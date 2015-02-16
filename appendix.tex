@@ -1,0 +1,83 @@
+\section*{Appendix} \label{sec:appendix}
+
+\paragraph{Proposed message framework for use in question-answering}
+\begin{verbatim}
+<message> 
+id: s1_m1 
+type: question 
+source_system: F_A 
+target_system: F_B 
+what: source 
+element: theme 
+</message>
+
+<message> 
+id: s1_m2 
+type: answer 
+question: s1_m1 
+source_system: F_B 
+target_system: F_A 
+answer: guardian article 
+</message>
+
+<message>
+id: s1\_m3
+type: suggestion 
+source_system: F_A 
+target_system: F_B 
+what: source 
+element: theme 
+suggestion: The corsair book 
+</message>
+\end{verbatim}
+
+\paragraph{Proposed framework for commentary in FloWr}
+
+\begin{verbatim}
+name:process_node_name
+source:parameter_name, type:____
+condition:parameter_name,  type:____
+output:variable_name, type:____
+description:____ 
+\end{verbatim}
+
+\paragraph{Example script nodes from FloWr (with their proposed commentary)}
+
+\begin{verbatim}
+text.retrievers.SimileRetriever.SimileRetriever_0
+fileName:VehicleFacets
+descriptionRegex:
+aspectRegex:
+objectRegex:
+lowerEvidencePercent:0
+upperEvidencePercent:100
+#simileTriples = triples[*].simile
+// name:SimileRetriever
+// source:fileName, type:file
+// condition:lowerEvidencePercent, type:integer
+// condition:upperEvidencePercent, type:integer
+// output:simileTriples, type:list
+// description: search for similes from the file
+// VehicleFacets that have an evidence percentage
+// from 0 to 100.
+
+text.retrievers.Guardian.Guardian_0
+section:all
+startDate:2012-01-01
+endDate:2012-03-23
+numRequired:10
+#randomArticle = articles[r1].text
+// name:Guardian
+// source:section, type:text
+// condition:startDate, type:date
+// condition:endDate, type:date
+// output:randomArticle, type:text
+// description: search all sections of 
+// online guardian articles that date from
+// 2012-01-01 to 2012-03-23.
+\end{verbatim}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "mathsICCC"
+%%% End: 
