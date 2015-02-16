@@ -1,5 +1,6 @@
 \documentclass[letterpaper]{article}
 \usepackage{iccc}
+\usepackage{censor}
 \usepackage{times}
 \usepackage{helvet}
 \usepackage{courier}
@@ -8,14 +9,39 @@
 \usepackage[utf8]{inputenc}
 \usepackage[british]{babel}
 \usepackage[style=apa,natbib,backend=biber]{biblatex}
+\let\cite\citep
 \usepackage[ddmmyyyy]{datetime}
 \renewcommand*{\multicitedelim}{\addsemicolon\space}%
 \usepackage{xcolor}
-\definecolor{light-gray}{gray}{0.98}
+\definecolor{light-gray}{gray}{0.97}
 \usepackage[firstpage]{draftwatermark}
 \SetWatermarkColor{light-gray}
-\SetWatermarkText{\shortstack{Draft\\\today\currenttime}}
+\SetWatermarkText{\shortstack{Draft\\\today\\\currenttime}}
 \SetWatermarkScale{0.75}
+
+\usepackage{tikz}
+\usetikzlibrary{quotes,decorations.text}
+\usepackage{figures/circle_arcs_setup}
+
+\usepackage[framemethod=tikz]{mdframed}
+\mdfsetup{
+skipabove=\baselineskip,
+skipbelow=\baselineskip,
+innertopmargin=3pt,
+innerbottommargin=5pt
+}
+
+\newcommand*{\sourceatright}[1]{\unskip\hspace{1em plus 1fill}%
+\nolinebreak[3]\hspace*{\fill}\mbox{#1}}%LaTeX Hacks 
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@verbatim}
+  {\verbatim@font}
+  {\verbatim@font\footnotesize}
+  {}{}
+\makeatother
+
 \usepackage[
   bookmarks=false,
   pdfpagelabels=false,
@@ -23,17 +49,19 @@
   hyperindex=false,
   pageanchor=false,
 %  colorlinks,
-  citebordercolor=white
+  hidelinks
 ]{hyperref}
 
 \DeclareLanguageMapping{british}{british-apa}
 % \addbibresource{papers.bib}
 \addbibresource{poetryICCC.bib} %
+
 %% \urlstyle{tt}
 \AtBeginBibliography{\def\UrlFont{\footnotesize\tt}}
 \renewcommand*{\finalnamedelim}{%
   \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
-  \addspace\&\&\space}
+  \addspace\&\&\space\space}
+%
 \AtEveryCitekey{\renewcommand*{\finalnamedelim}{%
   \ifthenelse{\value{listcount}>\maxprtauth}
     {}
@@ -41,7 +69,7 @@
        {\finalandcomma\addspace\bibstring{and}\space}
        {\addspace\bibstring{and}\space}}}}
 
-\AtBeginDocument{\renewcommand\finalandcomma{\addcomma}}
+\AtBeginDocument{\renewcommand*\finalandcomma{\addcomma}}
 \AtBeginBibliography{%
   \renewcommand*{\finalnamedelim}{%
     \ifthenelse{\value{listcount}>\maxprtauth}
@@ -55,42 +83,69 @@
 % The file iccc.sty is the style file for ICCC proceedings.
 
 \title{Computational Poetry Workshop}
-\author{JC, AJ, RS, TL, JM, CG, SC}
+\author{I AM THAT I AM}
 \setcounter{secnumdepth}{0}
 
 \begin{document} 
 \maketitle
 \begin{abstract}
 \begin{quote}
-We model the mathematical process whereby new mathematical
-theories are produced, involving shared and individual creativity.
-Here we provide rational reconstructions of some developments
-from mathematical history;  our longer-term goal is to support
-machine and human mathematical creativity.
+Creativity cannot exist in a vacuum; it develops through feedback,
+learning and social interaction with others. However, this perspective
+has been relatively under-investigated in computational creativity
+research, which typically examines systems that operate
+individually. We develop a set of requirements for creativity systems
+that can incorporate communication and give and receive
+feedback. FloWr is intended as a paradigm in which computational
+creativity software can be implemented and integrated. We ask if the
+FloWr framework can model social creativity, and if not, what changes
+may need to be made in order to accommodate the requirements of social
+creativity. As a thought experiment to test these ideas, we consider a
+case study of how feedback and dialogues can help develop the
+creativity of computational poetry writing, and how such a system
+could be implemented in FloWr. We also consider alternatives to FloWr
+for modelling social creativity.
+
+\medskip
+
+\textbf{Keywords}: poetry, social creativity, flowcharts,
+distributed computing, population-based methods, agent-based models,
+duration, temporality, serendipity, design patterns, Writer's Workshops
 \end{quote}
 \end{abstract}
 
+%% \begin{mdframed}
+%% {\small
+%% \vspace{-.3cm}
+%% \tableofcontents
+%% }
+%% \end{mdframed}
+%% \newpage
+
+{\small `We \emph{can} talk,' said the Tiger-lily: `when there's anybody worth talking to.'
+
+\sourceatright{Through the Looking Glass, Lewis Carroll}}
+
 \input{introduction}
 \input{background}
-\input{infinity}
-\input{prime}
-\input{other}
-\input{evaluation}
+\input{philosophy_and_methods}
+\input{design}
+\input{discussion}
 \input{conclusions}
 
-\nocite{poincare29}
-\nocite{csik88}
-\nocite{rhodes61}
-\nocite{mackinnon70}
-\nocite{jordanous11iccc}
-\nocite{jordanous10}
-\nocite{mcgraw93}
-\nocite{perezyperez10MM}
-\nocite{saunders12}
-\nocite{sosa09}
-\nocite{coltonwiggins12}
-\nocite{pease10}
+\section*{Acknowledgements} \label{sec:acknowledgements}
+This research has been supported by EPSRC grants EP/L00206X and
+EP/J004049, and the Future and Emerging Technologies (FET) programme
+within the Seventh Framework Programme for Research of the European
+Commission, under FET-Open Grant numbers: 611553 (COINVENT) and 611560
+(WHIM).
+
+\begin{center}
+\includegraphics[width=.8\columnwidth]{figures/dog_roses}
+\end{center}
 
 \printbibliography
+
+\input{appendix}
 
 \end{document}
