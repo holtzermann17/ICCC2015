@@ -85,19 +85,19 @@ This generates the theory shown in \ref{fig:inconsistentintegers}.
 \begin{figure}[!ht]
 \begin{hetcasl}
 \SPEC \=\SIdIndex{Spec} \Ax{=}\\
-\> \SORT \Id{N}\\
-\> \OP \=\Ax{\_\_}\Ax{+}\Ax{\_\_} \Ax{:} \=\Id{N} \Ax{\times} \Id{N} \Ax{\rightarrow} \Id{N}\\
-\> \OP \=\Id{p} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
-\> \OP \=\Id{s} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
-\> \OP \=\Id{zero} \Ax{:} \Id{N}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(Ax1)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax2)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{N} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(Ax3)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \Ax{\neg} \=\Id{s}(\Id{x}) \Ax{=} \Id{zero} \`{\small{}\KW{\%}(Ax4)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(Ax5)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax6)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax1\Ax{\_}7)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet}
+\> \SORT \Id{Z}\\
+\> \OP \=\Ax{\_\_}\Ax{+}\Ax{\_\_} \Ax{:} \=\Id{Z} \Ax{\times} \Id{Z} \Ax{\rightarrow} \Id{Z}\\
+\> \OP \=\Id{p} \Ax{:} \=\Id{Z} \Ax{\rightarrow} \Id{Z}\\
+\> \OP \=\Id{s} \Ax{:} \=\Id{Z} \Ax{\rightarrow} \Id{Z}\\
+\> \OP \=\Id{zero} \Ax{:} \Id{Z}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(Ax1)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax2)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{Z} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(Ax3)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Z} \=\Ax{\bullet} \Ax{\neg} \=\Id{s}(\Id{x}) \Ax{=} \Id{zero} \`{\small{}\KW{\%}(Ax4)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(Ax5)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax6)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax1\Ax{\_}7)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Z} \=\Ax{\bullet}
 \=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x}
 \`{\small{}\KW{\%}(Ax2\Ax{\_}8)\KW{\%}}
 \end{hetcasl}
@@ -111,7 +111,7 @@ This generates the theory shown in \ref{fig:inconsistentintegers}.
 \subsubsection{Removal of Inconsistencies}
 This theory is automatically determined to be inconsistent due to the axioms
 \begin{eqnarray}
-\forall x : \mathbb{Z} . not s(x) &=& 0 \label{eq:limnat1}\\
+\forall x : \mathbb{Z} .\;\;\neg s(x) &=& 0 \label{eq:limnat1}\\
 s(p(x)) &=& x \label{eq:sucpre}
 \end{eqnarray}
 removal of the limiting axiom (\ref{eq:limnat1}) results in a theory which is very
@@ -119,18 +119,18 @@ similar to what we understand to be the integers as shown in Figure \ref{fig:int
 \begin{figure}[!ht]
 \begin{hetcasl}
 \SPEC \=\SIdIndex{Spec} \Ax{=}\\
-\> \SORT \Id{N}\\
-\> \OP \=\Ax{\_\_}\Ax{+}\Ax{\_\_} \Ax{:} \=\Id{N} \Ax{\times} \Id{N} \Ax{\rightarrow} \Id{N}\\
-\> \OP \=\Id{p} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
-\> \OP \=\Id{s} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
-\> \OP \=\Id{zero} \Ax{:} \Id{N}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(Ax1)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax2)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{N} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(Ax3)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(Ax4)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax5)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax1\Ax{\_}7)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax2\Ax{\_}8)\KW{\%}}\\
+\> \SORT \Id{Z}\\
+\> \OP \=\Ax{\_\_}\Ax{+}\Ax{\_\_} \Ax{:} \=\Id{Z} \Ax{\times} \Id{Z} \Ax{\rightarrow} \Id{Z}\\
+\> \OP \=\Id{p} \Ax{:} \=\Id{Z} \Ax{\rightarrow} \Id{Z}\\
+\> \OP \=\Id{s} \Ax{:} \=\Id{Z} \Ax{\rightarrow} \Id{Z}\\
+\> \OP \=\Id{zero} \Ax{:} \Id{Z}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(Ax1)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax2)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{Z} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(Ax3)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(Ax4)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax5)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax1\Ax{\_}7)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Z} \=\Ax{\bullet} \=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax2\Ax{\_}8)\KW{\%}}\\
 \KW{end}
 \end{hetcasl}
 \caption{A consistent version of the integers (without order)}
