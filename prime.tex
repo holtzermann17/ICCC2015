@@ -1,1 +1,203 @@
-danny_prime.tex
+\section{Prime Ideals as a blend}
+\label{sec:prime_ideals}
+
+\subsection*{Introduction}
+One of the most fundamental concepts of modern mathematics, which is
+the basis of commutative algebra and a seminal ingredient of the
+language of schemes in modern algebraic geometry is the one of prime
+ideal \parencite{EGAI,Eisenbud95}.
+
+In this section, we will recover the concept of prime ideal of a
+commutative ring with unity as a sort of partial (or weaken) blending
+(i.e. a blend for just some axioms of the input theories) between the
+concepts of an ideal of a commutative ring with unity (enriched with
+the collection of all the ideals of the corresponding ring) and the
+concept of a prime number of the integers.
+
+In fact, in order to obtain the desired space it is enough to consider
+a more general version of the prime numbers (in our case a partial
+version), namely, a monoid $(Z,*,1)$ with an ``special'' divisibility
+relation $\big\lfloor$. Besides, the generic space would capture just
+the syntactic correspondences that we wish to identity in the
+blending space, since the blend would be basically the union of the
+collection of axioms given on each space, doing the corresponding
+identifications.
+
+Our approach to blending is the one adopted by Goguen in terms of
+colimits \parencite{Gog99,Goguen01,Goguen05c}.
+
+We present the conceptual spaces from the standard ``pure'' mathematical
+point of view doing concurrently the corresponding translation into
+the setting of the Common Algebraic Specification Language (CASL)
+\parencite{BidoitMosses2004}.
+
+\subsection{The first conceptual space}
+Let $(R,+.*,0,1)$ be a commutative ring with unity, i.e. $R$ is a set with two binary operations, $+$ and $*$, and two special elements $0,1\in R$ satisfying the following axioms:
+\begin{enumerate}
+\item $(\forall a\in R)(a+0=0+a=a)$
+\item $(\forall a\in R)(\exists b\in R)(a+b=b+a=0)$
+\item $(\forall a,b,c \in R)((a+b)+c=a+(b+c)))$
+\item $(\forall a,b \in R)(a+b=b+a)$
+\item $(\forall a\in R)(a*1=1*a=a)$
+\item $(\forall a,b,c \in R)((a*b)*c=a*(b*c)))$
+\item $(\forall a,b \in R)(a*b=b*a)$
+\item $(\forall a,b,c \in R)(a*(b+c)=a*b+a*c)$
+\end{enumerate}
+Now, $R$ can be understood as the sort containing the elements of the corresponing commutative ring with unity.
+An ideal $I$ is a subset of $R$ satisfying the following axiom:
+\[(\forall i,j\in I)(\forall r\in R)(i+(-j)\in I \wedge r*i\in I).\]
+\newline\indent 
+Let us define a unary relation (predicate) $isideal$ on the set (sort) of subsets of $R$, $P(R)$, as follows:
+$isideal(I)$ if and only if $I$ is an ideal of $R$.
+
+Now, we define
+\[{\rm Spec}_IR=\left\{A\subseteq R: isideal(A) \right\}.\]
+Here, ${\rm Spec}_IR$ is considered as a subsort of the sort $P(R)$.
+
+There is one natural operation on ${\rm Spec}_IR$, let us say
+$\cdot_{\iota}$, inherited in a natural way from the corresponding
+operations $+$ and $\cdot$ on $S$:
+
+ Let $I,J\in {\rm Spec}_IR$, then we define 
+
+\[I\cdot_{\iota} J:=\left\{i_1\cdot j_1+...+i_n\cdot j_n:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
+
+With this operation ${\rm Spec}_IR$ forms a commutative monoid
+(i.e. it holds commutativity, associativity and there exists a neutral
+element (in this case the ring)). However, this fact is irrelevant in
+our case for the blending process. As a matter of fact, the only
+property that we want to keep into the blend is the one saying that
+this operation has a neutral element $1_{\iota}$, which can be seen as
+an additional notation for the ring, but respect to this operation
+$\cdot_{\iota}$ instead of being the sort of elements of the ring,
+i.e., $R$.  \newline\indent On the other side, we want to see the
+contention relation $\subseteq$ as a binary relation over the sort
+${\rm Spec}_IR$.
+
+Summarizing, our first conceptual space consists of sorts $R, {\rm Spec}_IR$ and $P(R)$; operations $+_R, *_R, 0_R, 1_R, 1_{\iota}$ and $
+\cdot_{\iota}$; and the relations $\subseteq$ and $isideal$.
+
+Here we add all the corresponding axioms defining $R$ as a commutative ring, the explicit former definition of $isideal$, ${\rm Spec}_IR$ and $\cdot_{\iota}$; and the axiom guaranteeing that  $1_{\iota}$ is the neutral element for $\cdot_{\iota}$.
+ 
+Let us denote this space by $\mathbb{I}$.
+
+\subsection{The second conceptual space}
+Let $\mathbb{Z}$ be the set of the integer numbers. Here, we can
+choose any axiomatization of them, since for the (partial) blending we
+just take into account only the fact that $(\mathbb{Z},*,1)$ is a
+commutative monoid. Or even simpler, we only use the fact that $1$ is
+the neutral element with the operation $*$. One can, for example, take
+the simple characterization of $\mathbb{Z}$, given by Martin
+Brandenburg \citep{brandenburgdobleinduction}, as the only ordered
+commutative ring with unity satisfying the following ``bi-inductive''
+property:
+\begin{align*}
+  \label{eq:int}
+  \forall M \subseteq \mathbb{Z}\;  & [ 0 \in M \wedge (\forall n \in \mathbb{Z} (n\in M \rightarrow n\pm 1 \in M))\\
+  & \rightarrow M=\mathbb{Z}].
+\end{align*}
+
+We define also an upside down divisibility relation $\big\lfloor$ defined as 
+\[e\big\lfloor g:=g\big|e,\] We re-write the classical divisibility
+relation on this way in order to obtain the right primality condition
+on the blend.  Let us define a unary relation $isprime$ on
+$\mathbb{Z}$ as follows: for all $p\in \mathbb{Z}$, $isprime(p)$ holds
+if $p\neq 1$ and the following (primality) condition holds:
+
+\[(\forall a,b\in \mathbb{Z})(ab \big\lfloor p)\rightarrow (a \big\lfloor p \vee b \big\lfloor p).\] 
+Besides, we define the set (sort) of the prime numbers as 
+\[ Prime=\left\{ p\in \mathbb{Z}/ isprime(p)\right\}\] Now, it is an
+elementary fact to see that this condition is an equivalent form of
+the standard definition of prime number given in the classical number
+theory books (see for example \cite{Apostol76}. In the CASL language,
+  we consider $\mathbb{Z}$ as the sort of the integer numbers, $*$ as
+  a binary operation , $prime$ as a predicate and $\big\lfloor$ as a
+  binary relation, any of them defined over the sort $\mathbb{Z}$.
+  \newline\indent We denote this conceptual space by $\mathbb{P}$.
+
+\subsection{The Generic Space}
+
+The generic space consists of a set (sort) $G$ with a binary operation $*_G$, a neutral element $S$ and a binary relation $\leq_G$.
+
+  Let us denote this space by $\mathbb{G}$.
+
+\subsection{The Blending Morphisms}
+Now, let us define the morphisms from the generic space into the two corresponding conceptual spaces. Let $\varphi: \mathbb{G}\rightarrow \mathbb{I}$ be the morphism induced by the following syntactic correspondences $\varphi(G)={\rm Spec}_IR,\varphi(*_G)=*_{\iota}, \varphi(S)=1_{\iota}$ and $\varphi(\leq_G)=\subseteq$.
+\newline\indent
+Furthermore, let $\delta:=\mathbb{G}\rightarrow\mathbb{P}$ be the morphism induced by the syntactic correspondences $\delta(G)=\mathbb{Z}, \delta(*_G)=*, \delta(S)=1$ and $\delta(\leq_G)= \big\lfloor$.
+
+\subsection{The Axiomatization of the Blending}
+In the every-day research of the working mathematician it happens
+frequently that one starts to develop general theoretical frameworks
+by combining just some aspects of two particular theories but without
+considering the whole theories. For example, the development of
+differential geometry was obtained combining just some aspect of
+general and algebraic topology and some aspects of real analysis
+\parencite{VelCad05}. The same happens with the methods use in
+analytic number theory which are a fusion of some components of
+elementary number theory and some of the real analysis techniques
+\parencite{Apostol76}.
+
+Therefore, it is more natural in the daily mathematical research to obtain new concepts as "partial" combinations of two former ones, i.e., as combinations (blends) of just some axioms of the corresponding two theories.
+ 
+Thus, in our case, a partial blend will give us the desired concept. For example, from the properties defining the integers we transfer into the blend only the fact that $\mathbb{Z}$ is a set with a binary operation $*$ having $1$ as neutral element. 
+
+So, after using the same symbols for denoting the ring as a sort of elements or as the neutral element for product of ideals $\cdot_G$, the blend has the form
+\[(S, +_S, *_S, 0_S, 1_S, G={\rm Spec}_IS, isprime, Prime, \cdot_G,
+S=1_G, \subseteq)\] with all the corresponding axioms of the first
+conceptual space plus the translated version of the axiom defining the
+primality predicate after doing the corresponding symbolic
+identifications i.e., an element $P \in G$ (i.e., an ideal of $S$)
+satisfied the predicate $isprime$ if and only if
+\begin{align*}
+P\neq S & \wedge (\forall X,Y\in G={\rm Spec}_IS). \\
+        & (X\cdot_{\alpha}Y\subseteq P \rightarrow (X\subseteq P \vee Y\subseteq P)).
+\end{align*}
+
+Now, it is an elementary exercise to see that this definition is
+equivalent to the fact that $P$ is a prime ideal of $S$, i.e. to the
+condition
+\[ P\neq S \wedge (\forall a,b\in S)(ab\in B\rightarrow (a\in P \vee
+b\in P)).\] Therefore, the predicate $isprime$ turns out to be the
+predicate characterizing the primality of ideals of $S$ and the set
+(sort) $Prime$ turns out to be the set of prime ideals of $S$.
+
+Besides, we just consider the fact that the up-side down divisibility
+relation is a binary relation without taking into account the formal
+definition into the blend.
+
+In conclusion, the blending space consists of the axioms assuring that
+$S$ is a commutative ring with unity, $G$ is the set of ideals of $S$,
+$isprime$ is the predicate specifying primality for ideals of $S$ and
+$Prime$ is the collection of all prime ideals of $S$.
+ 
+\section{Implementation for the Principal Ideal Domain Case}
+
+On this section we present an implementation done in
+Hets \parencite{Mossakowskihets}, in the language of CASL for the case
+of a principal ideal domain (PID).  The resulting blending space
+contains two equivalent definitions of the containing relation for
+ideals. One of them is the trivial one in terms of elements and the
+other one is given in terms of product of ideals. It is an elementary
+exercise to see this equivalence in the PID case.
+
+\input{ideal_blend.pp}
+
+After computing the corresponding colimit in HETS and after
+interpreting ``RingEl'' as the sort containing the elements of the ring
+$S$, the theory defining the blend corresponds to the axioms defining
+a PID (S), the set of all its ideals (Generic) and the set all its
+prime ideals (SimplePrime):
+
+\input{ideal_colim.pp}
+
+
+
+% \bibliography{bibliothek}
+% \end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "mathsICCC"
+%%% End: 
+
