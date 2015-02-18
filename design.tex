@@ -224,6 +224,47 @@ easy, but both are entirely feasible.
 \end{figure}
 
 \subsection{Prototyping a workshop in FloWr}
+Development plan (Christian):
+\begin{itemize}
+	\item Define workshop, including product properties, e.g. variety, innovation, etc. Alternatively, refer to prior definition earlier in the paper and point out benefits again.
+	\item Introduce different roles in a workshop: master, working student, criticising student (anything else?). These roles can be combined into more complex ones. 
+	\item Introduce tasks they perform: introducing and demonstrating new tools, using tools to generate, analyse to improve creation, etc.
+	\item Show the demon dog flowchart as part of the FloWr system, and highlight which roles the different parts represent, and which tasks are present.
+	\begin{itemize}
+		\item A flowchart could be identified as a student that both creates and asseses (fitness functions) at the same time.
+		\item The script/moderator could be identified as the master who guides the student, tells it what to do in which way.
+		\item The set of all process nodes can be understood as a toolbox the master can access, to hand tools to the student.
+	\end{itemize}
+	\item Show what's missing to fulfill the prior definition of a workshop
+	\begin{itemize}
+		\item Multiple students that collaborate and help improving each other's creations.
+		\item Master as mediator between two students, asking one student what tools it uses, and telling the other to adapt them.
+		\item The moderator can introduce new tools to the workshop.
+		\item Students must be able to notice at one step of the creation process (e.g. while using one tool), that the usage of a prior tool could be improved. They could then either first finish or rewind.
+		\item Allow for more than one agent. Allow for more than one agent to work at a time.
+	\end{itemize}
+\item Show which features are required to realize that:
+	\begin{itemize}
+	\item Understanding the workshop as a hierachical multi-agent system, where the master is at the top and the students are at the bottom of the hierarchy. 
+	\item Simplification by separating flowcharts that create and assess from those which only assess. 
+	\item Thus introducing external assesment.
+	\item Thus communication between flowcharts required.
+	\item Enable an agent (more general, e.g. a student) to explain what tools it is using, in which order, and which parts of the output they affect.
+	\item Allow other agents to improve their flowchart by means of this information, e.g. add a particular tool in a particular step.
+	\item Enable master as mediator.
+	\item Allow master to map observations of poems into new tools, that are made available to the workshop.
+	\item Allow communication between process nodes, i.e. tools: E.g. assessment in rhyming node shows that too few words/sentences available for good results. Thus necessary to fetch more/different sentences in a prior step. Problem: agency when using the term "tool" - separates assessment by the agent from using the tool for creation.
+	\item Introduce parallelisation, to allow multiple agents to work at the same time.
+	\end{itemize}
+\item Open questions:
+\begin{itemize}
+	\item Decision making: It's probably more important to answer how decisions are made to adapt another tool, etc., than stating where they're made. E.g. decision making by means of a fitness function of the current artefact, by means of curiosity, etc.
+	\item Add more implementation suggestions
+	\item Would it be better to focus on one new aspect of the workshop, and leave the others out? E.g. add master who can introduce new tools, or introduce multiple students that can communicate. One paper might be not enough to get from current FloWr to a full-fledged workshop.
+\end{itemize}
+\end{itemize}
+
+
 \begin{mdframed}
 \textbf{What's the development plan look like?  Should we show the
   flowchart for the ``demon dog'' poem as a very early prototype and
