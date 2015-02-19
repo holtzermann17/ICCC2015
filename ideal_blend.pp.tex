@@ -2,13 +2,14 @@
 \KW{library} \Id{ideal\Ax{\_}blend}\\
 \\
 \KW{logic} \SId{CASL}\\
-{\small{}\KW{\%\%} Prime Ideals Over Principal Ideal Domains as a Blend}\\
+{\small{}\KW{\%\%} Prime Ideals over Principal Ideal Domains \Ax{(}PID\Ax{)} as}\\
+{\small{}\KW{\%\%} Blends in Casl}\\
 \\
 \SPEC \=\SIdIndex{IdealsOfRing} \Ax{=}\\
 \> \SORT \=\Id{RingElt}\\
-\>\> {\small{}\KW{\%\%} sort of Ring Elements}\\
+\>\> {\small{}\KW{\%\%} sort of Ring Elts}\\
 \> \SORT \=\Id{SubSetOfRing}\\
-\>\> {\small{}\KW{\%\%} sort of parts of this ring}\\
+\>\> {\small{}\KW{\%\%} not further defined for the moment}\\
 \> \PRED \=\Id{IsIdeal} \Ax{:} \Id{SubSetOfRing}\\
 \>\> {\small{}\KW{\%\%} when a subset is an ideal}\\
 \> \OP \=\Ax{0} \Ax{:} \Id{RingElt}\\
@@ -20,23 +21,39 @@
 \> \OP \=\Id{R} \Ax{:} \Id{Ideal}\\
 \>\> {\small{}\KW{\%\%} the Ring as an ideal}\\
 \> \OP \=\Ax{\_\_}\Ax{**}\Ax{\_\_} \Ax{:} \=\Id{Ideal} \Ax{\times} \Id{Ideal} \Ax{\rightarrow} \Id{Ideal}, \Id{unit} \Id{R}\\
-\>\> {\small{}\KW{\%\%}Definition of the predicate of contention}\\
 \> \PRED \=\Ax{\_\_}\Id{issubsetOf}\Ax{\_\_} \Ax{:} \=\Id{Ideal} \Ax{\times} \Id{Ideal}\\
+\>\> {\small{}\KW{\%\%} partial order}\\
+\>\> {\small{}\KW{\%\%}Definition of the containment predicate}\\
 \> \Ax{\forall} \=\Id{A}, \Id{B} \Ax{:} \Id{Ideal} \\
 \> \Ax{\bullet} \=\Id{A} \Id{issubsetOf} \Id{B} \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{a} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\Rightarrow} \=\Id{a} \Id{isIn} \Id{B}\\
-\> \\
-\> {\small{}\KW{\%\%} axiomatization of a commutative Ring with unity}\\
-\> \Ax{\forall} \Id{x} \Ax{:} \Id{RingElt}; \=\Id{y} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x} \Ax{+} \Id{y} \Ax{=} \=\Id{y} \Ax{+} \Id{x}\\
+\> {\small{}\KW{\%\%} axioms for Ring}\\
+\> \Ax{\forall} \Id{x} \Ax{:} \Id{RingElt}; \=\Id{y} \Ax{:} \Id{RingElt} \\
+\> \Ax{\bullet} \=\Id{x} \Ax{+} \Id{y} \Ax{=} \=\Id{y} \Ax{+} \Id{x}\\
+\> {\small{}\KW{\%}\KW{Commutativity} with \Ax{+}\Ax{\%}}\\
 \> \Ax{\forall} \Id{x} \Ax{:} \Id{RingElt}; \Id{y} \Ax{:} \Id{RingElt}; \=\Id{z} \Ax{:} \Id{RingElt} \\
 \> \Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{+} \Id{z} \Ax{=} \=\Id{x} \Ax{+} (\=\Id{y} \Ax{+} \Id{z})\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x} \Ax{+} \Ax{0} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{0} \Ax{+} \Id{x} \Ax{=} \Id{x}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Ax{\exists} \Id{x'} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x'} \Ax{+} \Id{x} \Ax{=} \Ax{0}\\
-\> \Ax{\forall} \Id{x} \Ax{:} \Id{RingElt}; \=\Id{y} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x} \Ax{*} \Id{y} \Ax{=} \=\Id{y} \Ax{*} \Id{x}\\
-\> \Ax{\forall} \Id{x} \Ax{:} \Id{RingElt}; \Id{y} \Ax{:} \Id{RingElt}; \=\Id{z} \Ax{:} \Id{RingElt} \Ax{\bullet} \=(\=\Id{x} \Ax{*} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=\Id{x} \Ax{*} (\=\Id{y} \Ax{*} \Id{z})\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x} \Ax{*} \Ax{1} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{1} \Ax{*} \Id{x} \Ax{=} \Id{x}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=(\=\Id{x} \Ax{*} \Id{z}) \Ax{+} (\=\Id{y} \Ax{*} \Id{z})\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{z} \Ax{*} (\=\Id{x} \Ax{+} \Id{y}) \Ax{=} \=(\=\Id{z} \Ax{*} \Id{x}) \Ax{+} (\=\Id{z} \Ax{*} \Id{y})\\
-\> \\
+\> {\small{}\KW{\%\%} Associativity with \Ax{+}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \\
+\> \Ax{\bullet} \=\Id{x} \Ax{+} \Ax{0} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{0} \Ax{+} \Id{x} \Ax{=} \Id{x}\\
+\> {\small{}\KW{\%\%}unit with \Ax{+}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \\
+\> \Ax{\bullet} \=\Ax{\exists} \Id{x'} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x'} \Ax{+} \Id{x} \Ax{=} \Ax{0}\\
+\> {\small{}\KW{\%\%}Inverse with \Ax{+}}\\
+\> \Ax{\forall} \Id{x} \Ax{:} \Id{RingElt}; \=\Id{y} \Ax{:} \Id{RingElt} \\
+\> \Ax{\bullet} \=\Id{x} \Ax{*} \Id{y} \Ax{=} \=\Id{y} \Ax{*} \Id{x}\\
+\> {\small{}\KW{\%\%}Commutativity with \Ax{*}}\\
+\> \Ax{\forall} \Id{x} \Ax{:} \Id{RingElt}; \Id{y} \Ax{:} \Id{RingElt}; \=\Id{z} \Ax{:} \Id{RingElt} \\
+\> \Ax{\bullet} \=(\=\Id{x} \Ax{*} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=\Id{x} \Ax{*} (\=\Id{y} \Ax{*} \Id{z})\\
+\> {\small{}\KW{\%\%}Associativity with \Ax{*}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \\
+\> \Ax{\bullet} \=\Id{x} \Ax{*} \Ax{1} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{1} \Ax{*} \Id{x} \Ax{=} \Id{x}\\
+\> {\small{}\KW{\%\%}unit with \Ax{*}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \\
+\> \Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=(\=\Id{x} \Ax{*} \Id{z}) \Ax{+} (\=\Id{y} \Ax{*} \Id{z})\\
+\> {\small{}\KW{\%\%}Left\Ax{\_}Distributivity}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \\
+\> \Ax{\bullet} \=\Id{z} \Ax{*} (\=\Id{x} \Ax{+} \Id{y}) \Ax{=} \=(\=\Id{z} \Ax{*} \Id{x}) \Ax{+} (\=\Id{z} \Ax{*} \Id{y})\\
+\> {\small{}\KW{\%\%}Right\Ax{\_}Distributivity}\\
 \> {\small{}\KW{\%\%}axioms for Ideal}\\
 \> \Ax{\forall} \=\Id{I} \Ax{:} \Id{SubSetOfRing} \\
 \> \Ax{\bullet} \=\Id{IsIdeal}(\Id{I}) \\
@@ -47,37 +64,35 @@
 \>\>\>\>\> \Ax{\Rightarrow} \=\Id{a} \Ax{+} \Id{c} \Id{isIn} \Id{I})\\
 \> \\
 \> {\small{}\KW{\%\%}axioms for PID\Ax{-}s}\\
-\> {\small{}\KW{\%\%}every ideal is generated by an element}\\
 \> \PRED \=\Ax{\_\_}\Id{generates}\Ax{\_\_} \Ax{:} \=\Id{RingElt} \Ax{\times} \Id{Ideal}\\
+\>\> {\small{}\KW{\%\%}an ideal is generated by an element}\\
 \> \Ax{\forall} \=\Id{A} \Ax{:} \Id{Ideal} \Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{a} \Id{generates} \Id{A}\\
 \> \Ax{\forall} \=\Id{a} \Ax{:} \Id{RingElt} \\
 \> \Ax{\bullet} \=\Ax{\forall} \Id{A} \Ax{:} \Id{Ideal} \\
 \>\> \Ax{\bullet} \=\Id{a} \Id{generates} \Id{A} \\
 \>\>\> \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{c} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{c} \Id{isIn} \Id{A} \Ax{\Rightarrow} \=\Ax{\exists} \Id{d} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{c} \Ax{=} \=\Id{a} \Ax{*} \Id{d}\\
-\> \\
-\> {\small{}\KW{\%\%} Definition of the product of ideals without subindexes}\\
+\> {\small{}\KW{\%\%} Definition of the product of ideals}\\
 \> \Ax{\forall} \=\Id{A}, \Id{B} \Ax{:} \Id{Ideal} \\
 \> \Ax{\bullet} \=\Ax{\forall} \Id{a}, \Id{b} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\wedge} \=\Id{b} \Id{isIn} \Id{B} \Ax{\Rightarrow} \=\Id{a} \Ax{*} \Id{b} \Id{isIn} \=\Id{A} \Ax{**} \Id{B}\\
 \> \Ax{\bullet} \=\Ax{\forall} \Id{D} \Ax{:} \Id{Ideal} \\
 \>\> \Ax{\bullet} \=(\=\Ax{\forall} \Id{a}, \Id{b} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\wedge} \=\Id{b} \Id{isIn} \Id{B} \Ax{\Rightarrow} \=\Id{a} \Ax{*} \Id{b} \Id{isIn} \=\Id{A} \Ax{**} \Id{B}) \\
 \>\>\> \Ax{\Rightarrow} \=\Id{A} \Ax{**} \Id{B} \Id{issubsetOf} \Id{D}\\
 \KW{end}\\
+{\small{}\KW{\%\%} axioms defining a very simple version of the integers\Ax{,}}\\
+{\small{}\KW{\%\%} considered with an operation \Ax{*}\Ax{,} a binary relation \Ax{|}\Ax{|}}\\
+{\small{}\KW{\%\%} \Ax{(}upside\Ax{-}down divisibility relation\Ax{)} and a primality axiom\Ax{.}}\\
 \\
-\\
-{\small{}\KW{\%\%}\Ax{\%}axioms defining a very simple version of the integers\Ax{,}}\\
-{\small{}\KW{\%\%}\Ax{\%}considered with an operation \Ax{*} with neutral element\Ax{,}}\\
-{\small{}\KW{\%\%}\Ax{\%} a binary relation \Ax{|}\Ax{|} \Ax{(}upside\Ax{-}down divisibility relation\Ax{)}}\\
-{\small{}\KW{\%\%}\Ax{\%} and a primality axiom\Ax{.}}\\
 \SPEC \=\SIdIndex{SimpleInt} \Ax{=}\\
 \> \SORT \Id{SimpleElem}\\
 \> \OPS \=\Ax{1} \Ax{:} \Id{SimpleElem};\\
 \>\> \Ax{\_\_}\Id{x}\Ax{\_\_} \Ax{:} \=\Id{SimpleElem} \Ax{\times} \Id{SimpleElem} \Ax{\rightarrow} \Id{SimpleElem}, \\
-\>\> \Id{unit} \Ax{1}\\
+\>\> \Id{comm}, \Id{assoc}, \Id{unit} \Ax{1}\\
 \> \PREDS \=\Ax{\_\_}\Ax{||}\Ax{\_\_} \Ax{:} \=\Id{SimpleElem} \Ax{\times} \Id{SimpleElem};\\
+\>\> {\small{}\KW{\%\%} division gives partial order}\\
 \>\> \Id{IsPrime} \Ax{:} \Id{SimpleElem}\\
-\>\> {\small{}\KW{\%}\KW{Def\_upsidedownDivisilityRelation}\Ax{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{SimpleElem} \Ax{\bullet} \=\Id{x} \Ax{||} \Id{y} \Ax{\Leftrightarrow} \=\Ax{\exists} \Id{c} \Ax{:} \Id{SimpleElem} \Ax{\bullet} \=\Id{x} \Ax{=} \=\Id{y} \Id{x} \Id{c}\\
-\> \\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{SimpleElem} \\
+\> \Ax{\bullet} \=\Id{x} \Ax{||} \Id{y} \Ax{\Leftrightarrow} \=\Ax{\exists} \Id{c} \Ax{:} \Id{SimpleElem} \Ax{\bullet} \=\Id{x} \Ax{=} \=\Id{y} \Id{x} \Id{c}\\
+\> {\small{}\KW{\%}\KW{Def\_upsidedownDivisilityRelation}\Ax{\%}}\\
 \> {\small{}\KW{\%\%} subsort of primes}\\
 \> \SORT \=\Id{SimplePrime} \Ax{=} \=\{\Id{p} \Ax{:} \Id{SimpleElem} \Ax{\bullet} \Id{IsPrime}(\Id{p})\}\\
 \> \Ax{\forall} \=\Id{p} \Ax{:} \Id{SimpleElem} \\
@@ -85,9 +100,8 @@
 \>\> \Ax{\Leftrightarrow} \=(\=\Ax{\forall} \Id{a}, \Id{b} \Ax{:} \Id{SimpleElem} \Ax{\bullet} \=\Id{a} \Id{x} \Id{b} \Ax{||} \Id{p} \Ax{\Rightarrow} \=\Id{a} \Ax{||} \Id{p} \Ax{\vee} \=\Id{b} \Ax{||} \Id{p}) \Ax{\wedge} \Ax{\neg} \=\Id{p} \Ax{=} \Ax{1}\\
 \> {\small{}\KW{\%}\KW{Def\_primality}\Ax{\%}}\\
 \KW{end}\\
+{\small{}\KW{\%\%} Generic space}\\
 \\
-\\
-{\small{}\KW{\%\%}\Ax{\%} Generic space}\\
 \SPEC \=\SIdIndex{Gen} \Ax{=}\\
 \> \SORT \Id{Generic}\\
 \> \OPS \=\Id{S} \Ax{:} \Id{Generic};\\

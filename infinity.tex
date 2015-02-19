@@ -55,8 +55,8 @@ Figure \ref{fig:inv}, and call this theory $\mathbb{F}$.
 \subsubsection{Identifying a Generic Space}
 In order to incorporate the notion of blending here we want to be able
 to identify a ``generic'' component of each theory and compute the
-pushout as discusses in \S\ref{sec:blendingtheory}. We can use the
-HDTP system \cite{GustKS2006,Schmidt2010} to discover a common theory
+pushout as discusses in \S\ref{sec:background}. We can use the
+HDTP system \parencite{GustKS2006,Schmidt2010} to discover a common theory
 and signature morphism between symbols in the
 two theories $\mathbb{N}$ and $\mathbb{F}$. The Generic theory
 contains a sort $N$ and a function $func$, and the morphisms from the
@@ -71,7 +71,8 @@ the set of symbol mappings determined by the signature morphism from
 the Generic space the theory $K$.
 
 \subsubsection{Computing the Colimit}
-The HETS system\cite{MossakowskiEA06} can then be exploited to find a new theory by computing the colimit:
+The HETS system \parencite{MossakowskiEA06} can then be exploited to
+find a new theory by computing the colimit:
 \begin{center}
   \begin{diagram}[size=7mm]
     &       &   $Gen$   &       & \\
@@ -107,16 +108,14 @@ This generates the theory shown in \ref{fig:inconsistentintegers}.
 \end{figure}
 
 
-
-
 \subsubsection{Removal of Inconsistencies}
 This theory is automatically determined to be inconsistent due to the axioms
 \begin{eqnarray}
 \forall x : \mathbb{Z} . not s(x) &=& 0 \label{eq:limnat1}\\
 s(p(x)) &=& x \label{eq:sucpre}
 \end{eqnarray}
-removal of the limiting axiom (\ref{eq:limnat1}) results in a theory which is very
-similar to what we understand to be the integers as shown in Figure \ref{fig:integers}.
+Removal of the limiting axiom (\ref{eq:limnat1}) results in a theory which is very
+similar to what we understand to be the integers as shown in Figure~\ref{fig:integers}.
 \begin{figure}[!ht]
 \begin{hetcasl}
 \SPEC \=\SIdIndex{Spec} \Ax{=}\\

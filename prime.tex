@@ -7,7 +7,28 @@ the basis of commutative algebra and a seminal ingredient of the
 language of schemes in modern algebraic geometry is the one of prime
 ideal \parencite{EGAI,Eisenbud95}.
 
-In this section, we will recover the concept of prime ideal of a
+In this section, we present an implementation done in Hets
+\parencite{Mossakowskihets}, in the language of CASL for the case of a
+principal ideal domain (PID).  The resulting blending space contains
+two equivalent definitions of the containing relation for ideals. One
+of them is the trivial one in terms of elements and the other one is
+given in terms of product of ideals.  It states that an ideal $X$ is
+contained in an ideal $Y$ if and only if there exists an ideal $C$
+such that $X=Y*C$. This is true if the base ring is a PID (it is an
+elementary exercise). However, if the base ring is not a PID, for
+example $R=\mathbb{Z}[T]$, then one can check that the ideals $X=(2)$
+and $Y=(2,T)$ gives a counterexample.  Here, it is important to point
+out that in this implementation we looked for a minimal set of axioms
+such that, at the same time, the semantic interpretation can be
+uniquely determined. It is always possible to construct an
+implementation with additional axioms given by properties that could
+be logically derived from the main axioms, (e.g. the set theoretical
+properties of the containment relation for subsets of a set) but these
+properties are secondary ones, meanwhile, the ones defining the
+arithmetic of the ring, of an ideal and of the set of ideals of the
+ring are the essential ones.
+
+We will recover the concept of prime ideal of a
 commutative ring with unity as a sort of partial (or weaken) blending
 (i.e. a blend for just some axioms of the input theories) between the
 concepts of an ideal of a commutative ring with unity (enriched with
@@ -17,7 +38,7 @@ concept of a prime number of the integers.
 In fact, in order to obtain the desired space it is enough to consider
 a more general version of the prime numbers (in our case a partial
 version), namely, a monoid $(Z,*,1)$ with an ``special'' divisibility
-relation $\big\lfloor$. Besides, the generic space would capture just
+relation $\dannydiv$. Besides, the generic space would capture just
 the syntactic correspondences that we wish to identity in the
 blending space, since the blend would be basically the union of the
 collection of axioms given on each space, doing the corresponding
@@ -59,7 +80,7 @@ $\cdot_{\iota}$, inherited in a natural way from the corresponding
 operations $+$ and $\cdot$ on $S$:
 
  Let $I,J\in {\rm Spec}_IR$, then we define 
-
+%
 \[I\cdot_{\iota} J:=\left\{i_1\cdot j_1+...+i_n\cdot j_n:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
 
 With this operation ${\rm Spec}_IR$ forms a commutative monoid
@@ -97,21 +118,21 @@ property:
   & \rightarrow M=\mathbb{Z}].
 \end{align*}
 
-We define also an upside down divisibility relation $\big\lfloor$ defined as 
-\[e\big\lfloor g:=g\big|e,\] We re-write the classical divisibility
+We define also an upside down divisibility relation $\dannydiv$ defined as 
+\[e\dannydiv g:=g|e,\] We re-write the classical divisibility
 relation on this way in order to obtain the right primality condition
 on the blend.  Let us define a unary relation $isprime$ on
 $\mathbb{Z}$ as follows: for all $p\in \mathbb{Z}$, $isprime(p)$ holds
 if $p\neq 1$ and the following (primality) condition holds:
 
-\[(\forall a,b\in \mathbb{Z})(ab \big\lfloor p)\rightarrow (a \big\lfloor p \vee b \big\lfloor p).\] 
+\[(\forall a,b\in \mathbb{Z})(ab \dannydiv p)\rightarrow (a \dannydiv p \vee b \dannydiv p).\] 
 Besides, we define the set (sort) of the prime numbers as 
 \[ Prime=\left\{ p\in \mathbb{Z}/ isprime(p)\right\}\] Now, it is an
 elementary fact to see that this condition is an equivalent form of
 the standard definition of prime number given in the classical number
 theory books (see for example \cite{Apostol76}. In the CASL language,
   we consider $\mathbb{Z}$ as the sort of the integer numbers, $*$ as
-  a binary operation , $prime$ as a predicate and $\big\lfloor$ as a
+  a binary operation , $prime$ as a predicate and $\dannydiv$ as a
   binary relation, any of them defined over the sort $\mathbb{Z}$.
   \newline\indent We denote this conceptual space by $\mathbb{P}$.
 
@@ -124,7 +145,7 @@ The generic space consists of a set (sort) $G$ with a binary operation $*_G$, a 
 \subsection{The Blending Morphisms}
 Now, let us define the morphisms from the generic space into the two corresponding conceptual spaces. Let $\varphi: \mathbb{G}\rightarrow \mathbb{I}$ be the morphism induced by the following syntactic correspondences $\varphi(G)={\rm Spec}_IR,\varphi(*_G)=*_{\iota}, \varphi(S)=1_{\iota}$ and $\varphi(\leq_G)=\subseteq$.
 \newline\indent
-Furthermore, let $\delta:=\mathbb{G}\rightarrow\mathbb{P}$ be the morphism induced by the syntactic correspondences $\delta(G)=\mathbb{Z}, \delta(*_G)=*, \delta(S)=1$ and $\delta(\leq_G)= \big\lfloor$.
+Furthermore, let $\delta:=\mathbb{G}\rightarrow\mathbb{P}$ be the morphism induced by the syntactic correspondences $\delta(G)=\mathbb{Z}, \delta(*_G)=*, \delta(S)=1$ and $\delta(\leq_G)= \dannydiv$.
 
 \subsection{The Axiomatization of the Blending}
 In the every-day research of the working mathematician it happens
