@@ -3,6 +3,9 @@
 \usepackage{times}
 \usepackage{helvet}
 \usepackage{courier}
+\usepackage{amssymb,amsmath}
+\usepackage{hetcasl,diagrams}
+\usepackage{graphicx}
 \usepackage[firstpage]{draftwatermark}
 \SetWatermarkText{\shortstack{Draft\\\today\currenttime}}
 \SetWatermarkScale{0.75}
@@ -15,18 +18,13 @@
 \renewcommand*{\multicitedelim}{\addsemicolon\space}%
 \usepackage{xcolor}
 \usepackage[
-  bookmarks=false,
-  pdfpagelabels=false,
-  hyperfootnotes=false,
-  hyperindex=false,
-  pageanchor=false,
-%  colorlinks,
   citebordercolor=white
 ]{hyperref}
 
 \DeclareLanguageMapping{british}{british-apa}
-% \addbibresource{papers.bib}
-\addbibresource{mathsICCC.bib} %
+\addbibresource{papers.bib}
+% \addbibresource{mathsICCC.bib} %
+% \addbibresource{danny_bibliothek.bib} %
 %% \urlstyle{tt}
 \AtBeginBibliography{\def\UrlFont{\footnotesize\tt}}
 \renewcommand*{\finalnamedelim}{%
@@ -46,6 +44,10 @@
       {}
       {\finalandcomma\addspace\bibstring{and}\space}}}
 
+\newcommand{\note}[1]{\begin{quote} \textbf{Note:}  \textit{#1} \end{quote}}
+\newcommand{\comment}[1]{\textbf{Comment:}\textit{#1}}
+\newcommand{\dannydiv}{\lfloor}
+
 % \pdfinfo{
 % /Title (Test)
 % /Subject (Proceedings of ICCC)
@@ -53,9 +55,14 @@
 % The file iccc.sty is the style file for ICCC proceedings.
 
 \title{Chasing the blend}
-\author{Several\\
-check if this should be blind submission?
-}
+
+\author{F.\ Bou \\ \Large{\textbf{M.\ Schorlemmer}}\\IIIA, CSIC \\ Barcelona
+        \And J. Corneli \\Computing \\Goldsmiths, London
+        \And D.\ G{\'o}mes-Ram{\'{\i}}rez\\Cognitive Science \\Osnabr{\"u}ck
+        \And E. Maclean \\\Large{\textbf{A.\ Smaill}}\\ Informatics\\ Edinburgh
+        \And A. Pease \\ Computing \\ Dundee}
+
+
 \setcounter{secnumdepth}{0}
 
 \begin{document} 
