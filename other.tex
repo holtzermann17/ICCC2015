@@ -1,16 +1,102 @@
-\section{Related Example}
-\label{galois}
-
-
---- especially Galois.
+\section{Related Example} \label{galois}
 
 \subsection{Galois Theory}
+% Danny, Joe, Felix, Ewen
 
-Danny, Joe, Felix, Ewen
+This example is developed in a less formal manner than the previous.
+It is included both to highlight some outstanding technical issues,
+and to develop some broader theoretical points about the future
+prospects and applications of our approach.  
+
+In its most straightforward formulation, Galois theory develops a
+relationship between a polynomial $f(x)$ with coefficients in some
+field $F$, the extension of $K$ of $F$ (written ``$K/F$'') containing
+all of the roots of $f(x)$, and the group $\mathbf{Gal}(K)$ of
+automorphisms of $K/F$ that fix the elements of $F$.  The fundamental
+theorem of Galois theory states that there is a bijection between the
+subfields of $K/F$ extension and the subgroups of $\mathbf{Gal}(K)$;
+namely, subgroups correspond to their fixed fields.  Using this
+correspondence, properties of polynomials can be derived, most
+famously the fact that quintic polynomials cannot be solved by
+algebraic operations and the extraction of roots.  
+
+We do not propose to reconstruct much of the theory here, but note
+that already in this basic account there are several steps that seem
+compellingly ``blend-like.''
+
+In the first place, that would describes the notion of a field
+extension quite well.  $E$ is an extension of $F$ if $E \supseteq F$.
+We could derive the extension relationship from the input concepts $E$
+and $F$ by ``taking everything additional from $E$ and adding it to
+$F$.''  This is made specific in the process of \emph{adjoining}
+elements to a field, which simply means to augment the field with all
+formal finite sums and products of the adjoined elements with
+coefficients in the base field.
+
+Second, the notion of the \emph{splitting field} of a polynomial,
+namely the special extension $K/F$ containing all of the roots of
+$f(x)$.  This could be formed conceptually by combining the concept
+``\emph{the roots of a polynomial $f$ with coefficients in a field
+  $F$}'' and the concept ``\emph{a field extension $E/F$ formed by
+  adjoining certain elements to $F$}.''  Formally, the roots of $f$
+are not part of in the second concept, and they must be put in
+correspondence with the ``certain elements.''  Note that formulating
+the concept of a splitting field in this way is different from proving
+that a splitting field always exists.  It does, however, and the proof
+(by induction on the degree of the polynomial) works by successively
+adjoining elements to $F$.  This gives an inkling of the idea that
+blending could be used as a proof step.
+
+As above, we could then form the concept of $\mathbf{Gal}(K)$ by blending
+at the conceptual level.  This time, there would be several constituent pieces:
+``\emph{the roots of a polynomial $f$ with coefficients in a field $F$},''
+``\emph{the splitting field of $f$},''
+``\emph{the group of automorphisms of a field extension $E$},''
+``\emph{the automorphisms that fix $F$}.''
+
+Finally, assuming that we have built $\mathbf{Gal}(K)$ in this
+fashion, we would like to know some of its properties.  Consider the
+claim that \emph{elements of $\mathbf{Gal}(K)$ permute the roots of
+  $f$}.  This time, instead of being purely conceptual, we want to
+work at the \emph{process} level, and consider before-and-after
+descriptions of the result of applying $\varphi\in\mathbf{Gal}(K)$ to
+some $r$ with the property $f(r)=0$.  This is similar in some ways to
+the ``Riddle of the Buddhist Monk'' \cite{FaTu98b} which is cited as
+an example of the power of blending.\footnote{Fauconnier and Turner
+  cite Arthur Koestler: ``A Buddhist monk begins at dawn one day
+  walking up a mountain, reaches the top at sunset, meditates at the
+  top for several days until one dawn when he begins to walk back to
+  the foot of the mountain, which he reaches at sunset.  Making no
+  assumptions about his starting or stopping or about his pace during
+  the trips, prove that there is a place on the path which he occupies
+  at the same hour of the day on the two separate journeys.''}
+However, this time the generic space is not a simple geometric machine,
+but rather an algebraic machine with several moving parts.
+
+The proof of the claim is as follows.  If $f(r)=0$, then $\varphi
+f(r)=\varphi 0$.  Since $\varphi$ is an automorphism, $\varphi 0 = 0$;
+and furthermore $\varphi$ distributes over the sums and products that
+make up the polynomial $f$ and fixes its coefficients, therefore
+$\varphi f(r)=f(\varphi r)$.  Chaining the equalities together, we
+have $f(\varphi r)=0$.
+
+In short, the proof is a fairly direct result of combining ``what it
+means to be a root'' with ``what it means to be an automorphism.''
+Indeed, the proof is in some sense the only thing it could be if one
+knows these definitions.  
+
+\cite{Go99c} suggests that ``combination is colimit.''  Can we realise
+the proof through (one or several) colimit operations?  I.e.~is the
+proof just a blend?  And is there anything special about this proof?
 
 \subsection{Issues raised}
 
-Alan, Ewen, Felix
+There are various technical questions \textbf{(@Alan, @Ewen, @Felix)},
+but from a naive mathematical standpoint the first issue is: is it
+always clear how to combine the relevant facts?  And a related
+question: is it always clear what the relevant facts actually are?
+
+% Alan, Ewen, Felix
 
 %%% Local Variables: 
 %%% mode: latex
