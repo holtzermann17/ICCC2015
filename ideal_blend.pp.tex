@@ -25,35 +25,23 @@
 \>\> {\small{}\KW{\%\%} partial order}\\
 \>\> {\small{}\KW{\%\%}Definition of the containment predicate}\\
 \> \Ax{\forall} \=\Id{A}, \Id{B} \Ax{:} \Id{Ideal} \\
-\> \Ax{\bullet} \=\Id{A} \Id{issubsetOf} \Id{B} \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{a} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\Rightarrow} \=\Id{a} \Id{isIn} \Id{B}\\
+\> \Ax{\bullet} \=\Id{A} \Id{issubsetOf} \Id{B} \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{a} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\Rightarrow} \=\Id{a} \Id{isIn} \Id{B} \\
+\> \`{\small{}\KW{\%}(subset\Ax{\_}def)\KW{\%}}\\
 \> {\small{}\KW{\%\%} axioms for Ring}\\
 \> \Ax{\forall} \Id{x} \Ax{:} \Id{RingElt}; \=\Id{y} \Ax{:} \Id{RingElt} \\
-\> \Ax{\bullet} \=\Id{x} \Ax{+} \Id{y} \Ax{=} \=\Id{y} \Ax{+} \Id{x}\\
-\> {\small{}\KW{\%}\KW{Commutativity} with \Ax{+}\Ax{\%}}\\
+\> \Ax{\bullet} \=\Id{x} \Ax{+} \Id{y} \Ax{=} \=\Id{y} \Ax{+} \Id{x} \`{\small{}\KW{\%}(Commutativity\Ax{\_}\Ax{+})\KW{\%}}\\
 \> \Ax{\forall} \Id{x} \Ax{:} \Id{RingElt}; \Id{y} \Ax{:} \Id{RingElt}; \=\Id{z} \Ax{:} \Id{RingElt} \\
-\> \Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{+} \Id{z} \Ax{=} \=\Id{x} \Ax{+} (\=\Id{y} \Ax{+} \Id{z})\\
-\> {\small{}\KW{\%\%} Associativity with \Ax{+}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \\
-\> \Ax{\bullet} \=\Id{x} \Ax{+} \Ax{0} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{0} \Ax{+} \Id{x} \Ax{=} \Id{x}\\
-\> {\small{}\KW{\%\%}unit with \Ax{+}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \\
-\> \Ax{\bullet} \=\Ax{\exists} \Id{x'} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x'} \Ax{+} \Id{x} \Ax{=} \Ax{0}\\
-\> {\small{}\KW{\%\%}Inverse with \Ax{+}}\\
-\> \Ax{\forall} \Id{x} \Ax{:} \Id{RingElt}; \=\Id{y} \Ax{:} \Id{RingElt} \\
-\> \Ax{\bullet} \=\Id{x} \Ax{*} \Id{y} \Ax{=} \=\Id{y} \Ax{*} \Id{x}\\
-\> {\small{}\KW{\%\%}Commutativity with \Ax{*}}\\
+\> \Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{+} \Id{z} \Ax{=} \=\Id{x} \Ax{+} (\=\Id{y} \Ax{+} \Id{z}) \`{\small{}\KW{\%}(Associativity \Ax{+})\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=\Id{x} \Ax{+} \Ax{0} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{0} \Ax{+} \Id{x} \Ax{=} \Id{x} \`{\small{}\KW{\%}(unit\Ax{\_}\Ax{+})\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=\Ax{\exists} \Id{x'} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x'} \Ax{+} \Id{x} \Ax{=} \Ax{0} \`{\small{}\KW{\%}(Inverse \Ax{+})\KW{\%}}\\
+\> \Ax{\forall} \Id{x} \Ax{:} \Id{RingElt}; \=\Id{y} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=\Id{x} \Ax{*} \Id{y} \Ax{=} \=\Id{y} \Ax{*} \Id{x} \`{\small{}\KW{\%}(Commutativity \Ax{*})\KW{\%}}\\
 \> \Ax{\forall} \Id{x} \Ax{:} \Id{RingElt}; \Id{y} \Ax{:} \Id{RingElt}; \=\Id{z} \Ax{:} \Id{RingElt} \\
-\> \Ax{\bullet} \=(\=\Id{x} \Ax{*} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=\Id{x} \Ax{*} (\=\Id{y} \Ax{*} \Id{z})\\
-\> {\small{}\KW{\%\%}Associativity with \Ax{*}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \\
-\> \Ax{\bullet} \=\Id{x} \Ax{*} \Ax{1} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{1} \Ax{*} \Id{x} \Ax{=} \Id{x}\\
-\> {\small{}\KW{\%\%}unit with \Ax{*}}\\
+\> \Ax{\bullet} \=(\=\Id{x} \Ax{*} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=\Id{x} \Ax{*} (\=\Id{y} \Ax{*} \Id{z}) \`{\small{}\KW{\%}(Associativity \Ax{*})\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=\Id{x} \Ax{*} \Ax{1} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{1} \Ax{*} \Id{x} \Ax{=} \Id{x} \`{\small{}\KW{\%}(unit \Ax{*})\KW{\%}}\\
 \> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \\
-\> \Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=(\=\Id{x} \Ax{*} \Id{z}) \Ax{+} (\=\Id{y} \Ax{*} \Id{z})\\
-\> {\small{}\KW{\%\%}Left\Ax{\_}Distributivity}\\
+\> \Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=(\=\Id{x} \Ax{*} \Id{z}) \Ax{+} (\=\Id{y} \Ax{*} \Id{z}) \`{\small{}\KW{\%}(Left\Ax{\_}Distributivity)\KW{\%}}\\
 \> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \\
-\> \Ax{\bullet} \=\Id{z} \Ax{*} (\=\Id{x} \Ax{+} \Id{y}) \Ax{=} \=(\=\Id{z} \Ax{*} \Id{x}) \Ax{+} (\=\Id{z} \Ax{*} \Id{y})\\
-\> {\small{}\KW{\%\%}Right\Ax{\_}Distributivity}\\
+\> \Ax{\bullet} \=\Id{z} \Ax{*} (\=\Id{x} \Ax{+} \Id{y}) \Ax{=} \=(\=\Id{z} \Ax{*} \Id{x}) \Ax{+} (\=\Id{z} \Ax{*} \Id{y}) \`{\small{}\KW{\%}(Right\Ax{\_}Distributivity)\KW{\%}}\\
 \> {\small{}\KW{\%\%}axioms for Ideal}\\
 \> \Ax{\forall} \=\Id{I} \Ax{:} \Id{SubSetOfRing} \\
 \> \Ax{\bullet} \=\Id{IsIdeal}(\Id{I}) \\
