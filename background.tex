@@ -4,12 +4,98 @@
 \subsection{Blending in Mathematics}
 \label{subsec:mathblend}
 
-  Alison?
+\subsection{Concept blending in mathematics}
+Lakoff and N{\'u}{\~n}ez \citep{lakoff} are among the first to present
+a cognitive account of the origin and development of mathematical
+ideas,\footnote{This is lamented by Lakoff and N{\'u}{\~n}ez, who
+claim that (prior to their work), ``there was still no discipline of
+mathematical idea analysis from a cognitive perspective''
+\citep{lakoff}.} arguing against the ``romantic'' style in which
+mathematics is presented as an ever-increasing set of universal,
+absolute, certain truths which exist independently of humans. They
+present the thesis that human mathematics is grounded in bodily
+experience of a physical world, and mathematical entities inherit
+properties which objects in the world have, such as being consistent
+or stable over time.  Exploring the physical world of object
+collection might lead to concepts like the empty collection and rules
+like ``adding a collection of $n$ objects to an empty collection
+yields a collection with $n$ objects''. People then form grounding
+metaphors between the physical world and an abstract mathematical
+world, allowing us to project from everyday experiences onto abstract
+concepts, thus leading to the concept of zero and the axiom that $n +
+0 = n$. Lakoff and N{\'u}{\~n}ez posit that blending different
+mathematical metaphors leads to more complex ideas. 
 
-\subsection{Image Schemas}  
-\label{subsec:schemas}
+\subsection{Some mathematical concepts}
+In this paper we draw on Lakoff and N{\'u}{\~n}ez's ideas to produce a
+computational model of blending in abstract mathematics. We present
+three illustrative examples: the mathematical notion of infinity,
+prime ideals and Galois theory. The first of these is the idea of a
+number, process etc without limits or end. The latter two are concepts
+from abstract algebra, which explores groups and related objects and
+their properties. A group is a set of elements with an operation which
+takes in two of the elements and combines them to produce a third
+element. The operation must satisfy four axioms:
 
-Marco
+{\em closure} (the third element must also be in the set), {\em
+associativity} (the order doesn't matter for multiple applications of
+the operator), {\em identity} (there exists an element in the set such
+that applying the operator to that element and a second element
+results in the second element) and {\em invertibility} (there exists
+an element in the set such that applying the operator to that element
+and a second element results in the identity element). An example of a
+group is the integers under addition -- here we have:
+
+{\em Closure:} if we sum any two integers then the result is another integer
+
+{\em Associativity:} for any three integers, a, b, c, (a + b) + c = a +
+(b + c)
+
+{\em Identity:} this is 0: for any integer a, a + 0 = 0 + a = a
+
+and {\em Invertibility:} for any given element a, the negation of a,
+-a, is the inverse, since a + (-a) = 0.
+
+These axioms are modified and extended, to describe fields and
+rings. A {\em prime ideal} is a subset of a ring, which certain
+properties, and Galois theory draws an important connection between
+fields and groups, which can be used to simplify problems in field
+theory. 
+
+\subsection{Terminology for concept blending}
+Our notion of concept blending is informed by Category theory, and
+highly influenced by Goguen's work on concepts [ref]. In this paper we
+use the terminology below.
+
+{\bf Conceptual spaces} are partial and temporary representational
+structures which are constructed on the fly when talking about a
+particular situation, which are informed by the knowledge structures
+associated with a domain. These are influenced by Boden's idea of a
+concept space which is mapped, explored and transformed by
+transcending mapped boundaries \cite{boden}, and form the input spaces
+to our blend.
+
+{\bf Axioms} are the criteria which delineate the conceptual
+spaces. The axiomatic method has been a fundamental aspect of
+mathematical research since Euclid, and various axiom changes have led
+to revolutions in mathematics. For instance, relaxing the axioms
+defining numbers led to negative and imaginary numbers, and rejecting
+the parallel postulate opened up fascinating new areas of
+non-Euclidean geometry.
+
+%where heuristics for transformation, such as {\em consider
+%the negative} and {\em drop a constraint}, are suggested.
+
+{\bf A signature morphism}, {\bf colimit}, {\bf weakening}, {\bf
+morphism}, {\bf generic space}, {\bf specifications}, {\bf running the
+blend},
+
+%% \subsection{Running Example}
+
+%% \subsection{Image Schemas}  
+%% \label{subsec:schemas}
+
+
 
 %%% Local Variables: 
 %%% mode: latex
