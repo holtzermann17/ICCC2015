@@ -7,28 +7,7 @@ the basis of commutative algebra and a seminal ingredient of the
 language of schemes in modern algebraic geometry is the one of prime
 ideal \parencite{EGAI,Eisenbud95}.
 
-In this section, we present an implementation done in Hets
-\parencite{Mossakowskihets}, in the language of CASL for the case of a
-principal ideal domain (PID).  The resulting blending space contains
-two equivalent definitions of the containing relation for ideals. One
-of them is the trivial one in terms of elements and the other one is
-given in terms of product of ideals.  It states that an ideal $X$ is
-contained in an ideal $Y$ if and only if there exists an ideal $C$
-such that $X=Y*C$. This is true if the base ring is a PID (it is an
-elementary exercise). However, if the base ring is not a PID, for
-example $R=\mathbb{Z}[T]$, then one can check that the ideals $X=(2)$
-and $Y=(2,T)$ gives a counterexample.  Here, it is important to point
-out that in this implementation we looked for a minimal set of axioms
-such that, at the same time, the semantic interpretation can be
-uniquely determined. It is always possible to construct an
-implementation with additional axioms given by properties that could
-be logically derived from the main axioms, (e.g. the set theoretical
-properties of the containment relation for subsets of a set) but these
-properties are secondary ones, meanwhile, the ones defining the
-arithmetic of the ring, of an ideal and of the set of ideals of the
-ring are the essential ones.
-
-We will recover the concept of prime ideal of a
+In this section, we will recover the concept of prime ideal of a
 commutative ring with unity as a sort of partial (or weaken) blending
 (i.e. a blend for just some axioms of the input theories) between the
 concepts of an ideal of a commutative ring with unity (enriched with
@@ -37,7 +16,7 @@ concept of a prime number of the integers.
 
 In fact, in order to obtain the desired space it is enough to consider
 a more general version of the prime numbers (in our case a partial
-version), namely, a monoid $(Z,*,1)$ with an ``special'' divisibility
+version), namely, a monoid $(Z,*,1)$ with an "special" divisibility
 relation $\dannydiv$. Besides, the generic space would capture just
 the syntactic correspondences that we wish to identity in the
 blending space, since the blend would be basically the union of the
@@ -45,13 +24,12 @@ collection of axioms given on each space, doing the corresponding
 identifications.
 
 Our approach to blending is the one adopted by Goguen in terms of
-colimits \parencite{Gog99,Goguen01,Goguen05c}.
+colimits  \parencite{Gog99,Goguen01,Goguen05c}.
 
-We present the conceptual spaces from the standard ``pure'' mathematical
-point of view doing concurrently the corresponding translation into
-the setting of the Common Algebraic Specification Language (CASL)
-\parencite{BidoitMosses2004}.
-
+We present the conceptual spaces from the standard ``pure''
+mathematical point of view doing concurrently the corresponding
+translation into the setting of the Common Algebraic Specification
+Language (CASL) \cite{BidoitMosses2004}.
 \subsection{The first conceptual space}
 Let $(R,+.*,0,1)$ be a commutative ring with unity, i.e. $R$ is a set with two binary operations, $+$ and $*$, and two special elements $0,1\in R$ satisfying the following axioms:
 \begin{enumerate}
@@ -75,25 +53,16 @@ Now, we define
 \[{\rm Spec}_IR=\left\{A\subseteq R: isideal(A) \right\}.\]
 Here, ${\rm Spec}_IR$ is considered as a subsort of the sort $P(R)$.
 
-There is one natural operation on ${\rm Spec}_IR$, let us say
-$\cdot_{\iota}$, inherited in a natural way from the corresponding
-operations $+$ and $\cdot$ on $S$:
+
+There is one natural operation on ${\rm Spec}_IR$, let us say $\cdot_{\iota}$, inherited in a natural way from the corresponding operations $+$ and $\cdot$ on $S$:
 
  Let $I,J\in {\rm Spec}_IR$, then we define 
 %
 \[I\cdot_{\iota} J:=\left\{i_1\cdot j_1+...+i_n\cdot j_n:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
 
-With this operation ${\rm Spec}_IR$ forms a commutative monoid
-(i.e. it holds commutativity, associativity and there exists a neutral
-element (in this case the ring)). However, this fact is irrelevant in
-our case for the blending process. As a matter of fact, the only
-property that we want to keep into the blend is the one saying that
-this operation has a neutral element $1_{\iota}$, which can be seen as
-an additional notation for the ring, but respect to this operation
-$\cdot_{\iota}$ instead of being the sort of elements of the ring,
-i.e., $R$.  \newline\indent On the other side, we want to see the
-contention relation $\subseteq$ as a binary relation over the sort
-${\rm Spec}_IR$.
+With this operation ${\rm Spec}_IR$ forms a commutative monoid (i.e. it holds commutativity, associativity and there exists a neutral element (in this case the ring)). However, this fact is irrelevant in our case for the blending process. As a matter of fact, the only property that we want to keep into the blend is the one saying that this operation has a neutral element $1_{\iota}$, which can be seen as an additional notation for the ring, but respect to this operation $\cdot_{\iota}$ instead of being the sort of elements of the ring, i.e., $R$. 
+\newline\indent
+On the other side, we want to see the contention relation $\subseteq$ as a binary relation over the sort ${\rm Spec}_IR$.
 
 Summarizing, our first conceptual space consists of sorts $R, {\rm Spec}_IR$ and $P(R)$; operations $+_R, *_R, 0_R, 1_R, 1_{\iota}$ and $
 \cdot_{\iota}$; and the relations $\subseteq$ and $isideal$.
@@ -109,34 +78,32 @@ just take into account only the fact that $(\mathbb{Z},*,1)$ is a
 commutative monoid. Or even simpler, we only use the fact that $1$ is
 the neutral element with the operation $*$. One can, for example, take
 the simple characterization of $\mathbb{Z}$, given by Martin
-Brandenburg \citep{brandenburgdobleinduction}, as the only ordered
-commutative ring with unity satisfying the following ``bi-inductive''
+Brandenburg \cite{brandenburgdobleinduction}, as the only ordered
+commutative ring with unity satisfying the following "bi-inductive"
 property:
-\begin{align*}
-  \label{eq:int}
-  \forall M \subseteq \mathbb{Z}\;  & [ 0 \in M \wedge (\forall n \in \mathbb{Z} (n\in M \rightarrow n\pm 1 \in M))\\
-  & \rightarrow M=\mathbb{Z}].
-\end{align*}
+\[\forall M \subseteq \mathbb{Z} \left[ 0 \in M \wedge \left(\forall n \in \mathbb{Z} \left(n\in M \rightarrow n\pm 1 \in M\right)\right) \rightarrow M=\mathbb{Z}\right].\]
 
 We define also an upside down divisibility relation $\dannydiv$ defined as 
-\[e\dannydiv g:=g|e,\] We re-write the classical divisibility
-relation on this way in order to obtain the right primality condition
-on the blend.  Let us define a unary relation $isprime$ on
-$\mathbb{Z}$ as follows: for all $p\in \mathbb{Z}$, $isprime(p)$ holds
-if $p\neq 1$ and the following (primality) condition holds:
-
+%
+\[e\dannydiv g:=g|e,\] We re-write the classical divisibility relation
+on this way in order to obtain the right primality condition on the
+blend.  Let us define a unary relation $isprime$ on $\mathbb{Z}$ as
+follows: for all $p\in \mathbb{Z}$, $isprime(p)$ holds if $p\neq 1$
+and the following (primality) condition holds:
+%
 \[(\forall a,b\in \mathbb{Z})(ab \dannydiv p)\rightarrow (a \dannydiv p \vee b \dannydiv p).\] 
 Besides, we define the set (sort) of the prime numbers as 
 \[ Prime=\left\{ p\in \mathbb{Z}/ isprime(p)\right\}\] Now, it is an
 elementary fact to see that this condition is an equivalent form of
 the standard definition of prime number given in the classical number
-theory books (see for example \cite{Apostol76}. In the CASL language,
-  we consider $\mathbb{Z}$ as the sort of the integer numbers, $*$ as
-  a binary operation , $prime$ as a predicate and $\dannydiv$ as a
-  binary relation, any of them defined over the sort $\mathbb{Z}$.
-  \newline\indent We denote this conceptual space by $\mathbb{P}$.
+theory books (see for example \textcite{Apostol76}). In the CASL
+language, we consider $\mathbb{Z}$ as the sort of the integer numbers,
+$*$ as a binary operation , $prime$ as a predicate and $\dannydiv$
+  as a binary relation, any of them defined over the sort
+  $\mathbb{Z}$.  \newline\indent We denote this conceptual space by
+  $\mathbb{P}$.
 
-\subsection{The Generic Space}
+\section{The Generic Space}
 
 The generic space consists of a set (sort) $G$ with a binary operation $*_G$, a neutral element $S$ and a binary relation $\leq_G$.
 
@@ -154,45 +121,45 @@ by combining just some aspects of two particular theories but without
 considering the whole theories. For example, the development of
 differential geometry was obtained combining just some aspect of
 general and algebraic topology and some aspects of real analysis
-\parencite{VelCad05}. The same happens with the methods use in
+\cite{VelCad05}. The same happens with the methods use in
 analytic number theory which are a fusion of some components of
 elementary number theory and some of the real analysis techniques
 \parencite{Apostol76}.
 
-Therefore, it is more natural in the daily mathematical research to obtain new concepts as "partial" combinations of two former ones, i.e., as combinations (blends) of just some axioms of the corresponding two theories.
+Therefore, it is more natural in the daily mathematical research to
+obtain new concepts as ``partial'' combinations of two former ones,
+i.e., as combinations (blends) of just some axioms of the
+corresponding two theories.
  
-Thus, in our case, a partial blend will give us the desired concept. For example, from the properties defining the integers we transfer into the blend only the fact that $\mathbb{Z}$ is a set with a binary operation $*$ having $1$ as neutral element. 
+Thus, in our case, a partial blend will give us the desired
+concept. For example, from the properties defining the integers we
+transfer into the blend only the fact that $\mathbb{Z}$ is a set with
+a binary operation $*$ having $1$ as neutral element.
 
-So, after using the same symbols for denoting the ring as a sort of elements or as the neutral element for product of ideals $\cdot_G$, the blend has the form
-\[(S, +_S, *_S, 0_S, 1_S, G={\rm Spec}_IS, isprime, Prime, \cdot_G,
-S=1_G, \subseteq)\] with all the corresponding axioms of the first
-conceptual space plus the translated version of the axiom defining the
-primality predicate after doing the corresponding symbolic
-identifications i.e., an element $P \in G$ (i.e., an ideal of $S$)
-satisfied the predicate $isprime$ if and only if
+So, after using the same symbols for denoting the ring as a sort of
+elements or as the neutral element for product of ideals $\cdot_G$,
+the blend has the form
+%
+\[(S, +_S, *_S, 0_S, 1_S, G={\rm Spec}_IS, isprime, Prime, \cdot_G, S=1_G, \subseteq)\]
+with all the corresponding axioms of the first conceptual space plus the translated version of the axiom defining the primality predicate after doing the corresponding symbolic identifications i.e., an element $P \in G$ (i.e., an ideal of $S$) satisfied the predicate $isprime$ if and only if 
+\begin{align*}
+  P\neq S \wedge\; (\forall X,Y\in G={\rm Spec}_IS) & (X\cdot_{\alpha}Y\subseteq P \\
+                  & \rightarrow (X\subseteq P \vee Y\subseteq P)).
+\end{align*}
+
+Now, it is an elementary exercise to see that this definition is equivalent to the fact that $P$ is a prime ideal of $S$, i.e. to the condition
 \begin{align*}
 P\neq S & \wedge (\forall X,Y\in G={\rm Spec}_IS). \\
         & (X\cdot_{\alpha}Y\subseteq P \rightarrow (X\subseteq P \vee Y\subseteq P)).
 \end{align*}
+Therefore, the predicate $isprime$ turns out to be the predicate characterizing the primality of ideals of $S$ and the set (sort) $Prime$ turns out to be the set of prime ideals of $S$.
 
-Now, it is an elementary exercise to see that this definition is
-equivalent to the fact that $P$ is a prime ideal of $S$, i.e. to the
-condition
-\[ P\neq S \wedge (\forall a,b\in S)(ab\in B\rightarrow (a\in P \vee
-b\in P)).\] Therefore, the predicate $isprime$ turns out to be the
-predicate characterizing the primality of ideals of $S$ and the set
-(sort) $Prime$ turns out to be the set of prime ideals of $S$.
+Besides, we just consider the fact that the up-side down divisibility relation is a binary relation without taking into account the formal definition into the blend. 
 
-Besides, we just consider the fact that the up-side down divisibility
-relation is a binary relation without taking into account the formal
-definition into the blend.
 
-In conclusion, the blending space consists of the axioms assuring that
-$S$ is a commutative ring with unity, $G$ is the set of ideals of $S$,
-$isprime$ is the predicate specifying primality for ideals of $S$ and
-$Prime$ is the collection of all prime ideals of $S$.
+In conclusion, the blending space consists of the axioms assuring that $S$ is a commutative ring with unity, $G$ is the set of ideals of $S$, $isprime$ is the predicate specifying primality for ideals of $S$ and $Prime$ is the collection of all prime ideals of $S$. 
  
-\section{Implementation for the Principal Ideal Domain Case}
+\subsection{Implementation for the Principal Ideal Domain Case}
 
 On this section we present an implementation done in
 Hets \parencite{Mossakowskihets}, in the language of CASL for the case
@@ -202,17 +169,220 @@ ideals. One of them is the trivial one in terms of elements and the
 other one is given in terms of product of ideals. It is an elementary
 exercise to see this equivalence in the PID case.
 
-%% \input{ideal_blend.pp}
+\input{prime.pp}
 
+% \begin{verbatim}
+% logic CASL
+% %%PRIME IDEAS OVER PRINCIPAL IDEAL DOMAINS (PID) AS A BLEND
+
+
+% spec IdealsOfRing =
+% sort RingElt                %% sort of Ring Elements
+% sort SubSetOfRing           %% sort of parts of this ring 
+% pred IsIdeal : SubSetOfRing %% when a subset is an ideal
+% op  0 : RingElt
+% op  1 : RingElt
+% op  __*__ : RingElt * RingElt -> RingElt
+% op  __+__ : RingElt * RingElt -> RingElt
+
+% pred __isIn__ : RingElt * SubSetOfRing
+
+% sort Ideal = { I : SubSetOfRing . IsIdeal(I) }
+% op  R : Ideal        %% the Ring as an ideal
+% op    __ ** __: Ideal * Ideal -> Ideal, unit R
+% %%Definition of the predicate of contention   
+
+% pred __issubsetOf__ : Ideal * Ideal 
+
+% forall A,B : Ideal
+% . A issubsetOf B <=> forall a: RingElt. a isIn A => a isIn B
+
+% %% axiomatization of a commutative Ring with unity
+     
+% forall x : RingElt; y : RingElt . x + y = y + x                        
+% forall x : RingElt; y : RingElt; z : RingElt
+% . (x + y) + z = x + (y + z)
+% forall x : RingElt . x + 0 = x /\ 0 + x = x                           
+% forall x : RingElt . exists x' : RingElt . x' + x = 0                
+% forall x : RingElt; y : RingElt . x * y = y * x                        
+% forall x : RingElt; y : RingElt; z : RingElt 
+% . (x * y) * z = x * (y * z) 
+% forall x : RingElt . x * 1 = x /\ 1 * x = x                            
+% forall x, y, z : RingElt . (x + y) * z = (x * z) + (y * z)              
+% forall x, y, z : RingElt . z * (x + y) = (z * x) + (z * y)           
+
+% %%axioms for Ideal
+
+% forall I: SubSetOfRing. IsIdeal(I) <=>
+% ( forall a,b,c : RingElt
+% .( (a isIn I => a isIn R)
+% /\  0 isIn I)
+% /\ (a isIn I /\ c isIn R => (c * a) isIn I)
+% /\ (a isIn I /\ b isIn I /\ c isIn R
+%  /\ b + c = 0 => a + c isIn I ))
+       
+
+% %%axioms for PID-s
+% %%every ideal is generated by an element
+% pred __generates__: RingElt * Ideal 
+% forall A: Ideal. exists a: RingElt. a generates A
+
+% forall a: RingElt. forall A: Ideal. a generates A <=>
+% forall c: RingElt. c isIn A => exists d: RingElt. c=a*d
+
+% %% Definition of the product of ideals without subindexes
+
+% forall A,B: Ideal
+% . forall a,b: RingElt. (a isIn A /\ b isIn B) => a*b isIn A**B
+% . forall D: Ideal. (forall a,b: RingElt
+% . (a isIn A /\ b isIn B) => a*b isIn A**B)
+% => A**B issubsetOf D
+% end
+
+% %%%axioms defining a very simple version of the integers,
+% %%%considered with an operation * with neutral element,
+% %%% a binary relation || (upside-down divisibility relation)
+% %%% and a primality axiom.
+
+% spec SimpleInt=
+% sort SimpleElem
+% ops 1:  SimpleElem
+% __ x __: SimpleElem * SimpleElem -> SimpleElem, unit 1
+% preds __ || __: SimpleElem * SimpleElem
+% IsPrime : SimpleElem
+% %Def_upsidedownDivisilityRelation%
+% forall x,y: SimpleElem
+% . x || y <=> (exists c: SimpleElem. x = y x c)
+		
+
+% %% subsort of primes
+% sort SimplePrime = { p : SimpleElem . IsPrime(p) }
+
+% forall p:SimpleElem .
+% IsPrime(p) <=>
+% (forall a,b: SimpleElem
+% . a x b || p => a || p \/ b || p      %Def_primality%
+% /\ not (p = 1))
+% end
+
+% %%% Generic space
+ 
+% spec Gen=
+% sort Generic
+% ops S: Generic
+% __ gpr __: Generic * Generic -> Generic, unit S
+% pred gcont: Generic * Generic
+% end
+ 
+% view I1: Gen to IdealsOfRing =
+% Generic |-> Ideal, S |-> R,
+% __ gpr __ |-> __ ** __, gcont |-> __issubsetOf__
+
+% view I2: Gen to SimpleInt =
+% Generic |-> SimpleElem, S |-> 1,
+% __ gpr __ |-> __ x __, gcont |-> __ || __
+
+% spec Colimit = combine I1, I2
+% \end{verbatim}
 After computing the corresponding colimit in HETS and after
-interpreting ``RingEl'' as the sort containing the elements of the ring
+interpreting "RingElt" as the sort containing the elements of the ring
 $S$, the theory defining the blend corresponds to the axioms defining
 a PID (S), the set of all its ideals (Generic) and the set all its
 prime ideals (SimplePrime):
 
-%% \input{ideal_colim.pp}
+\input{ideal_colim.pp}
 
-The details of this implementation can be consulted at \texttt{somewhere/on/line}.
+% \begin{verbatim}
+% logic CASL.SulFOL=
+
+% sorts Generic, RingElt, SimplePrime, SubSetOfRing
+% sorts SimplePrime < Generic; Generic < SubSetOfRing
+% op 0 : RingElt
+% op 1 : RingElt
+% op S : Generic
+% op __*__ : RingElt * RingElt -> RingElt
+% op __+__ : RingElt * RingElt -> RingElt
+% op __x__ : Generic * Generic -> Generic
+% pred IsIdeal : SubSetOfRing
+% pred IsPrime : Generic
+% pred __generates__ : RingElt * Generic
+% pred __isIn__ : RingElt * SubSetOfRing
+% pred gcont : Generic * Generic
+
+% forall I : SubSetOfRing . I in Generic <=> IsIdeal(I)
+% %(Ax1)%
+
+% forall x : Generic . x x S = x %(ga_right_unit___**__)%
+
+% forall x : Generic . S x x = x %(ga_left_unit___**__)%
+
+% forall A, B : Generic
+% . gcont(A, B) <=> forall a : RingElt . a isIn A => a isIn B
+                                                    
+% 																										%(Ax4)%
+
+% forall x, y : RingElt . x + y = y + x %(Ax5)%
+
+% forall x, y, z : RingElt . (x + y) + z = x + (y + z)%(Ax6)%
+
+% forall x : RingElt . x + 0 = x /\ 0 + x = x %(Ax7)%
+
+% forall x : RingElt . exists x' : RingElt . x' + x = 0%(Ax8)%
+
+% forall x, y : RingElt . x * y = y * x %(Ax9)%
+
+% forall x, y, z : RingElt . (x * y) * z = x * (y * z)%(Ax10)%
+
+% forall x : RingElt . x * 1 = x /\ 1 * x = x %(Ax11)%
+
+% forall x, y, z : RingElt
+% . (x + y) * z = (x * z) + (y * z) %(Ax12)%
+
+% forall x, y, z : RingElt 
+% . z * (x + y) = (z * x) + (z * y) %(Ax13)%
+
+% forall I : SubSetOfRing
+% . IsIdeal(I)
+%  <=> forall a, b, c : RingElt
+% . ((a isIn I => a isIn S) /\ 0 isIn I)
+% /\ (a isIn I /\ c isIn S => c * a isIn I)
+% /\ (a isIn I /\ b isIn I /\ 
+% c isIn S /\ b + c = 0 => a + c isIn I)
+%                                               %(Ax14)%
+
+% forall A : Generic . exists a : RingElt . a generates A
+%  %(Ax15)%
+
+% forall a : RingElt; A : Generic
+% . a generates A
+%   <=> forall c : RingElt 
+% 	. c isIn A => exists d : RingElt . c = a * d
+%                                                   %(Ax16)%
+
+% forall A, B : Generic; a, b : RingElt
+% . a isIn A /\ b isIn B => a * b isIn A x B        %(Ax17)%
+
+% forall A, B, D : Generic
+% . (forall a, b : RingElt
+%    . a isIn A /\ b isIn B => a * b isIn A x B)
+%   => gcont(A x B, D)                              %(Ax18)%
+
+% forall x, y : Generic
+% . gcont(x, y) <=> exists c : Generic . x = y x c  %(Ax3)%
+
+% forall p : Generic . p in SimplePrime <=> IsPrime(p)
+% %(Ax4_19)%
+
+% forall p : Generic
+% . IsPrime(p)
+%   <=> (forall a, b : Generic
+%        . gcont(a x b, p) => gcont(a, p) \/ gcont(b, p))
+%       /\ not p = S                              %(Ax5_20)%
+
+% \end{verbatim}
+
+% \bibliography{bibliothek}
+% \end{document}
 
 
 %%% Local Variables: 
