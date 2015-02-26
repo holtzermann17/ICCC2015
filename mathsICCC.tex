@@ -3,7 +3,10 @@
 \usepackage{times}
 \usepackage{helvet}
 \usepackage{courier}
-\usepackage{amssymb,amsmath}
+\usepackage{amssymb,amsmath,amsthm}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}{Remark}
 \usepackage{hetcasl,diagrams}
 \usepackage{graphicx}
 \usepackage[firstpage]{draftwatermark}
@@ -13,7 +16,7 @@
 \usepackage{csquotes}
 \usepackage[utf8]{inputenc}
 \usepackage[british]{babel}
-\usepackage[style=apa,natbib,backend=biber]{biblatex}
+\usepackage[style=apa,natbib,backend=biber,url=false]{biblatex}
 \let\cite\citep
 \usepackage[ddmmyyyy]{datetime}
 \renewcommand*{\multicitedelim}{\addsemicolon\space}%
@@ -24,6 +27,8 @@
 
 \DeclareLanguageMapping{british}{british-apa}
 \addbibresource{papers.bib}
+\addbibresource{Corneli_evaluation_bibliography.bib}
+\addbibresource{Bou_CoInvent_bibliography.bib}
 % \addbibresource{mathsICCC.bib} %
 % \addbibresource{danny_bibliothek.bib} %
 %% \urlstyle{tt}
@@ -44,6 +49,10 @@
     \ifthenelse{\value{listcount}>\maxprtauth}
       {}
       {\finalandcomma\addspace\bibstring{and}\space}}}
+\newbibmacro{string+url}[1]{%
+  \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
+\DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
+\DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
 
 \newcommand{\note}[1]{\begin{quote} \textbf{Note:}  \textit{#1} \end{quote}}
 \newcommand{\comment}[1]{\textbf{Comment:}\textit{#1}}
@@ -81,6 +90,7 @@ machine and human mathematical creativity.
 \input{introduction}
 \input{background}
 \input{infinity}
+\input{transfin}
 \input{prime}
 \input{other}
 \input{evaluation}
