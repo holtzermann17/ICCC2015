@@ -1,18 +1,45 @@
 \section{Blending and the infinite}
 \label{sec:infinity}
 
-%  \note{Marco, Ewen, Alan, Felix}
+\note{Marco, Ewen, Alan, Felix}
+
+
+In this paper we want to follow Goguen's proposal \cite{Go99c} for
+implementing blending, but slightly simplified (like in
+\cite{KuMoHoBhBa12}): we will only deal with
+the well-known notion of colimit in a category \cite{Gog91}, instead of
+using $\frac{3}{2}$-colimits.
+
+In the examples here considered we will be using colimits of V-shaped
+diagrams (cf.~Figure??). Thus, in each of the cases we have to specify
+two morphisms between a source conceptual space and a target conceptual
+space, with the restriction that both morphisms share the same source
+conceptual space.
+
+Additionally we will assume that the involved conceptual spaces are
+always given using a
+CASL specification \cite{MoHaSaTa08} and that the morphisms are theorem
+preserving (but perhaps not axiom preserving). The reason to these
+assumptions
+is that in these cases it is well-known how to compute colimits
+\cite{Mo98a}; the colimit specification essentially corresponds to the
+disjoint union of the two target conceptual spaces except for not
+repeating the symbols given in the common source conceptual space.
+Moreover, we will be using 
+the HETS system \parencite{MossakowskiEA06} to compute such colimits.
+
+
 
 \subsection{Naturals and Integers}
 
 \subsection{A Simple Example -- the Integers}
 
-In order to demonstrate the machinery involved in blending
+As a first demonstration of the machinery involved in blending
 mathematical theories, we consider combining a theory of natural
 numbers with the concept of the inverse of a function to obtain the
 integers. Let us assume an simple axiomatisation of the natural
 numbers (without order axioms) as shown in Figure \ref{fig:nats}, and
-call this theory $\mathbb{N}$. Now let us also define a simple theory
+call this theory $\SIdIndex{Nat}$. Now let us also define a simple theory
 which introduces the concept of a function with an inverse as shown in
 Figure \ref{fig:inv}, and call this theory $\mathbb{F}$. 
 \begin{figure}[!ht]
@@ -55,18 +82,18 @@ Figure \ref{fig:inv}, and call this theory $\mathbb{F}$.
 \subsubsection{Identifying a Generic Space}
 In order to incorporate the notion of blending here we want to be able
 to identify a ``generic'' component of each theory and compute the
-pushout as discusses in \S\ref{sec:background}. We can use the
+colimit (also known as pushout) as discusses in \S\ref{sec:background}. We can use the
 HDTP system \parencite{GustKS2006,Schmidt2010} to discover a common theory
 and signature morphism between symbols in the
-two theories $\mathbb{N}$ and $\mathbb{F}$. The Generic theory
+two theories $\SIdIndex{Nat}$ and $\SIdIndex{Fun}$. The Generic theory
 contains a sort $N$ and a function $func$, and the morphisms from the
-Generic theory to $\mathbb{N}$ and $\mathbb{F}$ are:
+Generic theory to $\SIdIndex{N}$ and $\SIdIndex{Fun}$ are:
 \begin{align}
-s&&\leftarrow_{g_\mathbb{N}}&&func&&\rightarrow_{g_\mathbb{F}}&&f\\
-Nat&&\leftarrow_{g_\mathbb{N}}&&N&&\rightarrow_{g_\mathbb{F}}&&X
+s&&\leftarrow_{g_\SIdIndex{Nat}}&&func&&\rightarrow_{g_\SIdIndex{Fun}}&&f\\
+Nat&&\leftarrow_{g_\SIdIndex{Nat}}&&N&&\rightarrow_{g_\SIdIndex{Fun}}&&X
 \end{align}
 Here the successor function is identified in the mapping with the
-function in the theory $\mathbb{F}$, and $g_K$ is the label for
+function in the theory $\SIdIndex{Fun}$, and $g_K$ is the label for
 the set of symbol mappings determined by the signature morphism from
 the Generic space the theory $K$.
 
@@ -76,9 +103,11 @@ find a new theory by computing the colimit:
 \begin{center}
   \begin{diagram}[size=7mm]
     &       &   $Gen$   &       & \\
-    & \ldTo^{\rotatebox{-45}{$g_\mathbb{N}$}} &       & \rdTo^{\rotatebox{45}{$g_\mathbb{F}$}} &          \\
-    \mathbb{N} &       &   &       & \mathbb{F} \\
-    & \rdTo_{\rotatebox{45}{$b_\mathbb{N}$}} &       & \ldTo_{\rotatebox{-45}{$b_\mathbb{F}$}} &  \\
+    & \ldTo^{\rotatebox{-45}{$g_\SIdIndex{Nat}$}} &       &
+    \rdTo^{\rotatebox{45}{$g_\SIdIndex{Fun}$}} &          \\
+    \SIdIndex{Nat} &       &   &       & \SIdIndex{Fun} \\
+    & \rdTo_{\rotatebox{45}{$b_\SIdIndex{Nat}$}} &       &
+    \ldTo_{\rotatebox{-45}{$b_\SIdIndex{Fun}$}} &  \\
     & & $Blend$ & &
   \end{diagram}
 \end{center}
@@ -169,7 +198,7 @@ We show here how this blend works out in our setting.
 \begin{figure}[h]
   \centering
 \includegraphics[width=0.4\textwidth]{transfin_nunez}  
-  \caption{Blend from \textcite[p.\ 1730]{nunez05}}
+  \caption{Blend from \textcite[p ??]{nunez05}}
   \label{fig:nunez_transfin}
 \end{figure}
 
@@ -188,158 +217,12 @@ to change state.
 \end{itemize}
 The marked correlations between features of the input spaces
 indicate the common structure that is captured in our approach
-by the Generic Space, and as a result appear in the blend space.
+by hte Generic Space, and as a result appear in the blend space.
 \item 
 Finally, the blend includes new features taken from both of the
 input spaces, namely both ``process with no end'' and 
 ``final resultant state''.
 \end{itemize}
-
-\subsubsection{Input Conceptual Spaces}
-
-We follow the same general strategy as in the previous example.
-
-We take the notion of $State$ as primitive, and $processes$ are
-represented as transitions from $State$ to $State$.  Further, the states
-themselves are ordered (in a linear way), corresponding to the order
-in which they may be encountered when a process is running.
-
-For the Completed Iterative Processes, we give a simple 
-formulation with only four states, and a linear path through
-the states.  A predicate that expresses that a given state is
-\emph{final} is added to help legibility.
-\begin{figure}[!ht]
-\begin{hetcasl}
-\SPEC \=\SIdIndex{CompletedFinProc} \Ax{=}\\
-\> \SORT \Id{State}\\
-\> \OPS \=\Id{theFinalState} \Ax{:} \Id{State};\\
-\>\> \Id{InitState} \Ax{:} \Id{State};\\
-\>\> \Id{s2}, \Id{s3} \Ax{:} \Id{State}\\
-\> \PREDS \=\Id{NextState} \Ax{:} \=\Id{State} \Ax{\times} \Id{State};\\
-\>\> \Ax{\_\_}\Ax{<}\Ax{\_\_} \Ax{:} \=\Id{State} \Ax{\times} \Id{State};\\
-\>\> \Id{isFinal} \Ax{:} \Id{State}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{State} \\
-\> \Ax{\bullet} \=\Id{isFinal}(\Id{x}) \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{y} \Ax{:} \Id{State} \Ax{\bullet} \=\Ax{\neg} \=\Id{x} \Ax{=} \Id{y} \Ax{\Rightarrow} \=\Id{y} \Ax{<} \Id{x} \`{\small{}\KW{\%}(final\Ax{\_}def)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{State} \\
-\> \Ax{\bullet} \=\Id{NextState}(\=\Id{x}, \Id{y}) \\
-\>\> \Ax{\Leftrightarrow} \=(\=\Id{x} \Ax{=} \Id{InitState} \Ax{\wedge} \=\Id{y} \Ax{=} \Id{s2}) \Ax{\vee} (\=\Id{x} \Ax{=} \Id{s2} \Ax{\wedge} \=\Id{y} \Ax{=} \Id{s3}) \\
-\>\>\> \Ax{\vee} (\=\Id{x} \Ax{=} \Id{s3} \Ax{\wedge} \=\Id{y} \Ax{=} \Id{theFinalState}) \\
-\> \`{\small{}\KW{\%}(trans\Ax{\_}table)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z}, \Id{xx}, \Id{yy} \Ax{:} \Id{State} \\
-\> \Ax{\bullet} \=\Id{NextState}(\=\Id{x}, \Id{y}) \Ax{\Rightarrow} \=\Id{InitState} \Ax{<} \Id{y} \`{\small{}\KW{\%}(Init\Ax{\_}least2)\KW{\%}}\\
-\> \Ax{\bullet} \=\Id{x} \Ax{<} \Id{y} \Ax{\wedge} \Id{NextState}(\=\Id{x}, \Id{xx}) \Ax{\wedge} \Id{NextState}(\=\Id{y}, \Id{yy}) \Ax{\Rightarrow} \=\Id{xx} \Ax{<} \Id{yy} \\
-\> \`{\small{}\KW{\%}(less\Ax{\_}monoton2)\KW{\%}}\\
-\> \Ax{\bullet} \Ax{\neg} \=\Id{x} \Ax{<} \Id{x} \`{\small{}\KW{\%}(less\Ax{\_}irref2)\KW{\%}}\\
-\> \Ax{\bullet} \=\Id{x} \Ax{<} \Id{y} \Ax{\wedge} \=\Id{y} \Ax{<} \Id{z} \Ax{\Rightarrow} \=\Id{x} \Ax{<} \Id{z} \`{\small{}\KW{\%}(less\Ax{\_}trans2)\KW{\%}}\\
-\> \Ax{\bullet} \Id{isFinal}(\Id{theFinalState}) \`{\small{}\KW{\%}(final\Ax{\_}final)\KW{\%}}\\
-\KW{end}\\
-\end{hetcasl}
-\caption{A theory of finite completed processes}
-\label{fig:fin_comp}
-\end{figure}
-
-The second conceptual space has necessarily an infinite number
-of states that the process may visit, and no final state.
-
-\begin{figure}[ht!]
-\begin{hetcasl}
-  \SPEC \=\SIdIndex{PotentialInfProc} \Ax{=}\\
-\> \SORT \Id{State}\\
-\> \OP \=\Id{InitState} \Ax{:} \Id{State}\\
-\> \PREDS \=\Id{NextState} \Ax{:} \=\Id{State} \Ax{\times} \Id{State};\\
-\>\> \Ax{\_\_}\Ax{<}\Ax{\_\_} \Ax{:} \=\Id{State} \Ax{\times} \Id{State};\\
-\>\> \Id{isFinal} \Ax{:} \Id{State}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{State} \\
-\> \Ax{\bullet} \=\Id{isFinal}(\Id{x}) \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{y} \Ax{:} \Id{State} \Ax{\bullet} \=\Ax{\neg} \=\Id{x} \Ax{=} \Id{y} \Ax{\Rightarrow} \=\Id{y} \Ax{<} \Id{x} \`{\small{}\KW{\%}(final\Ax{\_}def)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{State} \\
-\> \Ax{\bullet} \=\Ax{\neg} \Id{isFinal}(\Id{x}) \Ax{\Rightarrow} \=\Ax{\exists!} \Id{y} \Ax{:} \Id{State} \Ax{\bullet} \Id{NextState}(\=\Id{x}, \Id{y}) \\
-\> \`{\small{}\KW{\%}(next\Ax{\_}near\Ax{\_}total)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{State} \\
-\> \Ax{\bullet} \=\Id{NextState}(\=\Id{x}, \Id{y}) \Ax{\wedge} \Id{NextState}(\=\Id{x}, \Id{z}) \Ax{\Rightarrow} \=\Id{z} \Ax{=} \Id{y} \`{\small{}\KW{\%}(next\Ax{\_}inj)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z}, \Id{xx}, \Id{yy} \Ax{:} \Id{State} \\
-\> \Ax{\bullet} \=\Id{NextState}(\=\Id{x}, \Id{y}) \Ax{\Rightarrow} \=\Id{InitState} \Ax{<} \Id{y} \`{\small{}\KW{\%}(Init\Ax{\_}least)\KW{\%}}\\
-\> \Ax{\bullet} \=\Id{x} \Ax{<} \Id{y} \Ax{\wedge} \Id{NextState}(\=\Id{x}, \Id{xx}) \Ax{\wedge} \Id{NextState}(\=\Id{y}, \Id{yy}) \Ax{\Rightarrow} \=\Id{xx} \Ax{<} \Id{yy} \\
-\> \`{\small{}\KW{\%}(less\Ax{\_}monoton)\KW{\%}}\\
-\> \Ax{\bullet} \Ax{\neg} \=\Id{x} \Ax{<} \Id{x} \`{\small{}\KW{\%}(less\Ax{\_}irref)\KW{\%}}\\
-\> \Ax{\bullet} \=\Id{x} \Ax{<} \Id{y} \Ax{\wedge} \=\Id{y} \Ax{<} \Id{z} \Ax{\Rightarrow} \=\Id{x} \Ax{<} \Id{z} \`{\small{}\KW{\%}(less\Ax{\_}trans)\KW{\%}}\\
-\> \Ax{\bullet} \Ax{\neg} \Id{isFinal}(\Id{x}) \`{\small{}\KW{\%}(no final state)\KW{\%}}\\
-\KW{end}
-\end{hetcasl}
-\caption{Theory of potentially infinite processes}
-  \label{fig:pot_inf}
-\end{figure}
-
-The generic space identifies common features (states, state transitions, etc):
-
-\begin{figure}[ht!]
-  \begin{hetcasl}
-   \SPEC \=\SIdIndex{Generic} \Ax{=}\\
-\> \SORT \Id{GState}\\
-\> \PREDS \=\Id{StateOrder} \Ax{:} \=\Id{GState} \Ax{\times} \Id{GState};\\
-\>\> \Id{StateSuc} \Ax{:} \=\Id{GState} \Ax{\times} \Id{GState};\\
-\>\> \Id{isFinal} \Ax{:} \Id{GState}\\
-\> \OP \=\Id{InitState} \Ax{:} \Id{GState}\\
-\KW{end}\\
-  \end{hetcasl}
-  
-  \caption{Generic Space}
-\end{figure}
-
-\subsubsection{Finding a blend}
-
-Computing the colimit of these spaces quickly reveals the problem with
-the naive combination: the colimit space requires both that there is
-a final state (as in the completed processes) and at the same time
-no final state (as in endless iterative processes).  Our general
-methodlogy then suggests weakening one or other of the input spaces,
-while preferring a minimal weakening that will restore consistency.
-Among possible weakenings are \emph{omitting an axiom} from
-the specification, or \emph{weakening an axiom}.
-
-In the case at hand, a minimal weakening removes from the first input
-space the finiteness condition;  and removes from the second input space
-the axiom that prohibits a final state.  Now the computation of
-a revised colimit gives us indeed the combination of an infinite
-state space from the endless processes, with a final state inherited
-from the finite processes.  
-
-Here is the blend exhibiting a consistent combination of these features:
-\begin{figure}[ht!]
-\begin{hetcasl}
-\KW{logic} \SId{CASL}\Id{\Ax{.}}\SId{FOL=}\\
-\\
-\SPEC \=\SIdIndex{Spec} \Ax{=}\\
-\> \SORT \Id{GState}\\
-\> \OP \=\Id{InitState} \Ax{:} \Id{GState}\\
-\> \OP \=\Id{s2} \Ax{:} \Id{GState}\\
-\> \OP \=\Id{s3} \Ax{:} \Id{GState}\\
-\> \OP \=\Id{theFinalState} \Ax{:} \Id{GState}\\
-\> \PRED \=\Id{NextState} \Ax{:} \=\Id{GState} \Ax{\times} \Id{GState}\\
-\> \PRED \=\Ax{\_\_}\Ax{<}\Ax{\_\_} \Ax{:} \=\Id{GState} \Ax{\times} \Id{GState}\\
-\> \PRED \=\Id{isFinal} \Ax{:} \Id{GState}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{GState} \\
-\> \Ax{\bullet} \=\Id{isFinal}(\Id{x}) \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{y} \Ax{:} \Id{GState} \Ax{\bullet} \=\Ax{\neg} \=\Id{x} \Ax{=} \Id{y} \Ax{\Rightarrow} \=\Id{y} \Ax{<} \Id{x} \`{\small{}\KW{\%}(final\Ax{\_}def)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{GState} \\
-\> \Ax{\bullet} \=\Ax{\neg} \Id{isFinal}(\Id{x}) \Ax{\Rightarrow} \=\Ax{\exists!} \Id{y} \Ax{:} \Id{GState} \Ax{\bullet} \Id{NextState}(\=\Id{x}, \Id{y}) \\
-\> \`{\small{}\KW{\%}(next\Ax{\_}near\Ax{\_}total)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{GState} \\
-\> \Ax{\bullet} \=\Id{NextState}(\=\Id{x}, \Id{y}) \Ax{\wedge} \Id{NextState}(\=\Id{x}, \Id{z}) \Ax{\Rightarrow} \=\Id{z} \Ax{=} \Id{y} \`{\small{}\KW{\%}(next\Ax{\_}inj)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{GState} \\
-\> \Ax{\bullet} \=\Id{NextState}(\=\Id{x}, \Id{y}) \Ax{\Rightarrow} \=\Id{InitState} \Ax{<} \Id{y} \`{\small{}\KW{\%}(Init\Ax{\_}least)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{xx}, \Id{yy} \Ax{:} \Id{GState} \\
-\> \Ax{\bullet} \=\Id{x} \Ax{<} \Id{y} \Ax{\wedge} \Id{NextState}(\=\Id{x}, \Id{xx}) \Ax{\wedge} \Id{NextState}(\=\Id{y}, \Id{yy}) \Ax{\Rightarrow} \=\Id{xx} \Ax{<} \Id{yy} \\
-\> \`{\small{}\KW{\%}(less\Ax{\_}monoton)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{GState} \=\Ax{\bullet} \Ax{\neg} \=\Id{x} \Ax{<} \Id{x} \`{\small{}\KW{\%}(less\Ax{\_}irref)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{GState} \\
-\> \Ax{\bullet} \=\Id{x} \Ax{<} \Id{y} \Ax{\wedge} \=\Id{y} \Ax{<} \Id{z} \Ax{\Rightarrow} \=\Id{x} \Ax{<} \Id{z} \`{\small{}\KW{\%}(less\Ax{\_}trans)\KW{\%}}\\
-\> \Ax{\bullet} \Id{isFinal}(\Id{theFinalState}) \`{\small{}\KW{\%}(final\Ax{\_}last)\KW{\%}}\\
-\KW{end}
-\end{hetcasl}
-  \caption{BMI Blend}
-  \label{fig:bmi_blend}
-\end{figure}
-
-
 
 
 %%% Local Variables: 
