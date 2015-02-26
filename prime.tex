@@ -5,7 +5,9 @@
 One of the most fundamental concepts of modern mathematics, which is
 the basis of commutative algebra and a seminal ingredient of the
 language of schemes in modern algebraic geometry is the one of prime
-ideal \parencite{EGAI,Eisenbud95}.
+ideal \parencite{EGAI,eisenbud}. Our approach to blending is the one
+adopted by Goguen in terms of
+colimits \parencite{Gog99,Goguen01,Goguen05c}.
 
 In this section, we will recover the concept of prime ideal of a
 commutative ring with unity as a sort of partial (or weaken) blending
@@ -22,6 +24,23 @@ the syntactic correspondences that we wish to identity in the
 blending space, since the blend would be basically the union of the
 collection of axioms given on each space, doing the corresponding
 identifications.
+
+Besides, by doing just slight modifications to the input conceptual
+spaces we obtain also one of the most fundamental concepts of
+algebraic number theory, i.e., Dedekind domain \parencite[Theorem
+37.1]{colemanmultidealtheory}, (together with the collection of ideals
+and prime ideals) as a blend of the concepts of noetherian domains
+(with the set of ideals and prime ideals) and again a version of the
+prime numbers in a very elementary form of the integers as before, but
+adding the explicit axiom defining the upside-down divisibility
+relation. In fact, we present a new equivalent form of being a
+Dedekind domain based on a containment-division condition, which
+suggests a new class of commutative rings called here
+containment-division rings (CDR).
+
+Finally, we present an implementation done in HETS
+\cite{Mossakowskihets}, which gives the conceptual space of CDR-s with
+their collections of ideals and prime ideals as a blend.
 
 Our approach to blending is the one adopted by Goguen in terms of
 colimits  \parencite{Gog99,Goguen01,Goguen05c}.
@@ -53,22 +72,39 @@ Now, we define
 \[{\rm Spec}_IR=\left\{A\subseteq R: isideal(A) \right\}.\]
 Here, ${\rm Spec}_IR$ is considered as a subsort of the sort $P(R)$.
 
-
 There is one natural operation on ${\rm Spec}_IR$, let us say $\cdot_{\iota}$, inherited in a natural way from the corresponding operations $+$ and $\cdot$ on $S$:
 
  Let $I,J\in {\rm Spec}_IR$, then we define 
 %
 \[I\cdot_{\iota} J:=\left\{i_1\cdot j_1+...+i_n\cdot j_n:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
 
-With this operation ${\rm Spec}_IR$ forms a commutative monoid (i.e. it holds commutativity, associativity and there exists a neutral element (in this case the ring)). However, this fact is irrelevant in our case for the blending process. As a matter of fact, the only property that we want to keep into the blend is the one saying that this operation has a neutral element $1_{\iota}$, which can be seen as an additional notation for the ring, but respect to this operation $\cdot_{\iota}$ instead of being the sort of elements of the ring, i.e., $R$. 
-\newline\indent
-On the other side, we want to see the contention relation $\subseteq$ as a binary relation over the sort ${\rm Spec}_IR$.
+With this operation ${\rm Spec}_IR$ forms a commutative monoid (i.e.\
+we have commutativity, associativity and there exists a neutral
+element (in this case the ring)). However, this fact is irrelevant in
+our case for the blending process. As a matter of fact, the only
+property that we want to keep into the blend is the one saying that
+this operation has a neutral element $1_{\iota}$, which can be seen as
+an additional notation for the ring, but respect to this operation
+$\cdot_{\iota}$ instead of being the sort of elements of the ring,
+i.e., $R$.  \newline\indent On the other side, we want to see the
+containment relation $\subseteq$ as a binary relation over the sort
+${\rm Spec}_IR$.
 
 Summarizing, our first conceptual space consists of sorts $R, {\rm Spec}_IR$ and $P(R)$; operations $+_R, *_R, 0_R, 1_R, 1_{\iota}$ and $
 \cdot_{\iota}$; and the relations $\subseteq$ and $isideal$.
 
 Here we add all the corresponding axioms defining $R$ as a commutative ring, the explicit former definition of $isideal$, ${\rm Spec}_IR$ and $\cdot_{\iota}$; and the axiom guaranteeing that  $1_{\iota}$ is the neutral element for $\cdot_{\iota}$.
  
+It is important to note that although $R$ and $1_{\iota}$ are the same
+from the set-theoretical point of view, we choose two symbols in order
+to stress the particular function that the same set fulfils, i.e., as
+a collection of elements ($R$) or as a neutral element itself
+($1_{\iota}$. Besides, it is more useful to do that for the purpose of
+an implementation (see Section \ref{implementation}). However, this
+distinction is irrelevant for our present pure-theoretical
+considerations.
+
+
 Let us denote this space by $\mathbb{I}$.
 
 \subsection{The second conceptual space}
@@ -98,14 +134,14 @@ elementary fact to see that this condition is an equivalent form of
 the standard definition of prime number given in the classical number
 theory books (see for example \textcite{Apostol76}). In the CASL
 language, we consider $\mathbb{Z}$ as the sort of the integer numbers,
-$*$ as a binary operation , $prime$ as a predicate and $\dannydiv$
-  as a binary relation, any of them defined over the sort
-  $\mathbb{Z}$.  \newline\indent We denote this conceptual space by
-  $\mathbb{P}$.
+$*$ as a binary operation , $prime$ as a predicate and $\dannydiv$ as
+a binary relation, any of them defined over the sort $\mathbb{Z}$.  We
+denote this conceptual space by $\mathbb{P}$.
 
 \section{The Generic Space}
 
-The generic space consists of a set (sort) $G$ with a binary operation $*_G$, a neutral element $S$ and a binary relation $\leq_G$.
+The generic space consists of a set (sort) $G$ with a binary operation
+$*_G$, a neutral element $S$ and a binary relation $\leq_G$.
 
   Let us denote this space by $\mathbb{G}$.
 
@@ -154,11 +190,85 @@ P\neq S & \wedge (\forall X,Y\in G={\rm Spec}_IS). \\
 \end{align*}
 Therefore, the predicate $isprime$ turns out to be the predicate characterizing the primality of ideals of $S$ and the set (sort) $Prime$ turns out to be the set of prime ideals of $S$.
 
-Besides, we just consider the fact that the up-side down divisibility relation is a binary relation without taking into account the formal definition into the blend. 
+Besides, we just consider the fact that the upside-down divisibility
+relation is a binary relation without taking into account the formal
+definition into the blend.
 
 
 In conclusion, the blending space consists of the axioms assuring that $S$ is a commutative ring with unity, $G$ is the set of ideals of $S$, $isprime$ is the predicate specifying primality for ideals of $S$ and $Prime$ is the collection of all prime ideals of $S$. 
- 
+
+\subsection{Prime ideals over Dedekind noetherian domains as a blend}
+
+First, let us define the following class of commutative rings with unity.
+
+\begin{definition}
+A commutative ring with unity $R$ is a containment-division ring (CDR) if for every $I,J \in {\rm Id}(R)$, it holds that $I \subseteq J$ if and only if $J$ divides $I$ as ideals, i.e., there exists an ideal $D \in {\rm Id}(R)$ such that $I=D\cdot_{\iota}J$.
+\end{definition}
+
+Now, the containment-division condition is similar to the fact of being a Dedekind domain, i.e., an integral domain such that every proper ideal can be written as a finite product of ideals \cite[Theorem 37.1 and 37.8]{colemanmultidealtheory}. In fact, if we add the property of being Noetherian \cite{eisenbud}, then both notions are equivalent:
+
+\begin{theorem}\label{CDRDedekind}
+Let $R$ be an integral domain. Then the following two conditions are equivalent:
+\begin{enumerate}
+\item R is a Dedekind domain.
+\item R is a noetherian CDR.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+  \begin{description}
+  \item[1 $Rightarrow$ 2]  Every Dedekind domain is Noetherian \cite[Theorem 37.1]{colemanmultidealtheory}. Besides, the CDR condition is a well-known property of Dedekind domains (see for example \cite[Fundamental Theorem of OAK-s]{weissalgebraicnumber}. In fact, for any ideals $I,J \in {\rm Id}(R)$, if $I \subseteq J$, then by the unique factorization theorem for ideals in $R$ \cite[Theorem 37.11]{colemanmultidealtheory} and by considering the localizations on the prime ideals appearing on their factorizations one sees immediately that $J$ divides $I$.
+  \item[2 $\Rightarrow$ 1] 
+Let $I$ be an proper ideal of $R$. If $I$ is prime, then we are done. If not, le
+t $P_1$ be a prime ideal of $R$ such that $I\subseteq P_1$. Then, due to the fac
+t that $R$ is a CDR, there exists a proper ideal $Q_1$ such that $I=Q_1P_1$. Now
+, if $Q_1$ is a prime ideal, then we can clearly express $I$ as a product of two
+ ideals. Otherwise, let us choose again a prime ideal $P_2$ containing $Q_1$. So
+, analogously there exists another proper ideal $Q_2$ such that $Q_1=Q_2P_2$. If $Q_2$ is prime, then we can express $I= Q_2P_2P_1$ as a finite product of prime ideals. Otherwise, we continue inductively in the same fashion. So, if after finitely many steps some $Q_r$ is prime, then we can write $I$ as a finite product of prime ideals. On the contrary, we obtain an ascending chain of ideals 
+\[Q_1\subseteq Q_2 \subseteq Q_3\subseteq \cdots \subseteq Q_n \subseteq \cdots\]
+
+Now, since $R$ is Noetherian, this sequence is stationary (i.e., there exists some $m\in \mathbb{N}$ such that for all $i\geq m$, $Q_i=Q_m$ \cite[Proposition 6.2]{atimac}). Furthermore, $Q_m=Q_{m+1}P_{m+1}=Q_mP_{m+1}$ and so $Q_m=Q_m^iP_{m+1}\subseteq Q_m^i$, for all $i \in \mathbb{N}$. Therefore, $I$ and $Q_m$ are contained in the intersection of all the powers of $Q_m$, $\cap_{i\geq 1}Q_m^i$, which is the zero ideal due to Krull's Intersection Theorem \cite[Corollary 5.4]{eisenbud}. In conclusion, $I=(0)$, which is in our case a prime ideal. So, $R$ is a Dedekind domain.
+
+  \end{description}
+\end{proof}
+
+
+As an immediate corollary of this theorem we see that in the setting of noetherian domains the concept of being a CDR is equivalent to the one of being a Dedekind domain.
+
+\begin{remark}
+On the other hand, if $R$ is not a Dedekind domain, but for example a unique factorization domain (UFD), then $R$ is not, in general, a CDR. For example, when $R=\mathbb{Z}[T]$, one can check that the ideals $X=(2)$ and $Y=(2,T)$ gives a counterexample.  
+
+It suggests that in the setting of commutative rings with unity the class of CDR-s is an intermediate new class of rings.
+\end{remark}
+
+ Now, let us consider our former first conceptual space with the extra condition of being a notherian domain, i.e., 
+
+\[ (\forall a,b \in R)(ab=0 \rightarrow a=0 \vee b=0),\]
+
+and the noetherian property: For any ideal $A$ in $R$, there exists $a_1,\cdots a_n\in A$ such that every element $a$ can be written as a linear combination of these elements: there exists $b_1, \cdots, b_n \in R$ such that $a=b_1a_!+\cdots +b_na_n$.
+
+On the other hand, let us consider as second conceptual space the same second conceptual space considered before, but including the axiom defining the upside-down divisibility relation:
+
+\[ (\forall a,b\in Z)(a \dannydiv b\leftrightarrow (\exists c\in Z)(a=cb)).\]
+
+Furthermore, let us choose the same  generic space and blend morphisms that we use before.
+Then, if we do the (total blend) of the corresponding spaces, we obtain as a blend basically the former blend space (commutative ring with unity, set of ideals and prime ideals and a predicate for the prime ideals) but adding the stronger conditions for the ring $S$ of being a  noetherian domain and also adding the corresponding version of the former axiom, i.e., 
+
+\[(\forall a,b \in G)(a \subseteq b)\leftrightarrow (\exists c\in G)(a=c\cdot_{\iota}b),\]
+
+where $G={\rm Id}(R)$ as before.
+
+Now, this condition means exactly being a CDR. Therefore, by Theorem \ref{CDRDedekind}, we obtain as blend the conceptual space of Dedekind domains with the collection of ideals and prime ideals and a primality predicate.
+
+\subsection{Implementation for prime ideals over CDR-s as a blend}
+\label{implementation}
+
+In this section we reconstruct the conceptual space of prime ideals of a CDR as 
+a blend (colimit in HETS) of the conceptual space of ideals of a commutative ring with unity and the conceptual space of prime elements of a very general version of the integers given exactly as the second conceptual space of the former section. 
+
+It is worth to mention that the definition of CDR-s was obtained after doing this implementation and therefore it could be seen as a form of "creative" result coming from the blending process.
+
+Here, it is important to point out that in this implementation we looked for a minimal set of axioms such that, at the same time, the semantic interpretation can be uniquely determined. It is always possible to construct an implementation with additional axioms given by properties that could be logically derived from the main axioms, (e.g. the set theoretical properties of the containment relation for subsets of a set) but these properties are secondary ones, meanwhile, the ones defining the arithmetic of the ring, of an ideal and of the set of ideals of the ring are the essential ones.
+
 \subsection{Implementation for the Principal Ideal Domain Case}
 
 On this section we present an implementation done in
@@ -171,119 +281,6 @@ exercise to see this equivalence in the PID case.
 
 \input{prime.pp}
 
-% \begin{verbatim}
-% logic CASL
-% %%PRIME IDEAS OVER PRINCIPAL IDEAL DOMAINS (PID) AS A BLEND
-
-
-% spec IdealsOfRing =
-% sort RingElt                %% sort of Ring Elements
-% sort SubSetOfRing           %% sort of parts of this ring 
-% pred IsIdeal : SubSetOfRing %% when a subset is an ideal
-% op  0 : RingElt
-% op  1 : RingElt
-% op  __*__ : RingElt * RingElt -> RingElt
-% op  __+__ : RingElt * RingElt -> RingElt
-
-% pred __isIn__ : RingElt * SubSetOfRing
-
-% sort Ideal = { I : SubSetOfRing . IsIdeal(I) }
-% op  R : Ideal        %% the Ring as an ideal
-% op    __ ** __: Ideal * Ideal -> Ideal, unit R
-% %%Definition of the predicate of contention   
-
-% pred __issubsetOf__ : Ideal * Ideal 
-
-% forall A,B : Ideal
-% . A issubsetOf B <=> forall a: RingElt. a isIn A => a isIn B
-
-% %% axiomatization of a commutative Ring with unity
-     
-% forall x : RingElt; y : RingElt . x + y = y + x                        
-% forall x : RingElt; y : RingElt; z : RingElt
-% . (x + y) + z = x + (y + z)
-% forall x : RingElt . x + 0 = x /\ 0 + x = x                           
-% forall x : RingElt . exists x' : RingElt . x' + x = 0                
-% forall x : RingElt; y : RingElt . x * y = y * x                        
-% forall x : RingElt; y : RingElt; z : RingElt 
-% . (x * y) * z = x * (y * z) 
-% forall x : RingElt . x * 1 = x /\ 1 * x = x                            
-% forall x, y, z : RingElt . (x + y) * z = (x * z) + (y * z)              
-% forall x, y, z : RingElt . z * (x + y) = (z * x) + (z * y)           
-
-% %%axioms for Ideal
-
-% forall I: SubSetOfRing. IsIdeal(I) <=>
-% ( forall a,b,c : RingElt
-% .( (a isIn I => a isIn R)
-% /\  0 isIn I)
-% /\ (a isIn I /\ c isIn R => (c * a) isIn I)
-% /\ (a isIn I /\ b isIn I /\ c isIn R
-%  /\ b + c = 0 => a + c isIn I ))
-       
-
-% %%axioms for PID-s
-% %%every ideal is generated by an element
-% pred __generates__: RingElt * Ideal 
-% forall A: Ideal. exists a: RingElt. a generates A
-
-% forall a: RingElt. forall A: Ideal. a generates A <=>
-% forall c: RingElt. c isIn A => exists d: RingElt. c=a*d
-
-% %% Definition of the product of ideals without subindexes
-
-% forall A,B: Ideal
-% . forall a,b: RingElt. (a isIn A /\ b isIn B) => a*b isIn A**B
-% . forall D: Ideal. (forall a,b: RingElt
-% . (a isIn A /\ b isIn B) => a*b isIn A**B)
-% => A**B issubsetOf D
-% end
-
-% %%%axioms defining a very simple version of the integers,
-% %%%considered with an operation * with neutral element,
-% %%% a binary relation || (upside-down divisibility relation)
-% %%% and a primality axiom.
-
-% spec SimpleInt=
-% sort SimpleElem
-% ops 1:  SimpleElem
-% __ x __: SimpleElem * SimpleElem -> SimpleElem, unit 1
-% preds __ || __: SimpleElem * SimpleElem
-% IsPrime : SimpleElem
-% %Def_upsidedownDivisilityRelation%
-% forall x,y: SimpleElem
-% . x || y <=> (exists c: SimpleElem. x = y x c)
-		
-
-% %% subsort of primes
-% sort SimplePrime = { p : SimpleElem . IsPrime(p) }
-
-% forall p:SimpleElem .
-% IsPrime(p) <=>
-% (forall a,b: SimpleElem
-% . a x b || p => a || p \/ b || p      %Def_primality%
-% /\ not (p = 1))
-% end
-
-% %%% Generic space
- 
-% spec Gen=
-% sort Generic
-% ops S: Generic
-% __ gpr __: Generic * Generic -> Generic, unit S
-% pred gcont: Generic * Generic
-% end
- 
-% view I1: Gen to IdealsOfRing =
-% Generic |-> Ideal, S |-> R,
-% __ gpr __ |-> __ ** __, gcont |-> __issubsetOf__
-
-% view I2: Gen to SimpleInt =
-% Generic |-> SimpleElem, S |-> 1,
-% __ gpr __ |-> __ x __, gcont |-> __ || __
-
-% spec Colimit = combine I1, I2
-% \end{verbatim}
 After computing the corresponding colimit in HETS and after
 interpreting "RingElt" as the sort containing the elements of the ring
 $S$, the theory defining the blend corresponds to the axioms defining
@@ -292,97 +289,6 @@ prime ideals (SimplePrime):
 
 \input{ideal_colim.pp}
 
-% \begin{verbatim}
-% logic CASL.SulFOL=
-
-% sorts Generic, RingElt, SimplePrime, SubSetOfRing
-% sorts SimplePrime < Generic; Generic < SubSetOfRing
-% op 0 : RingElt
-% op 1 : RingElt
-% op S : Generic
-% op __*__ : RingElt * RingElt -> RingElt
-% op __+__ : RingElt * RingElt -> RingElt
-% op __x__ : Generic * Generic -> Generic
-% pred IsIdeal : SubSetOfRing
-% pred IsPrime : Generic
-% pred __generates__ : RingElt * Generic
-% pred __isIn__ : RingElt * SubSetOfRing
-% pred gcont : Generic * Generic
-
-% forall I : SubSetOfRing . I in Generic <=> IsIdeal(I)
-% %(Ax1)%
-
-% forall x : Generic . x x S = x %(ga_right_unit___**__)%
-
-% forall x : Generic . S x x = x %(ga_left_unit___**__)%
-
-% forall A, B : Generic
-% . gcont(A, B) <=> forall a : RingElt . a isIn A => a isIn B
-                                                    
-% 																										%(Ax4)%
-
-% forall x, y : RingElt . x + y = y + x %(Ax5)%
-
-% forall x, y, z : RingElt . (x + y) + z = x + (y + z)%(Ax6)%
-
-% forall x : RingElt . x + 0 = x /\ 0 + x = x %(Ax7)%
-
-% forall x : RingElt . exists x' : RingElt . x' + x = 0%(Ax8)%
-
-% forall x, y : RingElt . x * y = y * x %(Ax9)%
-
-% forall x, y, z : RingElt . (x * y) * z = x * (y * z)%(Ax10)%
-
-% forall x : RingElt . x * 1 = x /\ 1 * x = x %(Ax11)%
-
-% forall x, y, z : RingElt
-% . (x + y) * z = (x * z) + (y * z) %(Ax12)%
-
-% forall x, y, z : RingElt 
-% . z * (x + y) = (z * x) + (z * y) %(Ax13)%
-
-% forall I : SubSetOfRing
-% . IsIdeal(I)
-%  <=> forall a, b, c : RingElt
-% . ((a isIn I => a isIn S) /\ 0 isIn I)
-% /\ (a isIn I /\ c isIn S => c * a isIn I)
-% /\ (a isIn I /\ b isIn I /\ 
-% c isIn S /\ b + c = 0 => a + c isIn I)
-%                                               %(Ax14)%
-
-% forall A : Generic . exists a : RingElt . a generates A
-%  %(Ax15)%
-
-% forall a : RingElt; A : Generic
-% . a generates A
-%   <=> forall c : RingElt 
-% 	. c isIn A => exists d : RingElt . c = a * d
-%                                                   %(Ax16)%
-
-% forall A, B : Generic; a, b : RingElt
-% . a isIn A /\ b isIn B => a * b isIn A x B        %(Ax17)%
-
-% forall A, B, D : Generic
-% . (forall a, b : RingElt
-%    . a isIn A /\ b isIn B => a * b isIn A x B)
-%   => gcont(A x B, D)                              %(Ax18)%
-
-% forall x, y : Generic
-% . gcont(x, y) <=> exists c : Generic . x = y x c  %(Ax3)%
-
-% forall p : Generic . p in SimplePrime <=> IsPrime(p)
-% %(Ax4_19)%
-
-% forall p : Generic
-% . IsPrime(p)
-%   <=> (forall a, b : Generic
-%        . gcont(a x b, p) => gcont(a, p) \/ gcont(b, p))
-%       /\ not p = S                              %(Ax5_20)%
-
-% \end{verbatim}
-
-% \bibliography{bibliothek}
-% \end{document}
 
 
 %%% Local Variables: 

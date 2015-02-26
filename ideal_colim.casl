@@ -10,7 +10,6 @@ op __+__ : RingElt * RingElt -> RingElt
 op __x__ : Generic * Generic -> Generic
 pred IsIdeal : SubSetOfRing
 pred IsPrime : Generic
-pred __generates__ : RingElt * Generic
 pred __isIn__ : RingElt * SubSetOfRing
 pred gcont : Generic * Generic
 
@@ -50,28 +49,20 @@ forall I : SubSetOfRing
         /\ (a isIn I /\ b isIn I /\ c isIn S /\ b + c = 0 => a + c isIn I)
                                                           %(Ax14)%
 
-forall A : Generic . exists a : RingElt . a generates A %(Ax15)%
-
-forall a : RingElt; A : Generic
-. a generates A
-  <=> forall c : RingElt . c isIn A => exists d : RingElt . c = a * d
-                                                          %(Ax16)%
-
 forall A, B : Generic; a, b : RingElt
-. a isIn A /\ b isIn B => a * b isIn A x B                %(Ax17)%
+. a isIn A /\ b isIn B => a * b isIn A x B                %(Ax15)%
 
 forall A, B, D : Generic
-. (forall a, b : RingElt
-   . a isIn A /\ b isIn B => a * b isIn A x B)
-  => gcont(A x B, D)                                      %(Ax18)%
+. (forall a, b : RingElt . a isIn A /\ b isIn B => a * b isIn D)
+  => gcont(A x B, D)                                      %(Ax16)%
 
 forall x, y : Generic
 . gcont(x, y) <=> exists c : Generic . x = y x c           %(Ax3)%
 
-forall p : Generic . p in SimplePrime <=> IsPrime(p) %(Ax4_19)%
+forall p : Generic . p in SimplePrime <=> IsPrime(p) %(Ax4_17)%
 
 forall p : Generic
 . IsPrime(p)
   <=> (forall a, b : Generic
        . gcont(a x b, p) => gcont(a, p) \/ gcont(b, p))
-      /\ not p = S                                      %(Ax5_20)%
+      /\ not p = S                                      %(Ax5_18)%
