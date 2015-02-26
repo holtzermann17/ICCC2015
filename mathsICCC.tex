@@ -3,6 +3,15 @@
 \usepackage{times}
 \usepackage{helvet}
 \usepackage{courier}
+\usepackage{newfloat}
+\DeclareFloatingEnvironment[fileext=frm,name=Listing]{listing}
+\usepackage[framemethod=tikz]{mdframed}
+\mdfsetup{
+skipabove=\baselineskip,
+skipbelow=0\baselineskip,
+innertopmargin=3pt,
+innerbottommargin=3pt
+}
 \usepackage{amssymb,amsmath,amsthm}
 \newtheorem{definition}{Definition}
 \newtheorem{theorem}{Theorem}
