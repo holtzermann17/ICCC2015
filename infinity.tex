@@ -32,7 +32,7 @@ the HETS system \parencite{MossakowskiEA06} to compute such colimits.
 
 \subsection{Naturals and Integers}
 
-\subsection{Example Revisited -- the Integers}
+\subsection{A Simple Example -- the Integers}
 
 As a first demonstration of the machinery involved in blending
 mathematical theories, we consider combining a theory of natural
@@ -42,8 +42,7 @@ numbers (without order axioms) as shown in Figure \ref{fig:nats}, and
 call this theory $\SIdIndex{Nat}$. Now let us also define a simple theory
 which introduces the concept of a function with an inverse as shown in
 Figure \ref{fig:inv}, and call this theory $\mathbb{F}$. 
-\begin{listing}[!ht]
-\begin{mdframed}
+\begin{figure}[!ht]
 \begin{hetcasl}
 \SPEC \=\SIdIndex{Nat} \Ax{=}\\
 \> \SORT \Id{Nat}\\
@@ -59,13 +58,11 @@ Figure \ref{fig:inv}, and call this theory $\mathbb{F}$.
 \> \Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y}\\
 \KW{end}
 \end{hetcasl}
-\end{mdframed}
 \caption{A theory of the natural numbers without order}
 \label{fig:nats}
-\end{listing}
+\end{figure}
 
-\begin{listing}[!ht]
-\begin{mdframed}
+\begin{figure}[!ht]
 \begin{hetcasl}
 \SPEC \=\SIdIndex{Func} \Ax{=}\\
 \> \SORT \Id{X}\\
@@ -76,10 +73,9 @@ Figure \ref{fig:inv}, and call this theory $\mathbb{F}$.
 \> \Ax{\bullet} \=\Id{finv}(\Id{f}(\Id{x})) \Ax{=} \Id{x}\\
 \KW{end}
 \end{hetcasl}
-\end{mdframed}
 \caption{A theory with a function and its inverse defined}
 \label{fig:inv}
-\end{listing}
+\end{figure}
 
 
 
@@ -117,8 +113,7 @@ find a new theory by computing the colimit:
 \end{center}
 This generates the theory shown in \ref{fig:inconsistentintegers}.
 
-\begin{listing}[!ht]
-\begin{mdframed}
+\begin{figure}[!ht]
 \begin{hetcasl}
 \SPEC \=\SIdIndex{Spec} \Ax{=}\\
 \> \SORT \Id{N}\\
@@ -126,21 +121,20 @@ This generates the theory shown in \ref{fig:inconsistentintegers}.
 \> \OP \=\Id{p} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
 \> \OP \=\Id{s} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
 \> \OP \=\Id{zero} \Ax{:} \Id{N}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(1)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(2)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{N} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(3)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \Ax{\neg} \=\Id{s}(\Id{x}) \Ax{=} \Id{zero} \`{\small{}\KW{\%}(4)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(5)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(6)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(1\Ax{\_}7)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(Ax1)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax2)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{N} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(Ax3)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \Ax{\neg} \=\Id{s}(\Id{x}) \Ax{=} \Id{zero} \`{\small{}\KW{\%}(Ax4)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(Ax5)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax6)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax1\Ax{\_}7)\KW{\%}}\\
 \> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet}
 \=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x}
-\`{\small{}\KW{\%}(2\Ax{\_}8)\KW{\%}}
+\`{\small{}\KW{\%}(Ax2\Ax{\_}8)\KW{\%}}
 \end{hetcasl}
-\end{mdframed}
 \caption{An inconsistent version of the integers (without order)}
 \label{fig:inconsistentintegers}
-\end{listing}
+\end{figure}
 
 
 \subsubsection{Removal of Inconsistencies}
@@ -151,8 +145,7 @@ s(p(x)) &=& x \label{eq:sucpre}
 \end{eqnarray}
 Removal of the limiting axiom (\ref{eq:limnat1}) results in a theory which is very
 similar to what we understand to be the integers as shown in Figure~\ref{fig:integers}.
-\begin{listing}[!ht]
-\begin{mdframed}
+\begin{figure}[!ht]
 \begin{hetcasl}
 \SPEC \=\SIdIndex{Spec} \Ax{=}\\
 \> \SORT \Id{N}\\
@@ -160,19 +153,18 @@ similar to what we understand to be the integers as shown in Figure~\ref{fig:int
 \> \OP \=\Id{p} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
 \> \OP \=\Id{s} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
 \> \OP \=\Id{zero} \Ax{:} \Id{N}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(1)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(2)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{N} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(3)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(4)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(5)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(1\Ax{\_}7)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(2\Ax{\_}8)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(Ax1)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax2)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{N} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(Ax3)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(Ax4)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax5)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax1\Ax{\_}7)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax2\Ax{\_}8)\KW{\%}}\\
 \KW{end}
 \end{hetcasl}
-\end{mdframed}
 \caption{A consistent version of the integers (without order)}
 \label{fig:integers}
-\end{listing}
+\end{figure}
 
 \subsubsection{Running the Blend}
 
@@ -187,8 +179,50 @@ $$
 $$
 p(x) + s(y) = x+y
 $$
-\noindent can be proved.
+\noindent can be discovered.
 
+
+\subsection{Potential and actual infinity}
+
+The work of \textcite{Lak00} provides a wide range of examples of
+metaphorical reasoning in mathematics, while stressing the embodied
+cognition involved in basic mathematical experience.  Some of
+the ideas have been reworked by the authors, increasing the emphasis on
+conceptual blending as central.  In particular, the analysis of
+mathematical infinity, given in metaphorical form as the ``Basic Metaphor
+of Infinity'' (BMI) in \textcite{Lak00}, is represented in blend form
+in \textcite{nunez05} as the ``Basic Mapping of Infinity'' (so, still ``BMI'').
+
+We show here how this blend works out in our setting.
+
+\begin{figure}[h]
+  \centering
+\includegraphics[width=0.4\textwidth]{transfin_nunez}  
+  \caption{Blend from \textcite[p ??]{nunez05}}
+  \label{fig:nunez_transfin}
+\end{figure}
+
+Figure~\ref{fig:nunez_transfin} gives an indication of the components
+of the blend:
+\begin{itemize}
+\item The two input spaces at the top correspond to notions
+of processes involving state change:
+\begin{itemize}
+\item  Completed Iterative Processes
+are those that from some initial state, terminate in a final state
+after a finite number of state transitions;
+\item 
+Endless Iterative Processes are those that continue indefinitely
+to change state.
+\end{itemize}
+The marked correlations between features of the input spaces
+indicate the common structure that is captured in our approach
+by hte Generic Space, and as a result appear in the blend space.
+\item 
+Finally, the blend includes new features taken from both of the
+input spaces, namely both ``process with no end'' and 
+``final resultant state''.
+\end{itemize}
 
 
 %%% Local Variables: 

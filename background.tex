@@ -24,7 +24,8 @@ metaphors between the physical world and an abstract mathematical
 world, allowing us to project from everyday experiences onto abstract
 concepts, thus leading to the concept of zero and the axiom that $n +
 0 = n$. Lakoff and N{\'u}{\~n}ez posit that blending different
-mathematical metaphors leads to more complex ideas. 
+mathematical metaphors leads to more complex ideas (see
+also~\cite{Al11i}). 
 
 %% \subsection{Some mathematical concepts}
 %% In this paper we draw on Lakoff and N{\'u}{\~n}ez's ideas to produce a
@@ -42,9 +43,10 @@ mathematical metaphors leads to more complex ideas.
 
 \subsection{Terminology for concept blending}
 Our notion of concept blending is informed by Category theory, and
-highly influenced by Goguen's work on concepts [ref]. In this paper we
+highly influenced by Goguen's work on concepts \cite{Go05f}. In this paper we
 use the terminology below, and elucidate the terminology by means of a
-running example -- discovering a version of the integers using
+running example -- discovering a version of the integers (in the sense
+of providing a partial approach to the genuine integers) using
 blending.
 
 {\bf Conceptual spaces} are partial and temporary representational
@@ -55,38 +57,56 @@ concept space which is mapped, explored and transformed by
 transcending mapped boundaries \cite{boden}, and form the input spaces
 to our blend. 
 
-As an example of two conceptual spaces, consider one as a theory $\mathit{NAT}$ --
-a theory of the natural numbers, and $\mathit{FUNC}$ -- a theory of a total
-unary function with an inverse. We will refer back to these theories
-in this exposition.
+As an example of two conceptual spaces, consider one as a theory
+$\SIdIndex{NAT}$ --
+a theory of the natural numbers, and $\SIdIndex{FUNC}$ -- a theory of a total
+unary function with an inverse. 
+%The terminology here used obviously refers to the fact that these two
+%conceptual spaces are partial representations of the genuine concepts
+%employed by mathematicians.  
+We will refer back to these theories in this exposition.
 
-{\bf Axioms} are the criteria which delineate the conceptual
+(Many-sorted) First-order {\bf Axioms} are the criteria which will be
+used here to delineate the conceptual
 spaces. The axiomatic method has been a fundamental aspect of
 mathematical research since Euclid, and various axiom changes have led
-to revolutions in mathematics. For instance, relaxing the axioms
-defining numbers led to negative and imaginary numbers, and rejecting
+to revolutions in mathematics. For instance, 
+%relaxing the axioms
+%defining numbers led to negative and imaginary numbers, and 
+rejecting
 the parallel postulate opened up fascinating new areas of
 non-Euclidean geometry.
 
-In the conceptual space with theory $\mathit{NAT}$, an example of an axiom is $\neg \exists x. 0 =
-s(x)$ -- that is that zero is the least element of the natural
-numbers.  The conceptual space with theory $\mathit{FUNC}$ has an axiom
-$\forall x.\;f(f^{-1}) x = x$. 
+The precise formulations for $\SIdIndex{NAT}$ and $ \SIdIndex{FUNC}$ can
+be found in Listings~\ref{fig:nats} and \ref{fig:inv}. 
+Notice that these formulations obviously refer to 
+%the fact that these two conceptual spaces are 
+partial representations of the genuine concepts
+employed by mathematicians.  
+In the conceptual space with theory $\SIdIndex{NAT}$, an example of an axiom is $\neg \exists x. 0 =
+s(x)$ -- that is that zero is not a successor element.
+%the least element of the natural numbers. 
+The conceptual space with theory $\SIdIndex{FUNC}$ has an axiom
+%$\forall x.\;f(f^{-1}) x = x$. 
+$\forall x.\;f(finv(x)) = x$. 
 %where heuristics for transformation, such as {\em consider
 %the negative} and {\em drop a constraint}, are suggested.
 
-{\bf Signature morphisms} are mappings of symbols between two
-conceptual spaces. For example $\mathit{NAT}$ contains a function $\lambda
-x:\mathbb{N}.\;s(x)$ to denote the successor, and $\mathit{FUNC}$ contains a function
-$\lambda x:\tau.\;f(x)$. A theory $G$ common to both may contain a function
+{\bf Signature morphisms} between conceptual spaces are mappings from
+the symbols of the source conceptual space into the symbols of the other
+conceptual space. For example $\SIdIndex{NAT}$ contains a function $\lambda
+x:\textrm{Nat}.\;s(x)$ to denote the successor, and $\SIdIndex{FUNC}$ contains a function
+%$\lambda x:\tau.\;f(x)$. 
+$\lambda x:X.\;f(x)$. 
+A theory $G$ common to both may contain a function
 $\lambda x:\sigma.\;g(x)$. When we show a mapping in this paper we write this
 as
 \begin{align}
-s&&\leftarrow_{\phi(G,\mathit{NAT})}&&g&&\rightarrow_{\phi(G,\mathit{FUNC})}&&f\\
-\mathbb{N}&&\leftarrow_{\phi(G,\mathit{NAT})}&&\sigma&&\rightarrow_{\phi(G,\mathit{FUNC})}&&\tau
+s&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&g&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&f\\
+\mathbb{N}&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&\sigma&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&\tau
 \end{align}
-\noindent The mapping $\phi(G,\mathit{NAT})$ is a signature morphism from
-$G$ to $\mathit{NAT}$. Note that associated types are also mapped.
+\noindent The mapping $\phi(G,\SIdIndex{NAT})$ is a signature morphism from
+$G$ to $\SIdIndex{NAT}$. Note that associated types are also mapped.
 
 {\bf Input Spaces} refers to two or more conceptual spaces of
 interest. 
@@ -98,17 +118,27 @@ between input spaces.
 spaces with respect to a given generic space and set of signature
 morphisms. These are uniquely computed given a generic space and set of
 morphisms. There is a pictorial representation of such a computation
-in our example usig theories $\mathit{NAT}$ and $\mathit{FUNC}:$
+in our example using theories $\SIdIndex{NAT}$ and $\SIdIndex{FUNC}:$
+%\begin{center}
+%  \begin{diagram}[size=7mm]
+%    &       &   $G$   &       & \\
+%    & \ldTo^{\rotatebox{-45}{$\phi(G,\SIdIndex{NAT})$}} &       &
+%    \rdTo^{\rotatebox{45}{$\phi(G,\SIdIndex{FUNC})$}} &          \\
+%    \SIdIndex{$\SIdIndex{NAT}$} &       &   &       &
+%    \SIdIndex{$\SIdIndex{FUNC}$} \\
+%    & \rdTo_{\rotatebox{45}{$\phi(B,\SIdIndex{NAT})$}} &       &
+%    \ldTo_{\rotatebox{-45}{$\phi(B,\SIdIndex{FUNC})$}} &  \\
+%    & & $Colimit$ & & 
+%  \end{diagram}
+%\end{center}
 \begin{center}
-  \begin{diagram}[size=7mm]
-    &       &   $G$   &       & \\
-    & \ldTo^{\rotatebox{-45}{$\phi(G,\mathit{NAT})$}} &       &
-    \rdTo^{\rotatebox{45}{$\phi(G,\mathit{FUNC})$}} &          \\
-    \SIdIndex{$\mathit{NAT}$} &       &   &       & \SIdIndex{$\mathit{FUNC}$} \\
-    & \rdTo_{\rotatebox{45}{$\phi(B,\mathit{NAT})$}} &       &
-    \ldTo_{\rotatebox{-45}{$\phi(B,\mathit{FUNC})$}} &  \\
-    & & $Colimit$ & & 
-  \end{diagram}
+  \begin{tikzcd}[column sep=normal, row sep=small]
+    & \textrm{Colimit}
+    \\
+    \SIdIndex{NAT} \arrow{ur}{\phi(B,\SIdIndex{NAT})} & & \SIdIndex{FUNC} \arrow{ul}[swap]{\phi(B,\SIdIndex{FUNC})} \\
+    & G \arrow{ul}{\phi(G,\SIdIndex{NAT})}
+    \arrow{ur}[swap]{\phi(G,\SIdIndex{FUNC})}
+  \end{tikzcd}
 \end{center}
 The conceptual space represented by the Colimit is often referred to
 as the {\em blend}. 
@@ -116,10 +146,11 @@ as the {\em blend}.
 {\bf Inconsistent} mathematical theories are a way of determining the
 validity of a conceptual space. This is a way of evaluating whether a
 blend is not only creative, but also valid. In the example of theories
-$\mathit{NAT}$ and $\mathit{FUNC}$,
+$\SIdIndex{NAT}$ and $\SIdIndex{FUNC}$,
 the computed blend is inconsistent due to the emergent axioms in the
-computed colimit. The only type existing within the colimit is now
-referred to as $\mathbb{Z}$ to distinguish it from the natural numbers:
+computed colimit. The only type existing within the colimit is from now
+on referred to as $\mathbb{Z}$ to distinguish it from the natural
+numbers. Notice that in the colimit it holds that:
 \begin{eqnarray*}
 \neg \exists x: \mathbb{Z}. 0 &=&s(x)\\
 \forall x:\mathbb{Z}.\;s(s^{-1}) x &=& x
@@ -147,12 +178,43 @@ but we also need the axiom
 \forall x,y:\mathbb{Z}. s^{-1}(x) + y &=& s^{-1}(x+y)
 \end{eqnarray*}
 Finding this axioms is an example of running the blend. From which it
-is possible to discover and prove such theorems as
+is possible to discover and prove 
+%such 
+theorems as
 \begin{eqnarray*}
 \forall x,y:\mathbb{Z}. s^{-1}(x) + s(y) &=& x+y
 \end{eqnarray*}
 
 \subsection{Technologies}
+
+
+The approach explained above corresponds too
+Goguen's proposal \cite{Go99c} for
+implementing blending, but slightly simplified (like in
+\cite{KuMoHoBhBa12} and \cite{KuMoNeCo14}): only dealing with
+the well-known notion of colimit in a category \cite{Gog91}, instead of
+using $\frac{3}{2}$-colimits.
+
+%In the examples here considered we will be using colimits of V-shaped
+%diagrams (cf.~Figure??). Thus, in each of the cases we have to specify
+%two morphisms between a source conceptual space and a target conceptual
+%space, with the restriction that both morphisms share the same source
+%conceptual space.
+
+Additionally we assume that the involved conceptual spaces are
+always given using a
+CASL specification \cite{MoHaSaTa08} and that the morphisms are theorem
+preserving (but perhaps not axiom preserving). The reason to these
+assumptions
+is that in these cases it is well-known how to compute colimits
+\cite{Mo98a}; the colimit specification essentially corresponds to the
+disjoint union of the two target conceptual spaces except for not
+repeating the symbols given in the common source conceptual space.
+Moreover, we will be using 
+the HETS system \parencite{MossakowskiEA06} to compute such colimits.
+
+
+
 
 %%% FELIX??? COLIMITS, HETS, HDTP ETC...
 
