@@ -96,14 +96,51 @@ about this proof?
 
 \subsection{Issues raised}
 
-There are various technical questions \textbf{(@Alan, @Ewen, @Felix)},
-but from a naive mathematical standpoint the first issue is: is it
-always clear how to combine the relevant facts?  And a related
-question: is it always clear what the relevant facts actually are?
+We have investigated the possibility of formalising Galois theory, and
+note here some of the possibilties for blend computations, along with
+some issues we need to address.
 
-If blending is the realisation of ``combinatorial creativity'' why are
-we not swamped by the combinatorial explosion of possible things to
-combine?
+\subsubsection{Field Extension as a Blend}
+
+The first possibility here is that one could exploit blending
+machinery in order to discover the notion of a field extension. Take a
+field $F$ and adjoining it with an element $a$ to form $F(a)$ is a
+form of a blend of the conceptual space containing the field $F$ and
+the conceptual space containing element $a$. Equally for a field
+extension one could envisage blending a conceptual space containing
+field $F$ with a conceptual space containing a set of elements
+$E$. The field axioms then hold for $F$ and $E/F$, but not for the
+elements of $E$.
+
+Although this seems a natural blend, in reality when reasoning about
+polynomials with rational coefficients, it is useful to distinguish
+the three separate types -- those of $E$, those of $F$ and those of
+$E/F$ as a supertype. Using blending machinery removes the distinction
+between these types.
+
+\subsubsection{Splitting Field Extension Theorem}
+
+We would like to be able to use blending to discover that there exists a
+field $F$ extended with roots of polynomial $f(x)$, where the coefficients of $f(x)$ are in $F$. The more challenging but creative step is to discover that extending $F$ {\em only} with the roots of $f(x)$ forms a field. We have investigated the possibility of blending the concept of the root of a polynomial with rational coefficients with a field of rationals and then trying to prove these theorem from the resulting axioms. Discovery of the thoerem itself is the real creative step and is an example of running the blend. This is ambitious and is further work.
+
+\subsubsection{Automorphisms}
+
+In order to discover the most interesting and surprising Galois
+theorem, that automorphisms fixing the field $F$ permute the elements
+of $E$ in field extension $E/F$, we need to be able formalise the
+notion of an automorphism. The most natural way to do this is in the
+machinery that we currently use is to define an automorphism $\alpha$
+as a higher order function: $\alpha:\; E/F \to E/F$. Currently there
+is no way of computing colimits with higher order symbols
+mechanically, so we are constrained to do this on paper.
+%% There are various technical questions \textbf{(@Alan, @Ewen, @Felix)},
+%% but from a naive mathematical standpoint the first issue is: is it
+%% always clear how to combine the relevant facts?  And a related
+%% question: is it always clear what the relevant facts actually are?
+
+%% If blending is the realisation of ``combinatorial creativity'' why are
+%% we not swamped by the combinatorial explosion of possible things to
+%% combine?
 
 \textbf{[JC: 1/4 page to flesh out the details.]}
 \newpage
