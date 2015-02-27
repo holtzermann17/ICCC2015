@@ -27,7 +27,8 @@ innerbottommargin=3pt
 \usepackage{csquotes}
 \usepackage[utf8]{inputenc}
 \usepackage[british]{babel}
-\usepackage[style=apa,natbib,backend=biber,url=false]{biblatex}
+\usepackage[style=apa,natbib,backend=biber,doi=false,url=false]{biblatex}
+% \usepackage[style=apa,natbib,backend=biber]{biblatex}
 \let\cite\citep
 \usepackage[ddmmyyyy]{datetime}
 \renewcommand*{\multicitedelim}{\addsemicolon\space}%
@@ -60,10 +61,30 @@ innerbottommargin=3pt
     \ifthenelse{\value{listcount}>\maxprtauth}
       {}
       {\finalandcomma\addspace\bibstring{and}\space}}}
-\newbibmacro{string+url}[1]{%
-  \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
-\DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
-\DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
+
+\newbibmacro{string+doiurlisbn}[1]{%
+  \iffieldundef{doi}{%
+    \iffieldundef{url}{%
+      \iffieldundef{isbn}{%
+        \iffieldundef{issn}{%
+          #1%
+        }{%
+          \href{http://books.google.com/books?vid=ISSN\thefield{issn}}{#1}%
+        }%
+      }{%
+        \href{http://books.google.com/books?vid=ISBN\thefield{isbn}}{#1}%
+      }%
+    }{%
+      \href{\thefield{url}}{#1}%
+    }%
+  }{%
+    \href{http://dx.doi.org/\thefield{doi}}{#1}%
+  }%
+}
+
+\DeclareFieldFormat{title}{\usebibmacro{string+doiurlisbn}{\mkbibemph{#1}}}
+\DeclareFieldFormat[inproceedings,article,incollection]{title}%
+    {\usebibmacro{string+doiurlisbn}{\mkbibquote{#1}}}
 
 \newcommand{\note}[1]{\begin{quote} \textbf{Note:}  \textit{#1} \end{quote}}
 \newcommand{\comment}[1]{\textbf{Comment:}\textit{#1}}
@@ -108,7 +129,7 @@ innerbottommargin=3pt
 \input{conclusions}
 
 \nocite{Weil60}
-\nocite{Boden90}
+% \nocite{Boden90}
 \nocite{nunez05}
 \nocite{Lak00}
 \nocite{Gog05,Gog99}
