@@ -4,291 +4,53 @@
 \subsection*{Introduction}
 One of the most fundamental concepts of modern mathematics, which is
 the basis of commutative algebra and a seminal ingredient of the
-language of schemes in modern algebraic geometry is the one of prime
-ideal \parencite{EGAI,eisenbud}. Our approach to blending is the one
-adopted by Goguen in terms of
-colimits \parencite{Gog99,Goguen01,Goguen05c}.
-
+language of schemes in modern algebraic geometry is the concept of \emph{prime
+ideal} \parencite{EGAI,eisenbud}. 
 In this section, we will recover the concept of prime ideal of a
-commutative ring with unity as a sort of partial (or weaken) blending
-(i.e. a blend for just some axioms of the input theories) between the
-concepts of an ideal of a commutative ring with unity (enriched with
+commutative ring with unity as a sort of partial or weakened blend
+(i.e.~a blend for just some axioms of the input theories) between the
+concepts of an \emph{ideal of a commutative ring with unity} (enriched with
 the collection of all the ideals of the corresponding ring) and the
-concept of a prime number of the integers.
+concept of a \emph{prime number} in the integers.
 
-In fact, in order to obtain the desired space it is enough to consider
-a more general version of the prime numbers (in our case a partial
-version), namely, a monoid $(Z,*,1)$ with an "special" divisibility
-relation $\dannydiv$. Besides, the generic space would capture just
+In order to obtain the desired space it is enough to consider
+a more general version of the prime numbers (i.e.~a partial
+version), namely, a monoid $(Z,*,1)$ with a ``special'' divisibility
+relation $\dannydiv$.  In the blend, the generic space will just capture
 the syntactic correspondences that we wish to identity in the
-blending space, since the blend would be basically the union of the
+blend, since the blend will be basically the union of the
 collection of axioms given on each space, doing the corresponding
 identifications.
 
-Besides, by doing just slight modifications to the input conceptual
-spaces we obtain also one of the most fundamental concepts of
-algebraic number theory, i.e., Dedekind domain \parencite[Theorem
-37.1]{colemanmultidealtheory}, (together with the collection of ideals
-and prime ideals) as a blend of the concepts of noetherian domains
-(with the set of ideals and prime ideals) and again a version of the
+By doing just slight modifications to the input conceptual
+spaces, we obtain also one of the most fundamental concepts of
+algebraic number theory, the Dedekind domain \parencite[Theorem
+37.1]{colemanmultidealtheory}, together with the collection of ideals
+and prime ideals, as a blend of the concepts of noetherian domains
+(with the set of ideals and prime ideals), and again a version of the
 prime numbers in a very elementary form of the integers as before, but
 adding the explicit axiom defining the upside-down divisibility
-relation. In fact, we present a new equivalent form of being a
-Dedekind domain based on a containment-division condition, which
-suggests a new class of commutative rings called here
+relation.  We can derive a new equivalent form of the definition of a
+Dedekind domain based on the containment-division condition, which
+suggests a new class of commutative rings, called here
 containment-division rings (CDR).
 
-Finally, we present an implementation done in HETS
-\cite{Mossakowskihets}, which gives the conceptual space of CDR-s with
-their collections of ideals and prime ideals as a blend.
+We briefly present the conceptual spaces from the standard
+mathematical point of view; due to limitations of space we 
+present the corresponding
+translation into the Common Algebraic Specification
+Language (CASL) \cite{BidoitMosses2004} in an online annex.
 
-Our approach to blending is the one adopted by Goguen in terms of
-colimits  \parencite{Gog99,Goguen01,Goguen05c}.
+~\\
+~\\
 
-We present the conceptual spaces from the standard ``pure''
-mathematical point of view doing concurrently the corresponding
-translation into the setting of the Common Algebraic Specification
-Language (CASL) \cite{BidoitMosses2004}.
-\subsection{The first conceptual space}
-Let $(R,+.*,0,1)$ be a commutative ring with unity, i.e. $R$ is a set with two binary operations, $+$ and $*$, and two special elements $0,1\in R$ satisfying the following axioms:
-\begin{enumerate}
-\item $(\forall a\in R)(a+0=0+a=a)$
-\item $(\forall a\in R)(\exists b\in R)(a+b=b+a=0)$
-\item $(\forall a,b,c \in R)((a+b)+c=a+(b+c)))$
-\item $(\forall a,b \in R)(a+b=b+a)$
-\item $(\forall a\in R)(a*1=1*a=a)$
-\item $(\forall a,b,c \in R)((a*b)*c=a*(b*c)))$
-\item $(\forall a,b \in R)(a*b=b*a)$
-\item $(\forall a,b,c \in R)(a*(b+c)=a*b+a*c)$
-\end{enumerate}
-Now, $R$ can be understood as the sort containing the elements of the corresponing commutative ring with unity.
-An ideal $I$ is a subset of $R$ satisfying the following axiom:
-\[(\forall i,j\in I)(\forall r\in R)(i+(-j)\in I \wedge r*i\in I).\]
-\newline\indent 
-Let us define a unary relation (predicate) $isideal$ on the set (sort) of subsets of $R$, $P(R)$, as follows:
-$isideal(I)$ if and only if $I$ is an ideal of $R$.
+\textbf{[JC: 1/2 to 3/4 of a page more to fill out this section, but
+    without too many technical details.]}
 
-Now, we define
-\[{\rm Spec}_IR=\left\{A\subseteq R: isideal(A) \right\}.\]
-Here, ${\rm Spec}_IR$ is considered as a subsort of the sort $P(R)$.
-
-There is one natural operation on ${\rm Spec}_IR$, let us say $\cdot_{\iota}$, inherited in a natural way from the corresponding operations $+$ and $\cdot$ on $S$:
-
- Let $I,J\in {\rm Spec}_IR$, then we define 
-%
-\[I\cdot_{\iota} J:=\left\{i_1\cdot j_1+...+i_n\cdot j_n:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
-
-With this operation ${\rm Spec}_IR$ forms a commutative monoid (i.e.\
-we have commutativity, associativity and there exists a neutral
-element (in this case the ring)). However, this fact is irrelevant in
-our case for the blending process. As a matter of fact, the only
-property that we want to keep into the blend is the one saying that
-this operation has a neutral element $1_{\iota}$, which can be seen as
-an additional notation for the ring, but respect to this operation
-$\cdot_{\iota}$ instead of being the sort of elements of the ring,
-i.e., $R$.  \newline\indent On the other side, we want to see the
-containment relation $\subseteq$ as a binary relation over the sort
-${\rm Spec}_IR$.
-
-Summarizing, our first conceptual space consists of sorts $R, {\rm Spec}_IR$ and $P(R)$; operations $+_R, *_R, 0_R, 1_R, 1_{\iota}$ and $
-\cdot_{\iota}$; and the relations $\subseteq$ and $isideal$.
-
-Here we add all the corresponding axioms defining $R$ as a commutative ring, the explicit former definition of $isideal$, ${\rm Spec}_IR$ and $\cdot_{\iota}$; and the axiom guaranteeing that  $1_{\iota}$ is the neutral element for $\cdot_{\iota}$.
- 
-It is important to note that although $R$ and $1_{\iota}$ are the same
-from the set-theoretical point of view, we choose two symbols in order
-to stress the particular function that the same set fulfils, i.e., as
-a collection of elements ($R$) or as a neutral element itself
-($1_{\iota}$. Besides, it is more useful to do that for the purpose of
-an implementation (see Section \ref{implementation}). However, this
-distinction is irrelevant for our present pure-theoretical
-considerations.
-
-
-Let us denote this space by $\mathbb{I}$.
-
-\subsection{The second conceptual space}
-Let $\mathbb{Z}$ be the set of the integer numbers. Here, we can
-choose any axiomatization of them, since for the (partial) blending we
-just take into account only the fact that $(\mathbb{Z},*,1)$ is a
-commutative monoid. Or even simpler, we only use the fact that $1$ is
-the neutral element with the operation $*$. One can, for example, take
-the simple characterization of $\mathbb{Z}$, given by Martin
-Brandenburg \cite{brandenburgdobleinduction}, as the only ordered
-commutative ring with unity satisfying the following "bi-inductive"
-property:
-\[\forall M \subseteq \mathbb{Z} \left[ 0 \in M \wedge \left(\forall n \in \mathbb{Z} \left(n\in M \rightarrow n\pm 1 \in M\right)\right) \rightarrow M=\mathbb{Z}\right].\]
-
-We define also an upside down divisibility relation $\dannydiv$ defined as 
-%
-\[e\dannydiv g:=g|e,\] We re-write the classical divisibility relation
-on this way in order to obtain the right primality condition on the
-blend.  Let us define a unary relation $isprime$ on $\mathbb{Z}$ as
-follows: for all $p\in \mathbb{Z}$, $isprime(p)$ holds if $p\neq 1$
-and the following (primality) condition holds:
-%
-\[(\forall a,b\in \mathbb{Z})(ab \dannydiv p)\rightarrow (a \dannydiv p \vee b \dannydiv p).\] 
-Besides, we define the set (sort) of the prime numbers as 
-\[ Prime=\left\{ p\in \mathbb{Z}/ isprime(p)\right\}\] Now, it is an
-elementary fact to see that this condition is an equivalent form of
-the standard definition of prime number given in the classical number
-theory books (see for example \textcite{Apostol76}). In the CASL
-language, we consider $\mathbb{Z}$ as the sort of the integer numbers,
-$*$ as a binary operation , $prime$ as a predicate and $\dannydiv$ as
-a binary relation, any of them defined over the sort $\mathbb{Z}$.  We
-denote this conceptual space by $\mathbb{P}$.
-
-\section{The Generic Space}
-
-The generic space consists of a set (sort) $G$ with a binary operation
-$*_G$, a neutral element $S$ and a binary relation $\leq_G$.
-
-  Let us denote this space by $\mathbb{G}$.
-
-\subsection{The Blending Morphisms}
-Now, let us define the morphisms from the generic space into the two corresponding conceptual spaces. Let $\varphi: \mathbb{G}\rightarrow \mathbb{I}$ be the morphism induced by the following syntactic correspondences $\varphi(G)={\rm Spec}_IR,\varphi(*_G)=*_{\iota}, \varphi(S)=1_{\iota}$ and $\varphi(\leq_G)=\subseteq$.
-\newline\indent
-Furthermore, let $\delta:=\mathbb{G}\rightarrow\mathbb{P}$ be the morphism induced by the syntactic correspondences $\delta(G)=\mathbb{Z}, \delta(*_G)=*, \delta(S)=1$ and $\delta(\leq_G)= \dannydiv$.
-
-\subsection{The Axiomatization of the Blending}
-In the every-day research of the working mathematician it happens
-frequently that one starts to develop general theoretical frameworks
-by combining just some aspects of two particular theories but without
-considering the whole theories. For example, the development of
-differential geometry was obtained combining just some aspect of
-general and algebraic topology and some aspects of real analysis
-\cite{VelCad05}. The same happens with the methods use in
-analytic number theory which are a fusion of some components of
-elementary number theory and some of the real analysis techniques
-\parencite{Apostol76}.
-
-Therefore, it is more natural in the daily mathematical research to
-obtain new concepts as ``partial'' combinations of two former ones,
-i.e., as combinations (blends) of just some axioms of the
-corresponding two theories.
- 
-Thus, in our case, a partial blend will give us the desired
-concept. For example, from the properties defining the integers we
-transfer into the blend only the fact that $\mathbb{Z}$ is a set with
-a binary operation $*$ having $1$ as neutral element.
-
-So, after using the same symbols for denoting the ring as a sort of
-elements or as the neutral element for product of ideals $\cdot_G$,
-the blend has the form
-%
-\[(S, +_S, *_S, 0_S, 1_S, G={\rm Spec}_IS, isprime, Prime, \cdot_G, S=1_G, \subseteq)\]
-with all the corresponding axioms of the first conceptual space plus the translated version of the axiom defining the primality predicate after doing the corresponding symbolic identifications i.e., an element $P \in G$ (i.e., an ideal of $S$) satisfied the predicate $isprime$ if and only if 
-\begin{align*}
-  P\neq S \wedge\; (\forall X,Y\in G={\rm Spec}_IS) & (X\cdot_{\alpha}Y\subseteq P \\
-                  & \rightarrow (X\subseteq P \vee Y\subseteq P)).
-\end{align*}
-
-Now, it is an elementary exercise to see that this definition is equivalent to the fact that $P$ is a prime ideal of $S$, i.e. to the condition
-\begin{align*}
-P\neq S & \wedge (\forall X,Y\in G={\rm Spec}_IS). \\
-        & (X\cdot_{\alpha}Y\subseteq P \rightarrow (X\subseteq P \vee Y\subseteq P)).
-\end{align*}
-Therefore, the predicate $isprime$ turns out to be the predicate characterizing the primality of ideals of $S$ and the set (sort) $Prime$ turns out to be the set of prime ideals of $S$.
-
-Besides, we just consider the fact that the upside-down divisibility
-relation is a binary relation without taking into account the formal
-definition into the blend.
-
-
-In conclusion, the blending space consists of the axioms assuring that $S$ is a commutative ring with unity, $G$ is the set of ideals of $S$, $isprime$ is the predicate specifying primality for ideals of $S$ and $Prime$ is the collection of all prime ideals of $S$. 
-
-\subsection{Prime ideals over Dedekind noetherian domains as a blend}
-
-First, let us define the following class of commutative rings with unity.
-
-\begin{definition}
-A commutative ring with unity $R$ is a containment-division ring (CDR) if for every $I,J \in {\rm Id}(R)$, it holds that $I \subseteq J$ if and only if $J$ divides $I$ as ideals, i.e., there exists an ideal $D \in {\rm Id}(R)$ such that $I=D\cdot_{\iota}J$.
-\end{definition}
-
-Now, the containment-division condition is similar to the fact of being a Dedekind domain, i.e., an integral domain such that every proper ideal can be written as a finite product of ideals \cite[Theorem 37.1 and 37.8]{colemanmultidealtheory}. In fact, if we add the property of being Noetherian \cite{eisenbud}, then both notions are equivalent:
-
-\begin{theorem}\label{CDRDedekind}
-Let $R$ be an integral domain. Then the following two conditions are equivalent:
-\begin{enumerate}
-\item R is a Dedekind domain.
-\item R is a noetherian CDR.
-\end{enumerate}
-\end{theorem}
-\begin{proof}
-  \begin{description}
-  \item[1 $Rightarrow$ 2]  Every Dedekind domain is Noetherian \cite[Theorem 37.1]{colemanmultidealtheory}. Besides, the CDR condition is a well-known property of Dedekind domains (see for example \cite[Fundamental Theorem of OAK-s]{weissalgebraicnumber}. In fact, for any ideals $I,J \in {\rm Id}(R)$, if $I \subseteq J$, then by the unique factorization theorem for ideals in $R$ \cite[Theorem 37.11]{colemanmultidealtheory} and by considering the localizations on the prime ideals appearing on their factorizations one sees immediately that $J$ divides $I$.
-  \item[2 $\Rightarrow$ 1] 
-Let $I$ be an proper ideal of $R$. If $I$ is prime, then we are done. If not, le
-t $P_1$ be a prime ideal of $R$ such that $I\subseteq P_1$. Then, due to the fac
-t that $R$ is a CDR, there exists a proper ideal $Q_1$ such that $I=Q_1P_1$. Now
-, if $Q_1$ is a prime ideal, then we can clearly express $I$ as a product of two
- ideals. Otherwise, let us choose again a prime ideal $P_2$ containing $Q_1$. So
-, analogously there exists another proper ideal $Q_2$ such that $Q_1=Q_2P_2$. If $Q_2$ is prime, then we can express $I= Q_2P_2P_1$ as a finite product of prime ideals. Otherwise, we continue inductively in the same fashion. So, if after finitely many steps some $Q_r$ is prime, then we can write $I$ as a finite product of prime ideals. On the contrary, we obtain an ascending chain of ideals 
-\[Q_1\subseteq Q_2 \subseteq Q_3\subseteq \cdots \subseteq Q_n \subseteq \cdots\]
-
-Now, since $R$ is Noetherian, this sequence is stationary (i.e., there exists some $m\in \mathbb{N}$ such that for all $i\geq m$, $Q_i=Q_m$ \cite[Proposition 6.2]{atimac}). Furthermore, $Q_m=Q_{m+1}P_{m+1}=Q_mP_{m+1}$ and so $Q_m=Q_m^iP_{m+1}\subseteq Q_m^i$, for all $i \in \mathbb{N}$. Therefore, $I$ and $Q_m$ are contained in the intersection of all the powers of $Q_m$, $\cap_{i\geq 1}Q_m^i$, which is the zero ideal due to Krull's Intersection Theorem \cite[Corollary 5.4]{eisenbud}. In conclusion, $I=(0)$, which is in our case a prime ideal. So, $R$ is a Dedekind domain.
-
-  \end{description}
-\end{proof}
-
-
-As an immediate corollary of this theorem we see that in the setting of noetherian domains the concept of being a CDR is equivalent to the one of being a Dedekind domain.
-
-\begin{remark}
-On the other hand, if $R$ is not a Dedekind domain, but for example a unique factorization domain (UFD), then $R$ is not, in general, a CDR. For example, when $R=\mathbb{Z}[T]$, one can check that the ideals $X=(2)$ and $Y=(2,T)$ gives a counterexample.  
-
-It suggests that in the setting of commutative rings with unity the class of CDR-s is an intermediate new class of rings.
-\end{remark}
-
- Now, let us consider our former first conceptual space with the extra condition of being a notherian domain, i.e., 
-
-\[ (\forall a,b \in R)(ab=0 \rightarrow a=0 \vee b=0),\]
-
-and the noetherian property: For any ideal $A$ in $R$, there exists $a_1,\cdots a_n\in A$ such that every element $a$ can be written as a linear combination of these elements: there exists $b_1, \cdots, b_n \in R$ such that $a=b_1a_!+\cdots +b_na_n$.
-
-On the other hand, let us consider as second conceptual space the same second conceptual space considered before, but including the axiom defining the upside-down divisibility relation:
-
-\[ (\forall a,b\in Z)(a \dannydiv b\leftrightarrow (\exists c\in Z)(a=cb)).\]
-
-Furthermore, let us choose the same  generic space and blend morphisms that we use before.
-Then, if we do the (total blend) of the corresponding spaces, we obtain as a blend basically the former blend space (commutative ring with unity, set of ideals and prime ideals and a predicate for the prime ideals) but adding the stronger conditions for the ring $S$ of being a  noetherian domain and also adding the corresponding version of the former axiom, i.e., 
-
-\[(\forall a,b \in G)(a \subseteq b)\leftrightarrow (\exists c\in G)(a=c\cdot_{\iota}b),\]
-
-where $G={\rm Id}(R)$ as before.
-
-Now, this condition means exactly being a CDR. Therefore, by Theorem \ref{CDRDedekind}, we obtain as blend the conceptual space of Dedekind domains with the collection of ideals and prime ideals and a primality predicate.
-
-\subsection{Implementation for prime ideals over CDR-s as a blend}
-\label{implementation}
-
-In this section we reconstruct the conceptual space of prime ideals of a CDR as 
-a blend (colimit in HETS) of the conceptual space of ideals of a commutative ring with unity and the conceptual space of prime elements of a very general version of the integers given exactly as the second conceptual space of the former section. 
-
-It is worth to mention that the definition of CDR-s was obtained after doing this implementation and therefore it could be seen as a form of "creative" result coming from the blending process.
-
-Here, it is important to point out that in this implementation we looked for a minimal set of axioms such that, at the same time, the semantic interpretation can be uniquely determined. It is always possible to construct an implementation with additional axioms given by properties that could be logically derived from the main axioms, (e.g. the set theoretical properties of the containment relation for subsets of a set) but these properties are secondary ones, meanwhile, the ones defining the arithmetic of the ring, of an ideal and of the set of ideals of the ring are the essential ones.
-
-\subsection{Implementation for the Principal Ideal Domain Case}
-
-On this section we present an implementation done in
-Hets \parencite{Mossakowskihets}, in the language of CASL for the case
-of a principal ideal domain (PID).  The resulting blending space
-contains two equivalent definitions of the containing relation for
-ideals. One of them is the trivial one in terms of elements and the
-other one is given in terms of product of ideals. It is an elementary
-exercise to see this equivalence in the PID case.
-
-\input{prime.pp}
-
-After computing the corresponding colimit in HETS and after
-interpreting "RingElt" as the sort containing the elements of the ring
-$S$, the theory defining the blend corresponds to the axioms defining
-a PID (S), the set of all its ideals (Generic) and the set all its
-prime ideals (SimplePrime):
-
-\input{ideal_colim.pp}
-
+\newpage
+~\\
+\newpage
+% \input{prime-details}
 
 
 %%% Local Variables: 

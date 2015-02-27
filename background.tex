@@ -55,8 +55,8 @@ concept space which is mapped, explored and transformed by
 transcending mapped boundaries \cite{boden}, and form the input spaces
 to our blend. 
 
-As an example of two conceptual spaces, consider one as a theory $NAT$ --
-a theory of the natural numbers, and $FUNC$ -- a theory of a total
+As an example of two conceptual spaces, consider one as a theory $\mathit{NAT}$ --
+a theory of the natural numbers, and $\mathit{FUNC}$ -- a theory of a total
 unary function with an inverse. We will refer back to these theories
 in this exposition.
 
@@ -68,25 +68,25 @@ defining numbers led to negative and imaginary numbers, and rejecting
 the parallel postulate opened up fascinating new areas of
 non-Euclidean geometry.
 
-In the conceptual space with theory $NAT$, an example of an axiom is $\neg \exists x. 0 =
+In the conceptual space with theory $\mathit{NAT}$, an example of an axiom is $\neg \exists x. 0 =
 s(x)$ -- that is that zero is the least element of the natural
-numbers.  The conceptual space with theory $FUNC$ has an axiom
+numbers.  The conceptual space with theory $\mathit{FUNC}$ has an axiom
 $\forall x.\;f(f^{-1}) x = x$. 
 %where heuristics for transformation, such as {\em consider
 %the negative} and {\em drop a constraint}, are suggested.
 
 {\bf Signature morphisms} are mappings of symbols between two
-conceptual spaces. For example $NAT$ contains a function $\lambda
-x:\mathbb{N}.\;s(x)$ to denote the successor, and $FUNC$ contains a function
+conceptual spaces. For example $\mathit{NAT}$ contains a function $\lambda
+x:\mathbb{N}.\;s(x)$ to denote the successor, and $\mathit{FUNC}$ contains a function
 $\lambda x:\tau.\;f(x)$. A theory $G$ common to both may contain a function
 $\lambda x:\sigma.\;g(x)$. When we show a mapping in this paper we write this
 as
 \begin{align}
-s&&\leftarrow_{\phi(G,NAT)}&&g&&\rightarrow_{\phi(G,FUNC)}&&f\\
-\mathbb{N}&&\leftarrow_{\phi(G,NAT)}&&\sigma&&\rightarrow_{\phi(G,FUNC)}&&\tau
+s&&\leftarrow_{\phi(G,\mathit{NAT})}&&g&&\rightarrow_{\phi(G,\mathit{FUNC})}&&f\\
+\mathbb{N}&&\leftarrow_{\phi(G,\mathit{NAT})}&&\sigma&&\rightarrow_{\phi(G,\mathit{FUNC})}&&\tau
 \end{align}
-\noindent The mapping $\phi(G,NAT)$ is a signature morphism from
-$G$ to $NAT$. Note that associated types are also mapped.
+\noindent The mapping $\phi(G,\mathit{NAT})$ is a signature morphism from
+$G$ to $\mathit{NAT}$. Note that associated types are also mapped.
 
 {\bf Input Spaces} refers to two or more conceptual spaces of
 interest. 
@@ -98,15 +98,15 @@ between input spaces.
 spaces with respect to a given generic space and set of signature
 morphisms. These are uniquely computed given a generic space and set of
 morphisms. There is a pictorial representation of such a computation
-in our example usig theories $NAT$ and $FUNC:$
+in our example usig theories $\mathit{NAT}$ and $\mathit{FUNC}:$
 \begin{center}
   \begin{diagram}[size=7mm]
     &       &   $G$   &       & \\
-    & \ldTo^{\rotatebox{-45}{$\phi(G,NAT)$}} &       &
-    \rdTo^{\rotatebox{45}{$\phi(G,FUNC)$}} &          \\
-    \SIdIndex{NAT} &       &   &       & \SIdIndex{FUNC} \\
-    & \rdTo_{\rotatebox{45}{$\phi(B,NAT)$}} &       &
-    \ldTo_{\rotatebox{-45}{$\phi(B,FUNC)$}} &  \\
+    & \ldTo^{\rotatebox{-45}{$\phi(G,\mathit{NAT})$}} &       &
+    \rdTo^{\rotatebox{45}{$\phi(G,\mathit{FUNC})$}} &          \\
+    \SIdIndex{$\mathit{NAT}$} &       &   &       & \SIdIndex{$\mathit{FUNC}$} \\
+    & \rdTo_{\rotatebox{45}{$\phi(B,\mathit{NAT})$}} &       &
+    \ldTo_{\rotatebox{-45}{$\phi(B,\mathit{FUNC})$}} &  \\
     & & $Colimit$ & & 
   \end{diagram}
 \end{center}
@@ -116,7 +116,7 @@ as the {\em blend}.
 {\bf Inconsistent} mathematical theories are a way of determining the
 validity of a conceptual space. This is a way of evaluating whether a
 blend is not only creative, but also valid. In the example of theories
-$NAT$ and $FUNC$,
+$\mathit{NAT}$ and $\mathit{FUNC}$,
 the computed blend is inconsistent due to the emergent axioms in the
 computed colimit. The only type existing within the colimit is now
 referred to as $\mathbb{Z}$ to distinguish it from the natural numbers:
@@ -134,6 +134,7 @@ $$
 $$
 then the resulting computed colimit contains a mathematical theory
 which is consistent.
+
 {\bf Running the blend} refers to elaborating or completing a
 mathematical theory. Sometimes there are missing definitions which
 need to be discovered. For example in the new theory the following

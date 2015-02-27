@@ -42,7 +42,8 @@ numbers (without order axioms) as shown in Figure \ref{fig:nats}, and
 call this theory $\SIdIndex{Nat}$. Now let us also define a simple theory
 which introduces the concept of a function with an inverse as shown in
 Figure \ref{fig:inv}, and call this theory $\mathbb{F}$. 
-\begin{figure}[!ht]
+\begin{listing}[!ht]
+\begin{mdframed}
 \begin{hetcasl}
 \SPEC \=\SIdIndex{Nat} \Ax{=}\\
 \> \SORT \Id{Nat}\\
@@ -58,11 +59,13 @@ Figure \ref{fig:inv}, and call this theory $\mathbb{F}$.
 \> \Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y}\\
 \KW{end}
 \end{hetcasl}
+\end{mdframed}
 \caption{A theory of the natural numbers without order}
 \label{fig:nats}
-\end{figure}
+\end{listing}
 
-\begin{figure}[!ht]
+\begin{listing}[!ht]
+\begin{mdframed}
 \begin{hetcasl}
 \SPEC \=\SIdIndex{Func} \Ax{=}\\
 \> \SORT \Id{X}\\
@@ -73,9 +76,10 @@ Figure \ref{fig:inv}, and call this theory $\mathbb{F}$.
 \> \Ax{\bullet} \=\Id{finv}(\Id{f}(\Id{x})) \Ax{=} \Id{x}\\
 \KW{end}
 \end{hetcasl}
+\end{mdframed}
 \caption{A theory with a function and its inverse defined}
 \label{fig:inv}
-\end{figure}
+\end{listing}
 
 
 
@@ -113,7 +117,8 @@ find a new theory by computing the colimit:
 \end{center}
 This generates the theory shown in \ref{fig:inconsistentintegers}.
 
-\begin{figure}[!ht]
+\begin{listing}[!ht]
+\begin{mdframed}
 \begin{hetcasl}
 \SPEC \=\SIdIndex{Spec} \Ax{=}\\
 \> \SORT \Id{N}\\
@@ -121,20 +126,21 @@ This generates the theory shown in \ref{fig:inconsistentintegers}.
 \> \OP \=\Id{p} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
 \> \OP \=\Id{s} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
 \> \OP \=\Id{zero} \Ax{:} \Id{N}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(Ax1)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax2)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{N} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(Ax3)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \Ax{\neg} \=\Id{s}(\Id{x}) \Ax{=} \Id{zero} \`{\small{}\KW{\%}(Ax4)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(Ax5)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax6)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax1\Ax{\_}7)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(1)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(2)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{N} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(3)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \Ax{\neg} \=\Id{s}(\Id{x}) \Ax{=} \Id{zero} \`{\small{}\KW{\%}(4)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(5)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(6)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(1\Ax{\_}7)\KW{\%}}\\
 \> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet}
 \=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x}
-\`{\small{}\KW{\%}(Ax2\Ax{\_}8)\KW{\%}}
+\`{\small{}\KW{\%}(2\Ax{\_}8)\KW{\%}}
 \end{hetcasl}
+\end{mdframed}
 \caption{An inconsistent version of the integers (without order)}
 \label{fig:inconsistentintegers}
-\end{figure}
+\end{listing}
 
 
 \subsubsection{Removal of Inconsistencies}
@@ -145,7 +151,8 @@ s(p(x)) &=& x \label{eq:sucpre}
 \end{eqnarray}
 Removal of the limiting axiom (\ref{eq:limnat1}) results in a theory which is very
 similar to what we understand to be the integers as shown in Figure~\ref{fig:integers}.
-\begin{figure}[!ht]
+\begin{listing}[!ht]
+\begin{mdframed}
 \begin{hetcasl}
 \SPEC \=\SIdIndex{Spec} \Ax{=}\\
 \> \SORT \Id{N}\\
@@ -153,18 +160,19 @@ similar to what we understand to be the integers as shown in Figure~\ref{fig:int
 \> \OP \=\Id{p} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
 \> \OP \=\Id{s} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
 \> \OP \=\Id{zero} \Ax{:} \Id{N}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(Ax1)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax2)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{N} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(Ax3)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(Ax4)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(Ax5)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax1\Ax{\_}7)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax2\Ax{\_}8)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(1)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(2)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{N} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(3)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(4)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(5)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(1\Ax{\_}7)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(2\Ax{\_}8)\KW{\%}}\\
 \KW{end}
 \end{hetcasl}
+\end{mdframed}
 \caption{A consistent version of the integers (without order)}
 \label{fig:integers}
-\end{figure}
+\end{listing}
 
 \subsubsection{Running the Blend}
 
