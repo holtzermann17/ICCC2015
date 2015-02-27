@@ -190,7 +190,6 @@ Besides, we just consider the fact that the upside-down divisibility
 relation is a binary relation without taking into account the formal
 definition into the blend.
 
-
 In conclusion, the blending space consists of the axioms assuring that
 $S$ is a commutative ring with unity, $G$ is the set of ideals of $S$,
 $isprime$ is the predicate specifying primality for ideals of $S$ and
@@ -236,70 +235,85 @@ After computing the corresponding colimit in HETS and interpreting
 "RingElt" as the sort containing the elements of the ring $S$, the
 theory defining the blend corresponds to the axioms defining a CDR
 (S), the set of all its ideals (Generic), the set all its prime ideals
-(SimplePrime) and a primality predicate (IsPrime).  We present here
-just the theory corresponding to the colimit, in order to see the
+(SimplePrime) and a primality predicate (IsPrime).  We present 
+in Listing~\ref{listing:prime_colim}
+just the theory corresponding to the colimitD; in order to see the
 complete implementation see \textbf{add pointer!!!}.
 
+% \begin{figure}[ht!]
+% 
+  \begin{listing}[!ht]
+    \begin{mdframed}
+     \begin{footnotesize}
+      \input{ideal_colim.pp}
+    \end{footnotesize}
+  \end{mdframed}
+    \caption{Colimit for prime ideals}
+    \label{listing:prime_colim}
+  \end{listing}
+%\end{footnotesize}
+%  \caption{Colimit Theory}
+%  \label{fig:ideal_colim}
+% \end{figure}
+% \begin{verbatim}
+% logic CASL.SulFOL=
 
-\begin{verbatim}
-logic CASL.SulFOL=
+% sorts Generic, RingElt, SimplePrime, SubSetOfRing
+% sorts SimplePrime < Generic; Generic < SubSetOfRing
+% op 0 : RingElt
+% op 1 : RingElt
+% op S : Generic
+% op __*__ : RingElt * RingElt -> RingElt
+% op __+__ : RingElt * RingElt -> RingElt
+% op __x__ : Generic * Generic -> Generic
+% pred IsIdeal : SubSetOfRing
+% pred IsPrime : Generic
+% pred __isIn__ : RingElt * SubSetOfRing
+% pred gcont : Generic * Generic
 
-sorts Generic, RingElt, SimplePrime, SubSetOfRing
-sorts SimplePrime < Generic; Generic < SubSetOfRing
-op 0 : RingElt
-op 1 : RingElt
-op S : Generic
-op __*__ : RingElt * RingElt -> RingElt
-op __+__ : RingElt * RingElt -> RingElt
-op __x__ : Generic * Generic -> Generic
-pred IsIdeal : SubSetOfRing
-pred IsPrime : Generic
-pred __isIn__ : RingElt * SubSetOfRing
-pred gcont : Generic * Generic
+% forall I : SubSetOfRing . I in Generic <=> IsIdeal(I)
+% forall x : Generic . x x S = x 
+% forall x : Generic . S x x = x 
+% forall A, B : Generic.
+% gcont(A, B) <=> forall a : RingElt . a isIn A => a isIn B
+% forall x, y : RingElt . x + y = y + x 
+% forall x, y, z : RingElt . (x + y) + z = x + (y + z)
+% forall x : RingElt . x + 0 = x /\ 0 + x = x 
+% forall x : RingElt . exists x' : RingElt . x' + x = 0
+% forall x, y : RingElt . x * y = y * x 
+% forall x, y, z : RingElt . (x * y) * z = x * (y * z)
+% forall x : RingElt . x * 1 = x /\ 1 * x = x 
+% forall x, y, z : RingElt
+% . (x + y) * z = (x * z) + (y * z) 
+% forall x, y, z : RingElt 
+% . z * (x + y) = (z * x) + (z * y) 
+% forall I : SubSetOfRing
+% . IsIdeal(I)
+%  <=> forall a, b, c : RingElt
+% . ((a isIn I => a isIn S) /\ 0 isIn I)
+% /\ (a isIn I /\ c isIn S => c * a isIn I)
+% /\ (a isIn I /\ b isIn I /\ 
+% c isIn S /\ b + c = 0 => a + c isIn I)                                              
+% forall a : RingElt; A : Generic
+% . a generates A
+% <=> forall c : RingElt 
+% . c isIn A => exists d : RingElt . c = a * d                                                  
+% forall A, B : Generic; a, b : RingElt
+% . a isIn A /\ b isIn B => a * b isIn A x B        
+% forall A, B, D : Generic
+% . (forall a, b : RingElt
+% . a isIn A /\ b isIn B => a * b isIn D)
+% => gcont(A x B, D)                             
+% forall x, y : Generic
+% . gcont(x, y) <=> exists c : Generic . x = y x c 
+% forall p : Generic . p in SimplePrime <=> IsPrime(p)
+% forall p : Generic
+% . IsPrime(p)
+% <=> (forall a, b : Generic
+% . gcont(a x b, p) => gcont(a, p) \/ gcont(b, p))
+% /\ not p = S                             
 
-forall I : SubSetOfRing . I in Generic <=> IsIdeal(I)
-forall x : Generic . x x S = x 
-forall x : Generic . S x x = x 
-forall A, B : Generic.
-gcont(A, B) <=> forall a : RingElt . a isIn A => a isIn B
-forall x, y : RingElt . x + y = y + x 
-forall x, y, z : RingElt . (x + y) + z = x + (y + z)
-forall x : RingElt . x + 0 = x /\ 0 + x = x 
-forall x : RingElt . exists x' : RingElt . x' + x = 0
-forall x, y : RingElt . x * y = y * x 
-forall x, y, z : RingElt . (x * y) * z = x * (y * z)
-forall x : RingElt . x * 1 = x /\ 1 * x = x 
-forall x, y, z : RingElt
-. (x + y) * z = (x * z) + (y * z) 
-forall x, y, z : RingElt 
-. z * (x + y) = (z * x) + (z * y) 
-forall I : SubSetOfRing
-. IsIdeal(I)
- <=> forall a, b, c : RingElt
-. ((a isIn I => a isIn S) /\ 0 isIn I)
-/\ (a isIn I /\ c isIn S => c * a isIn I)
-/\ (a isIn I /\ b isIn I /\ 
-c isIn S /\ b + c = 0 => a + c isIn I)                                              
-forall a : RingElt; A : Generic
-. a generates A
-<=> forall c : RingElt 
-. c isIn A => exists d : RingElt . c = a * d                                                  
-forall A, B : Generic; a, b : RingElt
-. a isIn A /\ b isIn B => a * b isIn A x B        
-forall A, B, D : Generic
-. (forall a, b : RingElt
-. a isIn A /\ b isIn B => a * b isIn D)
-=> gcont(A x B, D)                             
-forall x, y : Generic
-. gcont(x, y) <=> exists c : Generic . x = y x c 
-forall p : Generic . p in SimplePrime <=> IsPrime(p)
-forall p : Generic
-. IsPrime(p)
-<=> (forall a, b : Generic
-. gcont(a x b, p) => gcont(a, p) \/ gcont(b, p))
-/\ not p = S                             
-
-\end{verbatim}
+% \end{verbatim}
 
 
 %%% Local Variables: 

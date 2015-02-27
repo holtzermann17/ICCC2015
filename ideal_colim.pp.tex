@@ -1,8 +1,8 @@
 \begin{hetcasl}
-\KW{library} \Id{ideal\Ax{\_}colim}\\
-\\
-\KW{logic} \SId{CASL}\Id{\Ax{.}}\SId{SulFOL=}\\
-\\
+% \KW{library} \Id{ideal\Ax{\_}colim}\\
+% \\
+% \KW{logic} \SId{CASL}\Id{\Ax{.}}\SId{SulFOL=}\\
+% \\
 \SPEC \=\SIdIndex{Spec} \Ax{=}\\
 \> \SORTS \=\Id{Generic}, \Id{RingElt}, \Id{SimplePrime}, \Id{SubSetOfRing}\\
 \> \SORTS \=\Id{SimplePrime} \Ax{<} \Id{Generic};\\
@@ -17,46 +17,42 @@
 \> \PRED \=\Id{IsPrime} \Ax{:} \Id{Generic}\\
 \> \PRED \=\Ax{\_\_}\Id{isIn}\Ax{\_\_} \Ax{:} \=\Id{RingElt} \Ax{\times} \Id{SubSetOfRing}\\
 \> \PRED \=\Id{gcont} \Ax{:} \=\Id{Generic} \Ax{\times} \Id{Generic}\\
-\> \Ax{\forall} \=\Id{I} \Ax{:} \Id{SubSetOfRing} \=\Ax{\bullet} \=\Id{I} \Ax{\in} \Id{Generic} \Ax{\Leftrightarrow} \Id{IsIdeal}(\Id{I}) \`{\small{}\KW{\%}(Ax1)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Generic} \\
-\> \Ax{\bullet} \=\Id{x} \Id{x} \Id{S} \Ax{=} \Id{x} \\
-\> \`{\small{}\KW{\%}(ga\Ax{\_}right\Ax{\_}unit\Ax{\_}\Ax{\_}\Ax{\_}\Ax{*}\Ax{*}\Ax{\_}\Ax{\_})\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Generic} \\
-\> \Ax{\bullet} \=\Id{S} \Id{x} \Id{x} \Ax{=} \Id{x} \\
-\> \`{\small{}\KW{\%}(ga\Ax{\_}left\Ax{\_}unit\Ax{\_}\Ax{\_}\Ax{\_}\Ax{*}\Ax{*}\Ax{\_}\Ax{\_})\KW{\%}}\\
+\> \PRED \=\Ax{\_\_}\Id{generates}\Ax{\_\_} \Ax{:} \=\Id{RingElt} \Ax{\times} \Id{Generic}\\
+\> \Ax{\forall} \=\Id{I} \Ax{:} \Id{SubSetOfRing} \Ax{\bullet} \=\Id{I} \Ax{\in} \Id{Generic} \Ax{\Leftrightarrow} \Id{IsIdeal}(\Id{I})\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Generic} \Ax{\bullet} \=\Id{x} \Id{x} \Id{S} \Ax{=} \Id{x}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Generic} \Ax{\bullet} \=\Id{S} \Id{x} \Id{x} \Ax{=} \Id{x}\\
 \> \Ax{\forall} \=\Id{A}, \Id{B} \Ax{:} \Id{Generic} \\
-\> \Ax{\bullet} \=\Id{gcont}(\=\Id{A}, \Id{B}) \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{a} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\Rightarrow} \=\Id{a} \Id{isIn} \Id{B} \`{\small{}\KW{\%}(Ax4)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=\Id{x} \Ax{+} \Id{y} \Ax{=} \=\Id{y} \Ax{+} \Id{x} \`{\small{}\KW{\%}(Ax5)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{+} \Id{z} \Ax{=} \=\Id{x} \Ax{+} (\=\Id{y} \Ax{+} \Id{z}) \`{\small{}\KW{\%}(Ax6)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=\Id{x} \Ax{+} \Ax{0} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{0} \Ax{+} \Id{x} \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax7)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=\Ax{\exists} \Id{x'} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x'} \Ax{+} \Id{x} \Ax{=} \Ax{0} \`{\small{}\KW{\%}(Ax8)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=\Id{x} \Ax{*} \Id{y} \Ax{=} \=\Id{y} \Ax{*} \Id{x} \`{\small{}\KW{\%}(Ax9)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=(\=\Id{x} \Ax{*} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=\Id{x} \Ax{*} (\=\Id{y} \Ax{*} \Id{z}) \`{\small{}\KW{\%}(Ax10)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=\Id{x} \Ax{*} \Ax{1} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{1} \Ax{*} \Id{x} \Ax{=} \Id{x} \`{\small{}\KW{\%}(Ax11)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=(\=\Id{x} \Ax{*} \Id{z}) \Ax{+} (\=\Id{y} \Ax{*} \Id{z}) \`{\small{}\KW{\%}(Ax12)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \=\Ax{\bullet} \=\Id{z} \Ax{*} (\=\Id{x} \Ax{+} \Id{y}) \Ax{=} \=(\=\Id{z} \Ax{*} \Id{x}) \Ax{+} (\=\Id{z} \Ax{*} \Id{y}) \`{\small{}\KW{\%}(Ax13)\KW{\%}}\\
+\> \Ax{\bullet} \=\Id{gcont}(\=\Id{A}, \Id{B}) \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{a} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\Rightarrow} \=\Id{a} \Id{isIn} \Id{B}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x} \Ax{+} \Id{y} \Ax{=} \=\Id{y} \Ax{+} \Id{x}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{+} \Id{z} \Ax{=} \=\Id{x} \Ax{+} (\=\Id{y} \Ax{+} \Id{z})\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x} \Ax{+} \Ax{0} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{0} \Ax{+} \Id{x} \Ax{=} \Id{x}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Ax{\exists} \Id{x'} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x'} \Ax{+} \Id{x} \Ax{=} \Ax{0}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x} \Ax{*} \Id{y} \Ax{=} \=\Id{y} \Ax{*} \Id{x}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \Ax{\bullet} \=(\=\Id{x} \Ax{*} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=\Id{x} \Ax{*} (\=\Id{y} \Ax{*} \Id{z})\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x} \Ax{*} \Ax{1} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{1} \Ax{*} \Id{x} \Ax{=} \Id{x}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=(\=\Id{x} \Ax{*} \Id{z}) \Ax{+} (\=\Id{y} \Ax{*} \Id{z})\\
+\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{z} \Ax{*} (\=\Id{x} \Ax{+} \Id{y}) \Ax{=} \=(\=\Id{z} \Ax{*} \Id{x}) \Ax{+} (\=\Id{z} \Ax{*} \Id{y})\\
 \> \Ax{\forall} \=\Id{I} \Ax{:} \Id{SubSetOfRing} \\
 \> \Ax{\bullet} \=\Id{IsIdeal}(\Id{I}) \\
 \>\> \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{a}, \Id{b}, \Id{c} \Ax{:} \Id{RingElt} \\
 \>\>\> \Ax{\bullet} \=(\=(\=\Id{a} \Id{isIn} \Id{I} \Ax{\Rightarrow} \=\Id{a} \Id{isIn} \Id{S}) \Ax{\wedge} \=\Ax{0} \Id{isIn} \Id{I}) \\
 \>\>\>\> \Ax{\wedge} (\=\Id{a} \Id{isIn} \Id{I} \Ax{\wedge} \=\Id{c} \Id{isIn} \Id{S} \Ax{\Rightarrow} \=\Id{c} \Ax{*} \Id{a} \Id{isIn} \Id{I}) \\
 \>\>\>\> \Ax{\wedge} (\=\Id{a} \Id{isIn} \Id{I} \Ax{\wedge} \=\Id{b} \Id{isIn} \Id{I} \Ax{\wedge} \=\Id{c} \Id{isIn} \Id{S} \Ax{\wedge} \=\Id{b} \Ax{+} \Id{c} \Ax{=} \Ax{0} \\
-\>\>\>\>\> \Ax{\Rightarrow} \=\Id{a} \Ax{+} \Id{c} \Id{isIn} \Id{I}) \\
-\> \`{\small{}\KW{\%}(Ax14)\KW{\%}}\\
+\>\>\>\>\> \Ax{\Rightarrow} \=\Id{a} \Ax{+} \Id{c} \Id{isIn} \Id{I})\\
+\> \Ax{\forall} \Id{a} \Ax{:} \Id{RingElt}; \=\Id{A} \Ax{:} \Id{Generic} \\
+\> \Ax{\bullet} \=\Id{a} \Id{generates} \Id{A} \\
+\>\> \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{c} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{c} \Id{isIn} \Id{A} \Ax{\Rightarrow} \=\Ax{\exists} \Id{d} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{c} \Ax{=} \=\Id{a} \Ax{*} \Id{d}\\
 \> \Ax{\forall} \Id{A}, \Id{B} \Ax{:} \Id{Generic}; \=\Id{a}, \Id{b} \Ax{:} \Id{RingElt} \\
-\> \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\wedge} \=\Id{b} \Id{isIn} \Id{B} \Ax{\Rightarrow} \=\Id{a} \Ax{*} \Id{b} \Id{isIn} \=\Id{A} \Id{x} \Id{B} \`{\small{}\KW{\%}(Ax15)\KW{\%}}\\
+\> \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\wedge} \=\Id{b} \Id{isIn} \Id{B} \Ax{\Rightarrow} \=\Id{a} \Ax{*} \Id{b} \Id{isIn} \=\Id{A} \Id{x} \Id{B}\\
 \> \Ax{\forall} \=\Id{A}, \Id{B}, \Id{D} \Ax{:} \Id{Generic} \\
 \> \Ax{\bullet} \=(\=\Ax{\forall} \Id{a}, \Id{b} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\wedge} \=\Id{b} \Id{isIn} \Id{B} \Ax{\Rightarrow} \=\Id{a} \Ax{*} \Id{b} \Id{isIn} \Id{D}) \\
-\>\> \Ax{\Rightarrow} \Id{gcont}(\=\Id{A} \Id{x} \Id{B}, \Id{D}) \\
-\> \`{\small{}\KW{\%}(Ax16)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{Generic} \\
-\> \Ax{\bullet} \=\Id{gcont}(\=\Id{x}, \Id{y}) \Ax{\Leftrightarrow} \=\Ax{\exists} \Id{c} \Ax{:} \Id{Generic} \Ax{\bullet} \=\Id{x} \Ax{=} \=\Id{y} \Id{x} \Id{c} \`{\small{}\KW{\%}(Ax3)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{p} \Ax{:} \Id{Generic} \=\Ax{\bullet} \=\Id{p} \Ax{\in} \Id{SimplePrime} \Ax{\Leftrightarrow} \Id{IsPrime}(\Id{p}) \`{\small{}\KW{\%}(Ax4\Ax{\_}17)\KW{\%}}\\
+\>\> \Ax{\Rightarrow} \Id{gcont}(\=\Id{A} \Id{x} \Id{B}, \Id{D})\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{Generic} \Ax{\bullet} \=\Id{gcont}(\=\Id{x}, \Id{y}) \Ax{\Leftrightarrow} \=\Ax{\exists} \Id{c} \Ax{:} \Id{Generic} \Ax{\bullet} \=\Id{x} \Ax{=} \=\Id{y} \Id{x} \Id{c}\\
+\> \Ax{\forall} \=\Id{p} \Ax{:} \Id{Generic} \Ax{\bullet} \=\Id{p} \Ax{\in} \Id{SimplePrime} \Ax{\Leftrightarrow} \Id{IsPrime}(\Id{p})\\
 \> \Ax{\forall} \=\Id{p} \Ax{:} \Id{Generic} \\
 \> \Ax{\bullet} \=\Id{IsPrime}(\Id{p}) \\
 \>\> \Ax{\Leftrightarrow} \=(\=\Ax{\forall} \Id{a}, \Id{b} \Ax{:} \Id{Generic} \\
 \>\>\>\> \Ax{\bullet} \=\Id{gcont}(\=\Id{a} \Id{x} \Id{b}, \Id{p}) \Ax{\Rightarrow} \=\Id{gcont}(\=\Id{a}, \Id{p}) \Ax{\vee} \Id{gcont}(\=\Id{b}, \Id{p})) \\
-\>\>\> \Ax{\wedge} \Ax{\neg} \=\Id{p} \Ax{=} \Id{S} \\
-\> \`{\small{}\KW{\%}(Ax5\Ax{\_}18)\KW{\%}}\\
+\>\>\> \Ax{\wedge} \Ax{\neg} \=\Id{p} \Ax{=} \Id{S}\\
 \KW{end}
 \end{hetcasl}
