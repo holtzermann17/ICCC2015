@@ -4,24 +4,21 @@
 \subsection*{Introduction}
 One of the most fundamental concepts of modern mathematics, which is
 the basis of commutative algebra and a seminal ingredient of the
-language of schemes in modern algebraic geometry is the one of
+language of schemes in modern algebraic geometry, is that of
 \emph{prime ideal} \parencite{EGAI,eisenbud}.
 
 % Our approach to
 % blending is the one adopted by Goguen in terms of colimits
 % \parencite{Gog99,Goguen01,Gog05c}.
-
-The terminology ``prime ideal'' relates to the older notion
-of ``prime number''.  The initial aim of this work was to
-look for a blend between integers (with prime numbers) and
-the ideals of a commutative ring (without a notion of prime
-ideal), to see what would emerge.  It turned out that
-the blend process, along with providing a definition
-for prime ideals, also suggested an unexpected concept
-in the context of rings, namely the notion of Containment
-Division Ring (CDR).  In turn, this prompted questions
-and proofs about this concept --- thus running the blend
-(space prevents description of this step below).
+The terminology ``prime ideal'' relates to the older notion of ``prime
+number''. The initial aim of this work was to look for a blend between
+prime numbers (from the integers) and the ideals of a commutative
+ring, to see what would emerge. It turned out that the blend process,
+along with providing a definition for prime ideals, also suggested 
+\emph{an unexpected concept in the context of rings, namely the notion of
+Containment Division Ring (CDR)}. In turn, this prompted questions and
+proofs about this concep -- thus running the blend (space prevents
+description of this step below).
 
 We present a first blend involving weakening, followed by a second
 blend from fuller input spaces, where the emergent concept of CDR
@@ -82,7 +79,8 @@ Ideals are ``multiplied'' together using the following definition:
 %
 % Let $I,J\in {\rm Id}(R)$, then we define 
 %
-\[I\cdot_{\iota} J:=\left\{i_1\cdot j_1+...+i_n\cdot j_n:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
+\[I\cdot_{\iota} J:=\left\{\sum_{k=1}^ni_k\cdot j_k:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
+% \[I\cdot_{\iota} J:=\left\{i_1\cdot j_1+...+i_n\cdot j_n:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
 
 % With this operation ${\rm Id}(R)$ forms a commutative monoid (i.e.\ we
 % have commutativity, associativity and there exists a neutral element
@@ -122,13 +120,12 @@ just take into account only the fact that $(\mathbb{Z},*,1)$ is a
 commutative monoid.
 % Or even simpler, we only use the fact that $1$ is
 % the neutral element with the operation $*$. 
-We define also an upside-
-down divisibility relation $\dannydiv$ defined as
+We define also an upside-down divisibility relation $\dannydiv$ defined as
 %
 %\[e\dannydiv g:=g|e.\]
 $e\dannydiv g:=g|e.$
-(This makes the commonality more obvious notationally, though
-it is not necessary for the blending machinery.)
+% (This makes the commonality more obvious notationally, though
+% it is not necessary for the blending machinery.)
 % We re-write the classical divisibility relation
 % on this way in order to obtain the right primality condition on the
 %blend.  
@@ -296,7 +293,8 @@ theory defining the blend corresponds to the axioms defining a CDR
 (S), the set of all its ideals (Generic), the set all its prime ideals
 (SimplePrime) and a primality predicate (IsPrime).  We present 
 in Listing~\ref{listing:prime_colim}
-just the theory corresponding to the colimit, in order to see the
+just the theory corresponding to the colimit (with som details
+omitted). In order to see the
 complete implementation see \textbf{add pointer!!!}.
 
 % \begin{figure}[ht!]
@@ -304,7 +302,7 @@ complete implementation see \textbf{add pointer!!!}.
   \begin{listing}[!ht]
     \begin{mdframed}
      \begin{footnotesize}
-      \input{ideal_colim.pp}
+      \input{ideal_colim.pp.short}
     \end{footnotesize}
   \end{mdframed}
     \caption{Colimit for prime ideals over CDR-s}

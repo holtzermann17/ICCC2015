@@ -1,0 +1,59 @@
+\begin{hetcasl}
+% \KW{library} \Id{ideal\Ax{\_}colim}\\
+% \\
+% \KW{logic} \SId{CASL}\Id{\Ax{.}}\SId{SulFOL=}\\
+% \\
+\SPEC \=\SIdIndex{Spec} \Ax{=}\\
+\> \SORTS \=\Id{Generic}, \Id{RingElt}, \Id{SimplePrime}, \Id{SubSetOfRing}\\
+\> \SORTS \=\Id{SimplePrime} \Ax{<} \Id{Generic},Id{Generic} \Ax{<} \Id{SubSetOfRing}\\
+\> \OPS \=\Ax{0,1,S} \Ax{:} \Id{RingElt}\\
+% \> \OP \=\Ax{1} \Ax{:} \Id{RingElt}\\
+% \> \OP \=\Id{S} \Ax{:} \Id{Generic}\\
+\> \OP \=\Ax{\_\_}\Ax{*}\Ax{\_\_} \Ax{:} \=\Id{RingElt} \Ax{\times} \Id{RingElt} \Ax{\rightarrow} \Id{RingElt}\\
+\> \OP \=\Ax{\_\_}\Ax{+}\Ax{\_\_} \Ax{:} \=\Id{RingElt} \Ax{\times} \Id{RingElt} \Ax{\rightarrow} \Id{RingElt}\\
+\> \OP \=\Ax{\_\_}\Id{x}\Ax{\_\_} \Ax{:} \=\Id{Generic} \Ax{\times} \Id{Generic} \Ax{\rightarrow} \Id{Generic}\\
+\> \PRED \=\Id{IsIdeal} \Ax{:} \Id{SubSetOfRing}\\
+\> \PRED \=\Id{IsPrime} \Ax{:} \Id{Generic}\\
+\> \PRED \=\Ax{\_\_}\Id{isIn}\Ax{\_\_} \Ax{:} \=\Id{RingElt} \Ax{\times} \Id{SubSetOfRing}\\
+\> \PRED \=\Id{gcont} \Ax{:} \=\Id{Generic} \Ax{\times} \Id{Generic}\\
+\> \PRED \=\Ax{\_\_}\Id{generates}\Ax{\_\_} \Ax{:} \=\Id{RingElt} \Ax{\times} \Id{Generic}\\
+\> \Ax{\forall} \=\Id{I} \Ax{:} \Id{SubSetOfRing} \Ax{\bullet} \=\Id{I} \Ax{\in} \Id{Generic} \Ax{\Leftrightarrow} \Id{IsIdeal}(\Id{I})\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Generic} \Ax{\bullet} \=\Id{x} \Id{x} \Id{S} \Ax{=} \Id{x}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{Generic} \Ax{\bullet} \=\Id{S} \Id{x} \Id{x} \Ax{=} \Id{x}\\
+\> \Ax{\forall} \=\Id{A}, \Id{B} \Ax{:} \Id{Generic} \\
+\> \Ax{\bullet} \=\Id{gcont}(\=\Id{A}, \Id{B}) \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{a} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\Rightarrow} \=\Id{a} \Id{isIn} \Id{B}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x} \Ax{+} \Id{y} \Ax{=} \=\Id{y} \Ax{+} \Id{x}\\
+\> \KW{\%\%} \emph{and further ring axioms} \dots \\
+% \> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{+} \Id{z} \Ax{=} \=\Id{x} \Ax{+} (\=\Id{y} \Ax{+} \Id{z})\\
+% \> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x} \Ax{+} \Ax{0} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{0} \Ax{+} \Id{x} \Ax{=} \Id{x}\\
+% \> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Ax{\exists} \Id{x'} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x'} \Ax{+} \Id{x} \Ax{=} \Ax{0}\\
+% \> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x} \Ax{*} \Id{y} \Ax{=} \=\Id{y} \Ax{*} \Id{x}\\
+% \> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \Ax{\bullet} \=(\=\Id{x} \Ax{*} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=\Id{x} \Ax{*} (\=\Id{y} \Ax{*} \Id{z})\\
+% \> \Ax{\forall} \=\Id{x} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{x} \Ax{*} \Ax{1} \Ax{=} \Id{x} \Ax{\wedge} \=\Ax{1} \Ax{*} \Id{x} \Ax{=} \Id{x}\\
+% \> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \Ax{\bullet} \=(\=\Id{x} \Ax{+} \Id{y}) \Ax{*} \Id{z} \Ax{=} \=(\=\Id{x} \Ax{*} \Id{z}) \Ax{+} (\=\Id{y} \Ax{*} \Id{z})\\
+% \> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{z} \Ax{*} (\=\Id{x} \Ax{+} \Id{y}) \Ax{=} \=(\=\Id{z} \Ax{*} \Id{x}) \Ax{+} (\=\Id{z} \Ax{*} \Id{y}) \\
+\> \Ax{\forall} \=\Id{I} \Ax{:} \Id{SubSetOfRing} \\
+\> \Ax{\bullet} \=\Id{IsIdeal}(\Id{I}) \\
+\>\> \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{a}, \Id{b}, \Id{c} \Ax{:} \Id{RingElt} \\
+\>\>\> \Ax{\bullet} \=(\=(\=\Id{a} \Id{isIn} \Id{I} \Ax{\Rightarrow} \=\Id{a} \Id{isIn} \Id{S}) \Ax{\wedge} \=\Ax{0} \Id{isIn} \Id{I}) \\
+\>\>\>\> \Ax{\wedge} (\=\Id{a} \Id{isIn} \Id{I} \Ax{\wedge} \=\Id{c} \Id{isIn} \Id{S} \Ax{\Rightarrow} \=\Id{c} \Ax{*} \Id{a} \Id{isIn} \Id{I}) \\
+\>\>\>\> \Ax{\wedge} (\=\Id{a} \Id{isIn} \Id{I} \Ax{\wedge} \=\Id{b} \Id{isIn} \Id{I} \Ax{\wedge} \=\Id{c} \Id{isIn} \Id{S} \Ax{\wedge} \=\Id{b} \Ax{+} \Id{c} \Ax{=} \Ax{0} \\
+\>\>\>\>\> \Ax{\Rightarrow} \=\Id{a} \Ax{+} \Id{c} \Id{isIn} \Id{I})\\
+\> \Ax{\forall} \Id{a} \Ax{:} \Id{RingElt}; \=\Id{A} \Ax{:} \Id{Generic} \\
+\> \KW{\%\%} \emph{and axioms for \Ax{generates} and \Ax{x}} \dots \\
+% \> \Ax{\bullet} \=\Id{a} \Id{generates} \Id{A} \\
+% \>\> \Ax{\Leftrightarrow} \=\Ax{\forall} \Id{c} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{c} \Id{isIn} \Id{A} \Ax{\Rightarrow} \=\Ax{\exists} \Id{d} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{c} \Ax{=} \=\Id{a} \Ax{*} \Id{d}\\
+% \> \Ax{\forall} \Id{A}, \Id{B} \Ax{:} \Id{Generic}; \=\Id{a}, \Id{b} \Ax{:} \Id{RingElt} \\
+% \> \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\wedge} \=\Id{b} \Id{isIn} \Id{B} \Ax{\Rightarrow} \=\Id{a} \Ax{*} \Id{b} \Id{isIn} \=\Id{A} \Id{x} \Id{B}\\
+% \> \Ax{\forall} \=\Id{A}, \Id{B}, \Id{D} \Ax{:} \Id{Generic} \\
+% \> \Ax{\bullet} \=(\=\Ax{\forall} \Id{a}, \Id{b} \Ax{:} \Id{RingElt} \Ax{\bullet} \=\Id{a} \Id{isIn} \Id{A} \Ax{\wedge} \=\Id{b} \Id{isIn} \Id{B} \Ax{\Rightarrow} \=\Id{a} \Ax{*} \Id{b} \Id{isIn} \Id{D}) \\
+% \>\> \Ax{\Rightarrow} \Id{gcont}(\=\Id{A} \Id{x} \Id{B}, \Id{D})\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{Generic} \Ax{\bullet} \=\Id{gcont}(\=\Id{x}, \Id{y}) \Ax{\Leftrightarrow} \=\Ax{\exists} \Id{c} \Ax{:} \Id{Generic} \Ax{\bullet} \=\Id{x} \Ax{=} \=\Id{y} \Id{x} \Id{c}\\
+\> \Ax{\forall} \=\Id{p} \Ax{:} \Id{Generic} \Ax{\bullet} \=\Id{p} \Ax{\in} \Id{SimplePrime} \Ax{\Leftrightarrow} \Id{IsPrime}(\Id{p})\\
+\> \Ax{\forall} \=\Id{p} \Ax{:} \Id{Generic} \\
+\> \Ax{\bullet} \=\Id{IsPrime}(\Id{p}) \\
+\>\> \Ax{\Leftrightarrow} \=(\=\Ax{\forall} \Id{a}, \Id{b} \Ax{:} \Id{Generic} \\
+\>\>\>\> \Ax{\bullet} \=\Id{gcont}(\=\Id{a} \Id{x} \Id{b}, \Id{p}) \Ax{\Rightarrow} \=\Id{gcont}(\=\Id{a}, \Id{p}) \Ax{\vee} \Id{gcont}(\=\Id{b}, \Id{p})) \\
+\>\>\> \Ax{\wedge} \Ax{\neg} \=\Id{p} \Ax{=} \Id{S}\\
+\KW{end}
+\end{hetcasl}
