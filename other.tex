@@ -10,15 +10,15 @@ concepts. A more ambitious aim of the approach of applying blending to
 the problem of computational creativity in mathematics, is to allow
 search to be done over multiple blends and for the {\em process} of
 blending to be controlled mechanically. In this section we describe
-very informally a mathematical domain to which a process of blends may
-be appicable.
+very informally a mathematical domain that seems in
+some ways a natural candidate for a blending approach.
 
 \subsection{Galois Theory}
 
-This example is developed in a less formal manner than the previous.
-It is included both to highlight some outstanding technical issues,
-and to develop some broader theoretical points about the future
-prospects and applications of our approach.  
+%% This example is developed in a less formal manner than the previous.
+%% It is included both to highlight some outstanding technical issues,
+%% and to develop some broader theoretical points about the future
+%% prospects and applications of our approach.  
 
 In its most straightforward formulation, Galois theory develops a
 relationship between a polynomial $f(x)$ with coefficients in some
@@ -92,18 +92,25 @@ make up the polynomial $f$ and fixes its coefficients, therefore
 $\varphi f(r)=f(\varphi r)$.  Chaining the equalities together, we
 have $f(\varphi r)=0$.
 
-In short, the proof is a fairly direct result of combining ``what it
-means to be a root,'' ``what it means to be an automorphism,''
-``what it means to say that the automorphism fixes elements of $F$,''
-and
-``what it means to be a polynomial with coefficients in the
-field $F$.''
-Indeed, the proof is in some sense the only thing it could be if one
-knows the definitions.  
+In short, the proof is a fairly direct result of combining the
+definitions.  \textcite{Goguen92sheafsemantics} suggests that
+``combination is colimit.''  Can we realise the proof through (one or
+several) colimit operations?  And is there anything special about this
+proof?  Apart from these more theoretical questions, the foregoing
+discussion raises the following technical issues:
 
-\textcite{Goguen92sheafsemantics} suggests that ``combination is
-colimit.''  Can we realise the proof through (one or several) colimit
-operations?  And is there anything special about this proof?
+\begin{description}
+\item[Field Extension] When reasoning about polynomials, it is useful
+  to distinguish the three separate types -- those of $E$, those of
+  $F$ and those of $E/F$ as a supertype. Using blending machinery
+  removes the distinction between these types.
+\item[Splitting Field Extension Theorem] A challenging but creative
+  step is to discover the theorem that extending $F$ {\em only} with
+  the roots of $f(x)$ forms a field.
+\item[Automorphisms] Currently there is no way of computing colimits
+  with higher order symbols mechanically, so we are constrained to do
+  this on paper.
+\end{description}
 
 % \input{other-issues}
 
