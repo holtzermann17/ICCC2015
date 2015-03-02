@@ -1,9 +1,29 @@
 \section{Evaluation and Outlook}
 \label{sec:eval}
 
+\subsection{Review of the current offering}
+
+\begin{itemize}
+\item[(a)] We began the paper with the reconstruction of certain
+mathematical objects, showing the technical feasibility of the
+approach. 
+\item[(b)] The more advanced example at the centre of the paper
+  illustrates how this sort of reconstruction relates to mathematical
+  practice.
+\item[(c)] A future-oriented example exposes some technical
+  challenges, while suggesting that blending could offer a novel
+  approach to computer mathematics.
+\end{itemize}
+
+\subsection{Broader issues in evaluation}
+
 In addition to motivating a further investigation of the role blending
 can play in proofs, Galois theory, discussed above, is paradigmatic
-for other reasons.
+for other reasons.  This discussion draws on the early 20th Century
+writings of Albert Lautman on the philosophy of mathematics and the
+subsequent interpretation of this work by Gilles Deleuze.  It uses
+these ideas to propose an approach to embedding evaluation within the
+system itself.
 
 As Lautman writes in ``Ascent towards the Absolute'' \cite[p. 126]{lautman2011mathematics}:
 \begin{quote}
@@ -13,14 +33,14 @@ term of the ascent.
 \end{quote}
 
 This is reminiscent of our notion of coherence criteria that apply to
-the blend.  For example, it seems useful to imagine that we would
-progressively move from porcupine+lion to the perfected
+the blend.  To illustrate, let us briefly imagine how we would use
+blending techniques to move from porcupine+lion to the perfected
 \emph{porculione}.  Here, instead of field automorphisms that preserve
-the structure of the base field, we would look at mappings that
-preserve other properties that exist in the underlying domain.
-Porculiones would have four feet, would be mammals, and would
-presumably be omnivores with a preference for the taste of well-cured
-game.
+mathematical structure and fix certain designated elements, we would
+look for mappings that preserve other properties that exist in the
+underlying domain.  Porculiones would presumably have four feet, would
+be mammals, and would be omnivores; they should also be viable living
+creatures.
 
 \cite[pp. 227--228]{deleuze1994difference} follows
 Lautman in enthusiastically endorsing the Galoisian approach to
@@ -54,27 +74,35 @@ master already knows the solution and provides the necessary
 adjunctions.''
 
 However, this apparent infelicity may be less of a thick obstacle than
-it would initially appear.  What seems to be most needed in the system
-is a notion of \emph{question}, which would recover Lautman's basic
+it would initially appear.  What seems to be most needed is a notion of a \emph{question} inside the system.  This would recover Lautman's basic
 thrust: ``Scientific or not, every question has built in some
 assumptions about the form of the answer'' \cite{larvor2011albert}.
-Furthermore, an experimental approach would allow us to embed
-evaluation in the system itself.  
+In short, an experimental approach that allows the system to ask
+and answer questions would embed key aspects evaluation in the system itself.
 
-In this connection, the ideas discussed above about blends as steps in
-a proof would provide a useful training ground for further
-development.  It would certainly be possible to conceptualise
-\emph{modus ponens} or \emph{modus tollens}, etc., as rules for
-creating blends, but the ability to detect which items to blend is
-also critically important.  \cite{AbrSad14} develops a category
-theoretical approach to linguistic anaphora that could be useful for
-the purpose of fitting different mathematical ``components'' together
-in a sensible manner.  \cite{DBLP:journals/corr/GanesalingamG13} is a
-recently developed system that uses a Logic of Computable Functions
-approach to prove simple theorems.  A system that could selectively
-experiment with the rules it uses and learn to associate different
-techniques with different types of problems would be a useful
-synthesis of these ideas.
+\subsection{Future work}
+
+The idea of blending as steps in a proof would provide a useful
+training ground for further development.  The primary problem is: If
+blending is the realisation of ``combinatorial creativity'' how will
+we avoid being swamped by the combinatorial explosion of possible
+things to combine?
+%
+Here we can draw inspiration from two other recent projects that deal with
+related concerns.
+\cite{AbrSad14} develops a category theoretical approach to linguistic
+anaphora that could be useful for the purpose of fitting different
+mathematical components together in a sensible manner.
+\cite{DBLP:journals/corr/GanesalingamG13} is a recently developed
+system that uses a Logic of Computable Functions approach to prove
+simple theorems, and that writes up its proofs in natural language.
+%
+Both systems are able to manage potential combinatorial explosion
+in lingustic (and mathematical) content in a systematic manner.
+%
+A system that could selectively experiment with the rules it uses and
+learn to associate different techniques with different types of
+problems would be a useful synthesis and extension of these ideas.
 
 %%% Local Variables: 
 %%% mode: latex
