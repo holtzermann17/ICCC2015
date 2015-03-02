@@ -164,16 +164,17 @@ computed colimit. The only type existing within the colimit is from now
 on referred to as $\mathbb{Z}$ to distinguish it from the natural
 numbers. Notice that in the colimit it holds that:
 \begin{eqnarray*}
-\forall x: \mathbb{Z}. \neg 0 &=&s(x)\\
-\forall x:\mathbb{Z}.\;s(s^{-1}) x &=& x
+\forall x: \mathbb{Z}. \neg\; 0 &=&s(x)\\
+\forall x:\mathbb{Z}.\;s(s^{-1}( x)) &=& x
 \end{eqnarray*}
-This is an inconsistency as the second axiom states there must be an
+This is an inconsistency, as from the second axiom we see 
+that there is an
 element for which 0 is the successor.
 
 {\bf Weakening} refers to the process of weakening the input
 theories by removing symbols or axioms. If we remove the axiom 
 $$
-\forall x: \mathbb{N}. \neg 0 = s(x)
+\forall x: \mathbb{N}. \neg\; 0 = s(x)
 $$
 then the resulting computed colimit contains a mathematical theory
 which is consistent.  An algorithm for computing all maximally
@@ -188,11 +189,11 @@ axioms exists
 \begin{eqnarray*}
 \forall x,y:\mathbb{Z}. s(x) + y &=& s(x+y)
 \end{eqnarray*}
-but we also need the axiom
+but we also are interested in additional axioms such as
 \begin{eqnarray*}
 \forall x,y:\mathbb{Z}. s^{-1}(x) + y &=& s^{-1}(x+y)
 \end{eqnarray*}
-Finding these axioms is an example of running the blend, and from which it
+Finding suitable axioms is an example of running the blend, and from which it
 is possible to discover and prove 
 %such 
 theorems such as
