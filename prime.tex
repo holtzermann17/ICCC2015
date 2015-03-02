@@ -13,11 +13,11 @@ language of schemes in modern algebraic geometry, is that of
 The terminology ``prime ideal'' relates to the older notion of ``prime
 number''. The initial aim of this work was to look for a blend between
 prime numbers (from the integers) and the ideals of a commutative
-ring, to see what would emerge. It turned out that the blend process,
-along with providing a definition for prime ideals, also suggested 
-\emph{an unexpected concept in the context of rings, namely the notion of
+ring, to see what would emerge. It turned out that \emph{the blend process},
+along with providing a definition for prime ideals, also \emph{suggested 
+an unexpected concept in the context of rings, namely the notion of
 Containment Division Ring (CDR)}. In turn, this prompted questions and
-proofs about this concep -- thus running the blend (space prevents
+proofs about this concept -- thus running the blend (space prevents
 description of this step below).
 
 We present a first blend involving weakening, followed by a second
@@ -58,7 +58,7 @@ appears.
 % (CASL) \parencite{BidoitMosses2004}.
 \subsection{The first conceptual space}
 Let $(R,+.*,0,1)$ be a commutative ring with unity (see the formal
-definition and examples in \cite{eisenbud}. Now, $R$ can be understood
+definition and examples in \textcite{eisenbud}). Now, $R$ can be understood
 as the sort containing the elements of the corresponding commutative
 ring with unity.  An ideal $I$ is a subset of $R$ satisfying the
 following axiom:
@@ -69,7 +69,7 @@ on the set (sort) of subsets of $P(R)$ corresponding to this definition.
 % , as follows: $isideal(I)$
 % if and only if $I$ is an ideal of $R$.
 Now, we define
-\[{\rm Id}(R)=\left\{A\subseteq R: isideal(A) \right\}.\]
+\[{\rm Id}(R)=\left\{A \in P(R) : isideal(A) \right\}.\]
 % Here, ${\rm Spec}_IR$ is considered as a subsort of the sort $P(R)$.
 
 Ideals are ``multiplied'' together using the following definition:
@@ -79,8 +79,17 @@ Ideals are ``multiplied'' together using the following definition:
 %
 % Let $I,J\in {\rm Id}(R)$, then we define 
 %
-\[I\cdot_{\iota} J:=\left\{\sum_{k=1}^ni_k\cdot j_k:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
-% \[I\cdot_{\iota} J:=\left\{i_1\cdot j_1+...+i_n\cdot j_n:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
+
+\begin{adjustbox}{width=\columnwidth}
+  \(
+  \displaystyle
+  I\cdot_{\iota} J=\left\{\sum_{k=1}^ni_k\cdot j_k:n \in \mathbb{N}
+  \wedge i_1, \ldots, i_n\in I \wedge j_1, \ldots, j_n\in J \right\}.
+  \)
+\end{adjustbox}
+%\[I\cdot_{\iota} J=\left\{\sum_{k=1}^ni_k\cdot j_k:n \in \mathbb{N} \wedge i_1, \ldots, i_n\in I \wedge j_1, \ldots, j_n\in J \right\}.\]
+%\[I\cdot_{\iota} J=\left\{\sum_{k=1}^ni_k\cdot j_k:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
+% \[I\cdot_{\iota} J=\left\{i_1\cdot j_1+...+i_n\cdot j_n:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
 
 % With this operation ${\rm Id}(R)$ forms a commutative monoid (i.e.\ we
 % have commutativity, associativity and there exists a neutral element
@@ -134,9 +143,10 @@ follows: for all $p\in \mathbb{Z}$, $isprime(p)$ holds if $p\neq 1$
 % and the following (primality) condition holds:
 and:
 %
-\[(\forall a,b\in \mathbb{Z})(ab \dannydiv p)\rightarrow (a \dannydiv p \vee b \dannydiv p).\] 
+\[(\forall a,b\in \mathbb{Z})\: \bigl( (ab \dannydiv p)\rightarrow (a \dannydiv p \vee b \dannydiv p) \bigr).\] 
+%\[(\forall a,b\in \mathbb{Z})\: ( (ab \dannydiv p)\rightarrow (a \dannydiv p \vee b \dannydiv p) ).\] 
 Besides, we define the set (sort) of the prime numbers as 
-\[ Prime=\left\{ p\in \mathbb{Z}/ isprime(p)\right\}\]
+\[ Prime=\left\{ p\in \mathbb{Z}: isprime(p)\right\}\]
 % Now, it is an
 % elementary fact to see that this condition is an equivalent form of
 % the standard definition of prime number given in the classical number
@@ -180,13 +190,11 @@ the morphism to $\mathbb{G}$ uses:\\ $\delta(G)=\mathbb{Z}, \delta(*_G)=*,
 
 A straightforward colimit construction based on the input and generic
 spaces above yields a consistent space with properties inherited both
-from the integers and from the ideals; one of the concepts is a notion
-of prime applicable to ideals, another is that of CDR.
-
-Here we describe briefly a weakening of the given spaces
-that makes the resultant blend more generally applicable;
-we subsequently look at the enrichment of the ideal space
-with the notion of CDR.
+from the prime elements into the integers and from the ideals of
+commutative rings; one of the concepts is a notion of prime ideals,
+another is that of CDR, treated in the next section. Here we describe
+briefly a weakening of the given spaces that makes the resultant blend
+more generally applicable.
 
 % In the everyday research of the working mathematician it happens
 % frequently that one starts to develop general theoretical frameworks
@@ -267,11 +275,12 @@ $S$.
 % class of CDR-s could be an intermediate new class of rings.
 
 % In this section we reconstruct the conceptual space of prime ideals of
-In this section we construct the conceptual space of prime ideals of
-a CDR as a blend of the conceptual space of ideals
-of a commutative ring with unity and the conceptual space of prime
-elements of a very general version of the integers given exactly as
-the second conceptual space of the former section.
+    In this section we construct the concept of prime ideal over a CDR as a    
+    blend of the conceptual space of ideals of a commutative ring with         
+    unity and the conceptual space of the former second conceptual space where
+    the axiom defining the upside-down divisibility          
+    relation is restored.
+
 
 It is worth mentioning again that the definition of CDR-s was obtained after
 doing this implementation and therefore it could be seen as a form of
@@ -293,9 +302,8 @@ theory defining the blend corresponds to the axioms defining a CDR
 (S), the set of all its ideals (Generic), the set all its prime ideals
 (SimplePrime) and a primality predicate (IsPrime).  We present 
 in Listing~\ref{listing:prime_colim}
-just the theory corresponding to the colimit (with som details
-omitted). In order to see the
-complete implementation see \textbf{add pointer!!!}.
+just the theory corresponding to the colimit (with some details
+omitted). 
 
 % \begin{figure}[ht!]
 % 
