@@ -132,7 +132,7 @@ commutative monoid.
 We define also an upside-down divisibility relation $\dannydiv$ defined as
 %
 %\[e\dannydiv g:=g|e.\]
-$e\dannydiv g:=g|e.$
+$e\dannydiv g:=g|e$,  i.e.\ there exists an integer $c$ such that $e=cg$.
 % (This makes the commonality more obvious notationally, though
 % it is not necessary for the blending machinery.)
 % We re-write the classical divisibility relation
@@ -192,9 +192,13 @@ A straightforward colimit construction based on the input and generic
 spaces above yields a consistent space with properties inherited both
 from the prime elements into the integers and from the ideals of
 commutative rings; one of the concepts is a notion of prime ideals,
-another is that of CDR, treated in the next section. Here we describe
-briefly a weakening of the given spaces that makes the resultant blend
-more generally applicable.
+another is that of CDR.%
+\footnote{A ring $R$ is a Containment Division Ring (CDR) if for all
+  ideals $I$ and $J$ of $R$, $I \subseteq J$ if and only if $J$
+  divides $I$ (i.e.\ there exists an ideal $U$ such that
+  $I=U\cdot_{\iota}J$).}  
+Here we describe briefly a weakening of the
+given spaces that makes the resultant blend more generally applicable.
 
 % In the everyday research of the working mathematician it happens
 % frequently that one starts to develop general theoretical frameworks
@@ -235,7 +239,7 @@ any element $P \in G$
 (i.e., an ideal of $S$) satisfies the predicate $isprime$ if and only
 if
 \begin{align*}
-P\neq S \wedge (\forall X,Y\in G={\rm Id}(S)) & (X\cdot_{\alpha}Y\subseteq P\\
+P\neq S \wedge (\forall X,Y\in G={\rm Id}(S)) & (X\cdot_{\iota}Y\subseteq P\\
                              & \rightarrow (X\subseteq P \vee Y\subseteq P)).
 \end{align*}
 

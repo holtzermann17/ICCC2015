@@ -115,8 +115,8 @@ A theory $G$ common to both may contain a function
 $\lambda x:\sigma.\;g(x)$. When we show a mapping in this paper we write this
 as
 \begin{align}
-s&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&g&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&f\\
-\mathbb{N}&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&\sigma&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&X
+s&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&func&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&f\\
+\SIdIndex{NAT}&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&N&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&X
 \end{align}
 \noindent The mapping $\phi(G,\SIdIndex{NAT})$ is a signature morphism from
 $G$ to $\SIdIndex{NAT}$. Note that associated types are also mapped.
@@ -225,7 +225,18 @@ the common source conceptual space.  Moreover, we will be using the
 HETS system \parencite{MossakowskiEA06} to compute such colimits.
 The code for the implemented examples is this paper
 is available on-line.%
-\footnote{See: \texttt{\url{https://github.com/ewenmaclean/ICCC_hetsfiles}}}
+\footnote{See: \texttt{\url{https://github.com/ewenmaclean/ICCC2015_hetsfiles}}}
+
+The use of CASL specifications means that we deal with first-order
+logic; CASL is supported in the HETS system, and colimits here can be
+computed in the current implementation of HETS. Although higher-order
+logic (with Henkin semantics) is available in HETS (indeed in CASL)
+and the colimits are well-known to exist (because higher-order in this
+form is reducible to many-sorted first-order logic), it is worth
+noticing that the calculus of such colimits is not currently available
+in HETS.  This restricts the formalisms that can be used directly for
+our purposes, where computation of colimits is central to our
+approach.
 
 
 %%% Local Variables: 
