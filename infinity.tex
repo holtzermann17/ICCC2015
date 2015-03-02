@@ -41,7 +41,7 @@ integers. Let us assume a simple partial axiomatisation of the natural
 numbers (without order axioms) as shown in Listing \ref{fig:nats}, and
 call this theory $\SIdIndex{Nat}$. Now let us also define a simple theory
 which introduces the concept of a function with an inverse as shown in
-Listing \ref{fig:inv}, and call this theory $\mathbb{F}$. 
+Listing \ref{fig:inv}, and call this theory $\SIdIndex{Func}$. 
 \begin{listing}[!ht]
 \begin{mdframed}
 \begin{hetcasl}
@@ -182,7 +182,7 @@ This generates the theory shown in Listing \ref{fig:inconsistentintegers}.
 This theory is automatically determined to be inconsistent due to the axioms
 \begin{eqnarray}
 \forall x : \mathbb{Z} . \neg s(x) &=& 0 \label{eq:limnat1}\\
-s(p(x)) &=& x \label{eq:sucpre}
+\forall x : \mathbb{Z} . s(p(x)) &=& x \label{eq:sucpre}
 \end{eqnarray}
 Removal of the limiting axiom (\ref{eq:limnat1}) results in a theory which is very
 similar to what we understand to be the integers as shown in Listing~\ref{fig:integers}.
