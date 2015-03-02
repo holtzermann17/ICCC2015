@@ -91,9 +91,9 @@ colimit (also known as pushout).
 We can use the
 HDTP system \parencite{GustKS2006,Schmidt2010} to discover a common theory
 and signature morphism between symbols in the
-two theories $\SIdIndex{Nat}$ and $\SIdIndex{Fun}$. The Generic theory
+two theories $\SIdIndex{Nat}$ and $\SIdIndex{Func}$. The Generic theory
 contains a sort $N$ and a function $func$, and the morphisms from the
-Generic theory to $\SIdIndex{N}$ and $\SIdIndex{Fun}$ are:
+Generic theory to $\SIdIndex{N}$ and $\SIdIndex{Func}$ are:
 \begin{align}
 %s&&\leftarrow_{g_\SIdIndex{Nat}}&&func&&\rightarrow_{g_\SIdIndex{Func}}&&f\\
 %Nat&&\leftarrow_{g_\SIdIndex{Nat}}&&N&&\rightarrow_{g_\SIdIndex{Func}}&&X
@@ -101,10 +101,10 @@ s&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&func&&\rightarrow_{\phi(G,\SIdIndex{FUNC
 Nat&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&N&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&X
 \end{align}
 Here the successor function is identified in the mapping with the
-function in the theory $\SIdIndex{Fun}$, and $g_K$ (where $K$ is either
+function in the theory $\SIdIndex{Func}$, and $g_K$ (where $K$ is either
 $\SIdIndex{NAT}$ or $\SIdIndex{FUNC}$) is the label for
 the set of symbol mappings determined by the signature morphism from
-the Generic space the theory $K$.
+the Generic space to the theory $K$.
 
 \subsubsection{Computing the Colimit}
 The HETS system \parencite{MossakowskiEA06} can then be exploited to
@@ -113,10 +113,10 @@ find a new theory by computing the colimit:
 %  \begin{diagram}[size=7mm]
 %    &       &   $Gen$   &       & \\
 %    & \ldTo^{\rotatebox{-45}{$g_\SIdIndex{Nat}$}} &       &
-%    \rdTo^{\rotatebox{45}{$g_\SIdIndex{Fun}$}} &          \\
-%    \SIdIndex{Nat} &       &   &       & \SIdIndex{Fun} \\
+%    \rdTo^{\rotatebox{45}{$g_\SIdIndex{Func}$}} &          \\
+%    \SIdIndex{Nat} &       &   &       & \SIdIndex{Func} \\
 %    & \rdTo_{\rotatebox{45}{$b_\SIdIndex{Nat}$}} &       &
-%    \ldTo_{\rotatebox{-45}{$b_\SIdIndex{Fun}$}} &  \\
+%    \ldTo_{\rotatebox{-45}{$b_\SIdIndex{Func}$}} &  \\
 %    & & $Blend$ & &
 %  \end{diagram}
 %\end{center}
