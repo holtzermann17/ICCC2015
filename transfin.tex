@@ -86,7 +86,7 @@ which includes new features taken from both of the
 input spaces.  This blend is \emph{inconsistent}, for the
 following two reasons:
 \begin{enumerate}
-\item the number of states is finite (from \textbf{FinEnd}, and infinite
+\item the number of states is finite (from \textbf{FinEnd}), and infinite
 (from \textbf{Fin});
 \item  there both is an end state (from \textbf{FinEnd}
 and is no end state (from \textbf{Fin}).
@@ -117,8 +117,17 @@ gives a theory corresponding to this diagram:
 \end{center}
 Thus we have a blend as in the earlier examples:
 
+%\begin{center}
+%  \begin{tikzcd}[column sep=normal, row sep=small]
+%    & \textrm{Colimit}
+%    \\
+%    \SIdIndex{W-FinEnd} \arrow{ur}{} & & \SIdIndex{W-Inf} \arrow{ul}[swap]{} \\
+%    & \textrm{Gen} \arrow{ul}{}
+%    \arrow{ur}[swap]{}
+%  \end{tikzcd}
+%\end{center}
 \begin{center}
-  \begin{tikzcd}[column sep=normal, row sep=small]
+  \begin{tikzcd}[column sep=small, row sep=tiny]
     & \textrm{Colimit}
     \\
     \SIdIndex{W-FinEnd} \arrow{ur}{} & & \SIdIndex{W-Inf} \arrow{ul}[swap]{} \\

@@ -92,8 +92,9 @@ We can use the
 HDTP system \parencite{GustKS2006,Schmidt2010} to discover a common theory
 and signature morphism between symbols in the
 two theories $\SIdIndex{Nat}$ and $\SIdIndex{Func}$. The Generic theory
+$\SIdIndex{Gen}$
 contains a sort $N$ and a function $func$, and the morphisms from the
-Generic theory to $\SIdIndex{N}$ and $\SIdIndex{Func}$ are:
+Generic theory to $\SIdIndex{Nat}$ and $\SIdIndex{Func}$ are:
 \begin{align}
 %s&&\leftarrow_{g_\SIdIndex{Nat}}&&func&&\rightarrow_{g_\SIdIndex{Func}}&&f\\
 %Nat&&\leftarrow_{g_\SIdIndex{Nat}}&&N&&\rightarrow_{g_\SIdIndex{Func}}&&X
@@ -109,25 +110,35 @@ the Generic space to the theory $K$.
 \subsubsection{Computing the Colimit}
 The HETS system \parencite{MossakowskiEA06} can then be exploited to
 find a new theory by computing the colimit:
+%%\begin{center}
+%%  \begin{diagram}[size=7mm]
+%%    &       &   $Gen$   &       & \\
+%%    & \ldTo^{\rotatebox{-45}{$g_\SIdIndex{Nat}$}} &       &
+%%    \rdTo^{\rotatebox{45}{$g_\SIdIndex{Func}$}} &          \\
+%%    \SIdIndex{Nat} &       &   &       & \SIdIndex{Func} \\
+%%    & \rdTo_{\rotatebox{45}{$b_\SIdIndex{Nat}$}} &       &
+%%    \ldTo_{\rotatebox{-45}{$b_\SIdIndex{Func}$}} &  \\
+%%    & & $Blend$ & &
+%%  \end{diagram}
+%%\end{center}
 %\begin{center}
-%  \begin{diagram}[size=7mm]
-%    &       &   $Gen$   &       & \\
-%    & \ldTo^{\rotatebox{-45}{$g_\SIdIndex{Nat}$}} &       &
-%    \rdTo^{\rotatebox{45}{$g_\SIdIndex{Func}$}} &          \\
-%    \SIdIndex{Nat} &       &   &       & \SIdIndex{Func} \\
-%    & \rdTo_{\rotatebox{45}{$b_\SIdIndex{Nat}$}} &       &
-%    \ldTo_{\rotatebox{-45}{$b_\SIdIndex{Func}$}} &  \\
-%    & & $Blend$ & &
-%  \end{diagram}
+%  \begin{tikzcd}[column sep=normal, row sep=small]
+%    & \SIdIndex{Blend}
+%    \\
+%    \SIdIndex{NAT} \arrow{ur}{b_\SIdIndex{NAT}} & & \SIdIndex{FUNC}
+%    \arrow{ul}[swap]{b_\SIdIndex{FUNC}} \\
+%    & \SIdIndex{Gen} \arrow{ul}{g_\SIdIndex{NAT}}
+%    \arrow{ur}[swap]{g_\SIdIndex{FUNC}}
+%  \end{tikzcd}
 %\end{center}
 \begin{center}
-  \begin{tikzcd}[column sep=normal, row sep=small]
+  \begin{tikzcd}[column sep=small, row sep=tiny]
     & \SIdIndex{Blend}
     \\
-    \SIdIndex{NAT} \arrow{ur}{b_\SIdIndex{NAT}} & & \SIdIndex{FUNC}
-    \arrow{ul}[swap]{b_\SIdIndex{FUNC}} \\
-    & \SIdIndex{Gen} \arrow{ul}{g_\SIdIndex{NAT}}
-    \arrow{ur}[swap]{g_\SIdIndex{FUNC}}
+    \SIdIndex{NAT} \arrow{ur} & & \SIdIndex{FUNC}
+    \arrow{ul} \\
+    & \SIdIndex{Gen} \arrow{ul}
+    \arrow{ur}
   \end{tikzcd}
 \end{center}
 This generates the theory shown in Listing \ref{fig:inconsistentintegers}.
@@ -184,7 +195,10 @@ This theory is automatically determined to be inconsistent due to the axioms
 \forall x : \mathbb{Z} . \neg s(x) &=& 0 \label{eq:limnat1}\\
 \forall x : \mathbb{Z} . s(p(x)) &=& x \label{eq:sucpre}
 \end{eqnarray}
-Removal of the limiting axiom (\ref{eq:limnat1}) results in a theory which is very
+Removal from Listing~\ref{fig:nats}
+of the limiting axiom (\ref{eq:limnat1}) results in 
+generating a blend theory 
+which is very
 similar to what we understand to be the integers as shown in Listing~\ref{fig:integers}.
 \begin{listing}[!ht]
 \begin{mdframed}

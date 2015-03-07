@@ -15,8 +15,10 @@ number''. The initial aim of this work was to look for a blend between
 prime numbers (from the integers) and the ideals of a commutative
 ring, to see what would emerge. It turned out that \emph{the blend process},
 along with providing a definition for prime ideals, also \emph{suggested 
-an unexpected concept in the context of rings, namely the notion of
-Containment Division Ring (CDR)}. In turn, this prompted questions and
+an unexpected concept in the context of rings}, 
+%\emph{namely the notion of Containment Division Ring (CDR)}. 
+namely what will be called Containment Division Rings (CDR). 
+In turn, this prompted questions and
 proofs about this concept -- thus running the blend (space prevents
 description of this step in this paper).
 
@@ -72,7 +74,8 @@ Now, we define
 \[{\rm Id}(R)=\left\{A \in P(R) : isideal(A) \right\}.\]
 % Here, ${\rm Spec}_IR$ is considered as a subsort of the sort $P(R)$.
 
-Ideals are ``multiplied'' together using the following definition:
+%Ideals are ``multiplied'' together using the following definition:
+Ideals are ``multiplied'' using the following definition:
 % There is one natural operation on ${\rm Id}(R)$, let us say
 % $\cdot_{\iota}$, inherited in a natural way from the corresponding
 % operations $+$ and $\cdot$ on $S$:
@@ -90,15 +93,20 @@ Ideals are ``multiplied'' together using the following definition:
 %\[I\cdot_{\iota} J=\left\{\sum_{k=1}^ni_k\cdot j_k:n \in \mathbb{N} \wedge i_1, \ldots, i_n\in I \wedge j_1, \ldots, j_n\in J \right\}.\]
 %\[I\cdot_{\iota} J=\left\{\sum_{k=1}^ni_k\cdot j_k:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
 % \[I\cdot_{\iota} J=\left\{i_1\cdot j_1+...+i_n\cdot j_n:n \in \mathbb{N} \wedge i_k\in I \wedge j_k\in J \right\}.\]
+In other words, $I\cdot_{\iota} J$ is the smallest ideal extending the
+set $\{  i \cdot j: i \in I \wedge j \in J \}$.
 
 % With this operation ${\rm Id}(R)$ forms a commutative monoid (i.e.\ we
 % have commutativity, associativity and there exists a neutral element
 % (in this case the ring)). However, this fact is irrelevant in our case
 % for the blending process. As a matter of fact, 
 The key property that
-we want to keep in the blend is the one saying that this operation
+we want to keep in the blend is the one saying that 
+%this operation 
+this operation $\cdot_{\iota}$
 has a neutral element $1_{\iota}$, which can be seen as an additional
-notation for the ring, but with respect to this operation $\cdot_{\iota}$.
+%notation for the ring, but with respect to this operation $\cdot_{\iota}$.
+notation for the ring.
 % instead of being the sort of elements of the ring, i.e., $R$.
 %
 On the other hand, we want to see the containment relation $\subseteq$
@@ -123,9 +131,10 @@ $ \cdot_{\iota}$; and the relations $\subseteq$ and $isideal$.
 Let us denote this space by $\mathbb{I}$.
 
 \subsection{The second conceptual space}
-Let $\mathbb{Z}$ be the set of the integer numbers. Here, we can
-choose any axiomatization of them, since for the (partial) blend we
-just take into account only the fact that $(\mathbb{Z},*,1)$ is a
+Let $\mathbb{Z}$ be the set of the integer numbers. Here, 
+%we can choose any axiomatization of them, since for the (partial) blend we just take into account only 
+we choose any partial axiomatization of them including at least 
+the fact that $(\mathbb{Z},*,1)$ is a
 commutative monoid.
 % Or even simpler, we only use the fact that $1$ is
 % the neutral element with the operation $*$. 
