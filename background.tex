@@ -3,102 +3,69 @@
 
 \subsection{Social creativity in CC}
 
-Although we have adopted the term ``social creativity'' following
-\cite{saunders12} and with the specific understanding developed above,
-we could also refer in a similar spirit to situated, interactive,
-communal, contextual, conversational, group, dialogical,
-discourse-based, community-based, interaction-based, or
-feedback-informed creativity.
+% Although we have adopted the term ``social creativity'' following
+% \cite{saunders12} and with the specific understanding developed above,
+% we could also refer in a similar spirit to situated, interactive,
+% communal, contextual, conversational, group, dialogical,
+% discourse-based, community-based, interaction-based, or
+% feedback-informed creativity.
 
-The point is that creativity cannot exist in a vacuum.  The very
-essence of creativity lives in its appreciation by the creative entity
-themselves and its audience.  As we have remarked elsewhere,
-creativity is in the eye of the beholder.  During the creative
-process, self-evaluation abilities are crucial
-\cite{poincare29,csik88}. Social creativity expands upon this
-paradigm by bringing co-creators into the process, and creating works
-that rely on dialogue, reflection, and multiple perspectives. The
-``results'' may be steeped in process and will not always be based in
+Minsky noted that computers need to be social if they are to deal with problems of any great complexity \citep{minsky1967programming,society-of-mind}.
+We believe that this is particularly true for challenges in computational creativity,
+since the essence of creativity lives in its appreciation by the creative entity itself and its audience.
+With creativity in `the eye of the beholder' \cite{cardoso09}, the ability to respond to evaluation during the creative process \cite{poincare29,csik88} becomes pivotal. Social creativity expands this
+paradigm by introducing co-creators to the process, and creating works
+that rely on dialogue, reflection, and multiple perspectives (e.g. the stages suggested by \cite{gervas14}).  `Results' may be steeped in process and are not always based on
 consensus.
 
+%% This is where we first suggest that "reading" can be "creative" and show that we're emphasising this direction in the paper.
 The Four Ps of creativity -- the creative Person, Product, Process and
-Press (i.e. environment) \cite{rhodes61,mackinnon70} -- have been
+Press (i.e. environment) \cite{rhodes61} -- have been
 emphasised in general creativity research.  \emph{Pluralising} these
-terms would call attention to a social dimension of creativity, and
-leads to a more inclusive and encompassing approach to the study of
-creativity -- one that accommodates multiple perspectives. The
-Pluralised Ps remind us that it is not sufficient to model a lone
-creator or to generate an attractive artefact.  To model creativity
-more completely, we also need to consider the environment in which a
-creative person operates, and how the environment is used in the
-creative process.
+terms (Persons, Products, Processes) calls further attention to a
+social dimension of creativity, and would emphasise the way the ``Press'' 
+accommodates multiple multi-directional perspectives akin to a social
+network in both the modern and original senses. %\cite{cool paper}.
+% Reingold, Whole Earth 'Lectronic Link. // Virtual Communities
+The Pluralised Ps remind us that in order to understand creativity it
+is not sufficient to model a lone creator or to generate an
+attractive artwork.
 
-Computational creativity research has achieved many successes in
-computational generation of creative products. The question of how
+To date, computational creativity research has achieved many successes in
+computational generation of creative products, but the question of how
 these systems could adapt and learn from feedback to improve their
-creativity, however, remains underexplored in computational creativity
-despite evaluation being a pivotal contributory part of the creative
-process. Researchers have generally preferred to take on the task of
+creativity is less-explored in computational creativity \cite{jordanous15aisb}.
+Evaluation has been advanced as a pivotal contributory part of the creative
+process, but researchers have generally tended to engage with
 generating artefacts that could be seen as creative, as a necessary
-prior to the task of incorporating self-evaluation within a creative
-system \cite{jordanous11iccc}.
+prior to the task of incorporating feedback and evaluation within the processes of a creative system \cite{jordanous11iccc}.
 
-Some notable exceptions exist, highlighting the importance of the
-environment in which a creative system is situated \cite{mcgraw93,
-  sosa09, perezyperez10MM, pease10, saunders12}, with some of this
-work influenced by the DIFI (Domain-Individual-Field-Interaction)
-framework \cite{csik88}. Generally, however, social interaction
-between creative agents and their audience is an area which has been
-neglected. Increased development of the interactivity of creative
-systems, especially where this affects the way these systems works, is
-pleasing to see and deserves further attention
-\cite{coltonwiggins12}.
+Some notable exceptions highlight the usefulness of interaction and feedback for creative systems \cite{mcgraw93,
+colton00,  sosa09, perezyperez10MM, pease10, saunders12}. Some of this
+work is influenced by the DIFI (Domain-Individual-Field-Interaction)
+framework \cite{csik88}.  However, social interaction
+between creative agents and their audience is often overlooked
+or relatively simplified: some examples in the domain of computer poetry presented below give the flavour.
+At the previous year's International Conference on Computational Creativity (ICCC 2014) the opening session
+had the theme ``co-creation.''  However in the main proceedings of the conference, 36 out of 49 papers
+(approximately 3 in 4 papers) do not appear to mention social interaction or the ability to respond to feedback.
+Increased development of the interactivity of creative systems, especially where this affects the way these systems works, has been highlighted as deserving more attention \cite{coltonwiggins12}.
+
+FloWr is a framework for implementing creative systems as scripts over processes that can be manipulated visually as flowcharts \cite{charnley2014flowr}.  Its general approach consists of linking the in- and outputs of code modules, also called {\em ProcessNodes}, together to create a linear flow of data. The resulting Flowcharts can be constructed and executed visually through a GUI; however, they are ultimately represented as scripts, which are the main medium of FloWr. 
+% A script specifies the processes used and how the output from one node is passed as input to other node(s). FloWr has also been used to investigate automatic process generation through the alteration of the ProcessNodes in a script, mainly by randomly selecting values to input parameters in order to yield different initial settings. The
+Experiments with automatic process generation in FloWr, reported in \cite{charnley2014flowr}, highlight the ability of the tool to do meta-programming and modify its own flowcharts. This suggests that FloWr has potential as an environment for modelling social creativity, where the observers are nodes and flowcharts, and the languages are, respectively, programming and meta-programming instructions.
 
 \subsection{\ldots and in computer poetry}
 
 In the domain of poetry-generation, there have already been several attempts to simulate social creativity by incorporating multi-agent systems. 
-
-In WASP \cite{gervas01, gervas10}  the social behavior is simulated by incorporating a \emph{cooperative society of readers/critics/editors/writers} consisting of specialized families of experts that cooperate during the poetry-generation process.
-
-The McGONAGALL system \cite{manurung12} incorporates diverse modules as operators of evolutionary algorithms that produce poems fulfilling the constraints on \emph{grammar, meaning and poeticity}.  This approach allows pursuing several alternative solution paths in parallel, focusing on more promising results or coming back to former ideas. However this solution does not provide any communication between modules.
-
-In MASTER system for computer-aided poetry generation \cite{kirke13} a \emph{society} of agents in various emotional states influences each other's moods with their pieces of poetry. The poetry-generation process is based on \emph{social learning} as the agents interact by reciting their own pieces of poetry to each other. The poetical form of the outputs is created by repeated words and sounds but the poems are not meaningful in the usual sense. 
-
-\cite{misztal2014poetry} presents a Blackboard approach to poetry-generation in which independent specialized modules cooperate by sharing a common workspace -- the blackboard. This solution fulfills the assumptions of  the Global Workspace Theory of mind  \cite{baars97}. The experts exchange information with use of the global blackboard, however there is no direct communication among the modules and they do not receive any feedback about their artifacts.
-
-
-\subsection{Writer's Workshops}
-
-Quoting \cite[pp. 2--3]{gabriel2002writer}:
-
-\begin{quote}
-The original idea behind the writers' workshop was to do a \emph{close
-  reading} of a work, to use the term F. R. Leavis coined for the
-practice of looking at the words on the page rather than the
-intentions of the author or the historical and aesthetic context of
-the work.  Under this philosophy, the workshop doesn't care much what
-the author feels about what he or she wrote, only what's on the page.
-This corresponds to the philosophy of the New Critics, which held that
-the work was its own ``being,'' with its own internal consistency and
-coherence, which could be studied apart from the author.  Moreover,
-this approach is nearly identical to that of the Russian formalists,
-who thought that the proper approach to literature was to study how
-literary texts actually worked, their structures and devices.
-\end{quote}
-
-Framing and any other contextualisation of the work \emph{as it is
-  intended to be presented} is permitted, and receives critical attention.
-
-In \cite{serendipity-arxiv}, we described a template for a pattern
-language for interactions in a computational poetry workshop, closely
-following Gabriel's outline of the relevant steps: {\tt presentation},
-{\tt listening}, {\tt feedback}, {\tt questions}, and {\tt
-  reflections}.\footnote{To this should be added the potential for
-  real-time {\tt replies} by critics to {\tt questions} asked by the
-  presenting author, before subsequent ``offline'' {\tt reflections}.}
-We used this template to expand several of the patterns of serendipity
-described by \cite{van1994anatomy}, showing how they could be used to
-foster discovery and invention in a workshop environment.
+%
+In WASP \cite{gervas10}, social behavior is simulated by incorporating a cooperative society of readers/critics/editors/writers consisting of specialized families of experts that cooperate during the poetry-generation process.
+%
+The McGONAGALL system \cite{manurung12} incorporates diverse modules as operators of evolutionary algorithms that produce poems fulfilling the constraints on grammar, meaning and poeticity.  This approach facilitates the pursuit of several alternative solution paths in parallel, focusing on more promising results or coming back to former ideas. However McGONNAGALL does not provide any communication between modules.
+%
+In the MASTER system for computer-aided poetry generation \cite{kirke13} a society of agents in various emotional states influences each other's moods with their pieces of poetry. The poetry-generation process is based on social learning as the agents interact by reciting their own pieces of poetry to each other. The generated poems are based on repeated words and sounds, closer in some ways to music than to typical language.
+%
+\cite{misztal2014poetry} presents a Blackboard approach to poetry-generation in which independent specialized modules cooperate by sharing a common workspace -- the blackboard. This solution fulfills the assumptions of  the Global Workspace Theory of mind  \cite{baars97}. The experts exchange information with use of the global blackboard, however there is no direct communication among the modules and they do not receive any feedback about their artifacts.  In developing the work in the current paper, we did a limited proof-of-concept reimplementation of some of the core methods from this system inside of FloWr; we include one of the generated poems and the corresponding flowchart.
 
 
 

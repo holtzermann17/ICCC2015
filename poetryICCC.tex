@@ -14,10 +14,10 @@
 \renewcommand*{\multicitedelim}{\addsemicolon\space}%
 \usepackage{xcolor}
 \definecolor{light-gray}{gray}{0.97}
-\usepackage[firstpage]{draftwatermark}
-\SetWatermarkColor{light-gray}
-\SetWatermarkText{\shortstack{Draft\\\today\\\currenttime}}
-\SetWatermarkScale{0.75}
+% \usepackage[firstpage]{draftwatermark}
+% \SetWatermarkColor{light-gray}
+% \SetWatermarkText{\shortstack{Draft\\\today\\\currenttime}}
+% \SetWatermarkScale{0.75}
 
 \usepackage{tikz}
 \usetikzlibrary{quotes,decorations.text}
@@ -82,37 +82,61 @@ innerbottommargin=5pt
 % /Author (ICCC)}
 % The file iccc.sty is the style file for ICCC proceedings.
 
-\title{Computational Poetry Workshop}
-\author{I AM THAT I AM}
+\title{Computational Poetry Workshop: Making Sense of Work in Progress}
+\author{J. Corneli\thanks{Corresponding author. Email: {\tt j.corneli@gold.ac.uk}} \\ Goldsmiths College
+\And A. Jordanous \\ University of Kent \\
+\And R. Shepperd \\ Goldsmiths College
+\And \textbf{M. T. Llano}  \\ Goldsmiths College
+\AND \textbf{J. Misztal}  \\ Jagiellonian University
+\And \textbf{S. Colton}  \\ Goldsmiths College
+\And \textbf{C. Guckelsberger}  \\ Goldsmiths College
+}
 \setcounter{secnumdepth}{0}
+
+\thispagestyle{plain}
+\pagestyle{plain}
 
 \begin{document} 
 \maketitle
 \begin{abstract}
 \begin{quote}
 Creativity cannot exist in a vacuum; it develops through feedback,
-learning and social interaction with others. However, this perspective
+learning, reflection and social interaction with others. However, this perspective
 has been relatively under-investigated in computational creativity
 research, which typically examines systems that operate
-individually. We develop a set of requirements for creativity systems
-that can incorporate communication and give and receive
-feedback. FloWr is intended as a paradigm in which computational
-creativity software can be implemented and integrated. We ask if the
-FloWr framework can model social creativity, and if not, what changes
-may need to be made in order to accommodate the requirements of social
-creativity. As a thought experiment to test these ideas, we consider a
-case study of how feedback and dialogues can help develop the
-creativity of computational poetry writing, and how such a system
-could be implemented in FloWr. We also consider alternatives to FloWr
-for modelling social creativity.
+individually. 
+% We develop a set of requirements for creativity systems
+% that can incorporate communication and give and receive
+% feedback. 
+% As a thought experiment to test these ideas, 
+We develop a thought experiment showing how structured dialogues can help develop the
+creative aspects of computer poetry.
+Centrally in this approach, we ask questions of a poem, inviting it to tell us in what way it may be considered a ``creative making.''
+
+% in what way can CC enhance the human workshop?
 
 \medskip
 
-\textbf{Keywords}: poetry, social creativity, flowcharts,
-distributed computing, population-based methods, agent-based models,
-duration, temporality, serendipity, design patterns, Writer's Workshops
+\textbf{Keywords}: computer poetry, social creativity, flowcharts, Writer's Workshops
+
+\medskip
+
+\textbf{Paper type}: Study paper
 \end{quote}
 \end{abstract}
+
+% Study papers
+% These will be papers which draw on allied fields such as psychology, philosophy, cognitive science or mathematics;
+% or which appeal to broader areas of Artificial Intelligence and Computer Science in general;
+% or which appeal to studies of the field of Computational Creativity as a whole.
+% The emphasis here is on presenting enlightening novel perspectives related to the building,
+% assessment or deployment of systems ranging from autonomously creative systems to creativity support tools.
+% Such perspectives can be presented through a variety of approaches including ethnographical studies,
+% thought experiments, comparison with studies of human creativity and surveys.
+
+
+%% TODO LIST FOR REVISION
+% - trim the introduction
 
 %% \begin{mdframed}
 %% {\small
@@ -122,13 +146,39 @@ duration, temporality, serendipity, design patterns, Writer's Workshops
 %% \end{mdframed}
 %% \newpage
 
-{\small `We \emph{can} talk,' said the Tiger-lily: `when there's anybody worth talking to.'
-
+\begin{quote}
+{\small `We \emph{can} talk,' said the Tiger-lily: `when there's anybody worth talking to.'\\
 \sourceatright{Through the Looking Glass, Lewis Carroll}}
+\end{quote}
 
-\input{introduction}
-\input{background}
-\input{philosophy_and_methods}
+%% For follow up papers :-) ?
+
+% {\small \textbf{Alternative quotes? Though I do love the Lewis Carroll quote! (Anna) Let's choose one. My vote is either for the Lewis Carroll or the Anne Morrow Lindbergh quote.}}
+
+% {\small `The art of conversation is the art of hearing as well as of being heard.' 
+% \sourceatright{William Hazlitt, Selected Essays, 1778-1830}}
+
+% {\small `Good communication is as stimulating as black coffee and just as hard to sleep after.' 
+% \sourceatright{Anne Morrow Lindbergh, Gift from the Sea}}
+
+% {\small `Discussion is impossible with someone who claims not to seek the truth, but already to possess it.' 
+% \sourceatright{Romain Rolland, Above the Battle}}
+
+% {\small `In 80\% of Socrates' dialogues there was no constructive outcome. He saw his role as simply pointing out what was ``wrong''.' 
+% \sourceatright{Edward De Bono}}
+
+% {\small `The most fruitful and natural exercise for our minds is, in my opinion, conversation.' 
+%\sourceatright{Michel de Montaigne, The Essays: A Selection}}
+
+% {\small `Let us make a special effort to stop communicating with each other, so we can have some conversation.'
+% \sourceatright{Mark Twain}}
+
+%% Outline of the paper and main points in each section:
+\input{introduction} % introduce and define social creativity
+\input{background} % Advocating and explaining social creativity in cc, as the importance of social engagement with creative artefacts as a crucial part of creativity. Contextualising this argument in the case study of computer poetry
+\input{philosophy_and_methods} 
+% Methods: introducing our methodology, our lab rats and the concept of writers workshops
+% Philosophy: introduce the concepts from aesthetic philosophy that tell us how to read poems 
 \input{design}
 \input{discussion}
 \input{conclusions}
@@ -140,12 +190,6 @@ within the Seventh Framework Programme for Research of the European
 Commission, under FET-Open Grant numbers: 611553 (COINVENT) and 611560
 (WHIM).
 
-% \begin{center}
-% \includegraphics[width=.8\columnwidth]{figures/dog_roses}
-% \end{center}
-
 \printbibliography
-
-% \input{appendix}
 
 \end{document}

@@ -1,33 +1,33 @@
 \begin{tikzpicture}
-  \draw[thick] (4,0) node[below={2cm}] {\emph{A.~``mere generation''}}
-                     pic[red, -latex]{darc=100:270:1.3cm:Chicken:Lay:2.4cm:3cm}
-                     pic[red, -latex]{uarc=280:450:1.3cm:Egg:Hatch:1cm:.1cm};
+%  \draw[thick] (4,0) node[below={2cm}] {\emph{A.~``mere generation''}}
+%                     pic[red, -latex]{darc=100:270:1.3cm:Chicken:Lay:2.4cm:3cm}
+%                     pic[red, -latex]{uarc=280:450:1.3cm:Egg:Hatch:1cm:.1cm};
 %
-  \draw[thick] (8.75,0) node[below={2cm},align=center] {\emph{B.~how to become a writer*}\\{[}*: According to \citep{king2000writing}.]}
+  \draw[thick] (4.0,0) node[below={2cm},align=center] {\emph{A.~how to become a writer\footnotemark}}
                       pic[red, -latex]{darc=100:270:1.3cm:{}:{Write for 8 hours a day}:1cm:.3cm}
                       pic[red, -latex]{uarc=280:450:1.3cm:{}:{Read for 8 hours a day}:1cm:.3cm};
 %
-  \draw[thick] (13,0) node[below={2cm}] {\emph{C.~dual-purpose}}
+  \draw[thick](8.5,0) node[below={2cm}] {\emph{B.~``the Other''}}
                      pic[red, -latex]{darc=100:270:1.3cm:Statement:Speak:2.1cm:2.6cm}
                      pic[red, -latex]{uarc=280:450:1.3cm:Response:{Listens and interprets}:.2cm:.1cm};
 
-  \draw[thick] (4,-5.5) node[below={2.2cm}] {\emph{D.~learning by doing}}
-                        pic[red, -latex]{darc=100:240:1.5cm:Poet:Write:3cm:2.7cm}
-                        pic[red, -latex]{rarc=250:320:1.5cm:Poem:Responds:1cm:.5cm}
-                        pic[red, -latex]{uarc=330:450:1.5cm:Situation:Speaks:1cm:.1cm};
+%  \draw[thick] (4,-5.5) node[below={2.2cm}] {\emph{D.~learning by doing}}
+%                        pic[red, -latex]{darc=100:240:1.5cm:Poet:Write:3cm:2.7cm}
+%                        pic[red, -latex]{rarc=250:320:1.5cm:Poem:Responds:1cm:.5cm}
+%                        pic[red, -latex]{uarc=330:450:1.5cm:Context:Speaks:1cm:.1cm};
 %
 %
-  \draw[thick] (8.75,-5.5) node[below={2.2cm}] {\emph{E.~workshop}}
-                        pic[red, -latex]{darc=100:180:1.7cm:Poet:Write:1.5cm:1.5cm}
-                        pic[red, -latex]{rarc=190:270:1.7cm:Poem:Responds:1cm:.8cm}
-                        pic[red, -latex]{rarc=280:360:1.7cm:Situation:Speaks:1cm:1.4cm}
-                        pic[red, -latex]{larc=370:450:1.7cm:Critic:Respond:1.4cm:.2cm};
+  \draw[thick] (13,0) node[below={2cm}] {\emph{C.~proto-workshop}}
+                        pic[red, -latex]{darc=100:180:1.3cm:Poet:Writes:1cm:.7cm}
+                        pic[red, -latex]{rarc=190:270:1.3cm:Poem:Responds:1cm:.4cm}
+                        pic[red, -latex]{rarc=280:360:1.3cm:Context:Speaks:.7cm:.7cm}
+                        pic[red, -latex]{larc=370:450:1.3cm:Reader:Responds:.8cm:.2cm};
 
-  \draw[thick] (13,-5.5) node[below={2.2cm}] {\emph{F.~how computers work}}
-                       pic[red, -latex]{darc=100:180:1.5cm:{}:Print:1.5cm:1.4cm}
-                       pic[red, -latex]{rarc=190:270:1.5cm:{}:Loop:1cm:1.4cm}
-                       pic[red, -latex]{rarc=280:360:1.5cm:{}:Read:1cm:1.4cm}
-                       pic[red, -latex]{larc=370:450:1.5cm:{}:Eval:1.4cm:.2cm};
+%  \draw[thick] (13,-5.5) node[below={2.2cm}] {\emph{F.~how computers work}}
+%                       pic[red, -latex]{darc=100:180:1.5cm:{}:Print:1.5cm:1.4cm}
+%                       pic[red, -latex]{rarc=190:270:1.5cm:{}:Loop:1cm:1.4cm}
+%                       pic[red, -latex]{rarc=280:360:1.5cm:{}:Read:1cm:1.4cm}
+%                       pic[red, -latex]{larc=370:450:1.5cm:{}:Eval:1.4cm:.2cm};
 % Note:
 % controls at end: offset of outer text, followed by offset of inner text
 \end{tikzpicture}
