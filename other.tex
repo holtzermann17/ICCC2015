@@ -11,8 +11,9 @@ the problem of computational creativity in mathematics, is to allow
 search to be done over multiple blends and for the {\em process} of
 blending to be controlled mechanically. In this section we describe
 very informally a mathematical domain that seems in some ways a
-natural candidate for a blending approach. A fuller mathematical
-exposition would be required to support such an enterprise.
+natural candidate for a blending approach. 
+% A fuller mathematical
+% exposition would be required to support such an enterprise.
 
 
 \subsection{Galois Theory}
@@ -22,24 +23,29 @@ exposition would be required to support such an enterprise.
 %% and to develop some broader theoretical points about the future
 %% prospects and applications of our approach.  
 
-In its most straightforward formulation, Galois theory develops a
-relationship between a polynomial $p(x)$ with coefficients in some
-field $F$, the extension of $K$ of $F$ (written ``$K/F$'') containing
-all of the roots of $p(x)$ in the algebraic closure of $F$, and the
-group $\mathbf{Gal}(K)$ of automorphisms of $K/F$ that fix the
-elements of $F$.  The fundamental theorem of Galois theory states that
-there is a bijection between the subfields of $K/F$ and the subgroups
-of $\mathbf{Gal}(K)$; namely, subgroups correspond to their fixed
-fields.  Using this correspondence, properties of polynomials can be
-derived, most famously the fact that quintic polynomials cannot be
-solved by algebraic operations and the extraction of roots.
+% In its most straightforward formulation, 
+Galois theory develops a relationship between a polynomial $p(x)$ with
+coefficients in some field $F$, the extension of $K$ of $F$ (written
+``$K/F$'') containing all of the roots of $p(x)$ in the algebraic
+closure of $F$, and the group $\mathbf{Gal}(K)$ of automorphisms of
+$K/F$ that fix the elements of $F$.  The fundamental theorem of Galois
+theory states that there is a bijection between the subfields of $K/F$
+and the subgroups of $\mathbf{Gal}(K)$; namely, subgroups correspond
+to their fixed fields.  Using this correspondence, properties of
+polynomials can be derived, most famously the fact that quintic
+polynomials cannot be solved by algebraic operations and the
+extraction of roots.
 
 We do not propose to reconstruct much of the theory here, but note
 that already in this basic account there are several steps that seem
 compellingly ``blend-like.''
 
-In the first place, that would describes the notion of a field
-extension quite well.  $E$ is an extension of $F$ if $F$ is a subfield of $E$.
+In the first place, 
+%that would describes 
+% we can describe
+% the notion of a field
+% extension quite well.  
+for field extension, $E$ is an extension of $F$ if $F$ is a subfield of $E$.
 We could derive the extension relationship from the input concepts $E$
 and $F$ by ``taking everything additional from $E$ and adding it to
 $F$.''  This is made specific in the process of \emph{adjoining}
@@ -58,14 +64,15 @@ namely the special extension $K/F$ containing all of the roots of
 $p(x)$.  This could be formed conceptually by combining the concept
 ``\emph{the roots of a polynomial $p(x)$ with coefficients in a field
   $F$}'' and the concept ``\emph{a field extension $E/F$ formed by
-  adjoining certain elements to $F$}.''  Formally, the roots of $p(x)$
-are not part of the second concept, and they must be put in
-correspondence with the ``certain elements.''  Note that formulating
-the concept of a splitting field in this way is different from proving
-that a splitting field always exists.  It does exist, however, and the proof
-(by induction on the degree of the polynomial) works by successively
-adjoining elements to $F$.  This gives an inkling of the idea that
-blending could be used as a proof step.
+  adjoining certain elements to $F$}.'' 
+% Formally, the roots of $p(x)$
+% are not part of the second concept, and they must be put in
+% correspondence with the ``certain elements.''  Note that formulating
+% the concept of a splitting field in this way is different from proving
+% that a splitting field always exists.  It does exist, however, and the proof
+% (by induction on the degree of the polynomial) works by successively
+% adjoining elements to $F$.  This gives an inkling of the idea that
+% blending could be used as a proof step.
 
 As above, we could then form the concept of $\mathbf{Gal}(K)$ by blending
 at the conceptual level.  This time, there would be several constituent pieces:
@@ -81,9 +88,10 @@ claim that \emph{elements of $\mathbf{Gal}(K)$ permute the roots of
 work at the \emph{process} level, and consider before-and-after
 descriptions of the result of applying $\varphi\in\mathbf{Gal}(K)$ to
 some $r$ with the property $p(r)=0$.  This is similar in some ways to
-the ``Riddle of the Buddhist Monk'' \cite{Fau98} which is cited as
-an example of the power of blending.\footnote{Fauconnier and Turner
-  cite Arthur Koestler: ``A Buddhist monk begins at dawn one day
+the ``Riddle of the Buddhist Monk'', popularised by \textcite{Koestler64},
+which is cited as
+an example of the power of blending.\footnote{
+  ``A Buddhist monk begins at dawn one day
   walking up a mountain, reaches the top at sunset, meditates at the
   top for several days until one dawn when he begins to walk back to
   the foot of the mountain, which he reaches at sunset.  Making no

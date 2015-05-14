@@ -50,7 +50,7 @@ Listing \ref{fig:inv}, and call this theory $\SIdIndex{Func}$.
 \> \OPS \=\Id{zero} \Ax{:} \Id{Nat};\\
 \>\> \Id{s} \Ax{:} \=\Id{Nat} \Ax{\rightarrow} \Id{Nat};\\
 \>\> \Ax{\_\_}\Ax{+}\Ax{\_\_} \Ax{:} \=\Id{Nat} \Ax{\times} \Id{Nat} \Ax{\rightarrow} \Id{Nat}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{Nat} \\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{Nat} \\
 %\> \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z}\\
 \> \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y}\\
 %\> \Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{Nat} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a}\\
@@ -192,7 +192,8 @@ This generates the theory shown in Listing \ref{fig:inconsistentintegers}.
 \subsubsection{Removal of Inconsistencies}
 This theory is automatically determined to be inconsistent due to the axioms
 \begin{eqnarray}
-\forall x : \mathbb{Z} . \neg s(x) &=& 0 \label{eq:limnat1}\\
+%\forall x : \mathbb{Z} . \neg s(x) &=& 0 \label{eq:limnat1}\\
+\forall x : \mathbb{Z} . \neg \: 0 &=& s(x) \label{eq:limnat1}\\
 \forall x : \mathbb{Z} . s(p(x)) &=& x \label{eq:sucpre}
 \end{eqnarray}
 Removal from Listing~\ref{fig:nats}

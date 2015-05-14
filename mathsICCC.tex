@@ -22,9 +22,9 @@ innerbottommargin=3pt
 % \usepackage[dvipsnames]{xcolor}
 \usepackage{adjustbox}
 \usepackage{graphicx}
-% \usepackage[firstpage]{draftwatermark}
-% \SetWatermarkText{\shortstack{Draft\\\today\currenttime}}
-% \SetWatermarkScale{0.75}
+\usepackage[firstpage]{draftwatermark}
+\SetWatermarkText{\shortstack{Draft\\\today\currenttime}}
+\SetWatermarkScale{0.75}
 \usepackage[T1]{fontenc}
 \usepackage{csquotes}
 \usepackage[utf8]{inputenc}
@@ -40,10 +40,10 @@ innerbottommargin=3pt
 ]{hyperref}
 
 \DeclareLanguageMapping{british}{british-apa}
-\addbibresource{papers.bib}
-\addbibresource{Corneli_evaluation_bibliography.bib}
-\addbibresource{Bou_CoInvent_bibliography.bib}
-% \addbibresource{mathsICCC.bib} %
+% \addbibresource{papers.bib}
+% \addbibresource{Corneli_evaluation_bibliography.bib}
+% \addbibresource{Bou_CoInvent_bibliography.bib}
+\addbibresource{mathsICCC_local.bib} %
 % \addbibresource{danny_bibliothek.bib} %
 %% \urlstyle{tt}
 \AtBeginBibliography{\def\UrlFont{\footnotesize\tt}}
@@ -92,13 +92,13 @@ innerbottommargin=3pt
 \newcommand{\comment}[1]{\textbf{Comment:}\textit{#1}}
 \newcommand{\dannydiv}{\lfloor}
 
-% \pdfinfo{
-% /Title (Test)
-% /Subject (Proceedings of ICCC)
-% /Author (ICCC)}
+\pdfinfo{
+/Title (The role of blending in mathematical invention)
+/Subject (Conceptual blending, Mathematics)
+/Author (F. Bou et al.)}
 % The file iccc.sty is the style file for ICCC proceedings.
 
-\title{Technical paper: The role of blending in mathematical invention}
+\title{The role of blending in mathematical invention}
 
 \author{F.\ Bou \\ \Large{\textbf{M.\ Schorlemmer}}\\IIIA - CSIC \\ Barcelona
         \And J. Corneli \\ \mbox{} \\ Computing \\Goldsmiths, London
@@ -108,7 +108,6 @@ innerbottommargin=3pt
 
 
 \setcounter{secnumdepth}{0}
-
 \begin{document} 
 \maketitle
 \begin{abstract}
@@ -130,11 +129,14 @@ innerbottommargin=3pt
 \input{evaluation}
 \input{conclusions}
 
-\nocite{Weil60}
-% \nocite{Boden90}
-\nocite{nunez05}
-\nocite{Lak00}
-\nocite{Gog05,Gog99}
+\subsection*{Acknowledgements}
+
+The authors are grateful to the referees for constructive comment.
+The project COINVENT acknowledges the financial support
+of the Future and Emerging Technologies (FET) programme
+within the Seventh Framework Programme for Research of
+the European Commission, under FET-Open Grant number:
+611553.
 
 \printbibliography
 

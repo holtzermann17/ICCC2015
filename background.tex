@@ -4,7 +4,9 @@
 \subsection{Blending in Mathematics}
 \label{subsec:mathblend}
 
-Lakoff and N{\'u}{\~n}ez \citep{Lak00} are among the first to present
+%Lakoff and N{\'u}{\~n}ez \citep{Lak00} 
+\textcite{Lak00} 
+are among the first to present
 a cognitive account of the origin and development of mathematical
 ideas,\footnote{This is lamented by Lakoff and N{\'u}{\~n}ez, who
 claim that (prior to their work), ``there was still no discipline of
@@ -24,7 +26,7 @@ world, allowing us to project from everyday experiences onto abstract
 concepts, thus leading to the concept of zero and the axiom that $n +
 0 = n$. Lakoff and N{\'u}{\~n}ez posit that blending different
 mathematical metaphors leads to more complex ideas (see
-also~\textcite{Al11i}). 
+also~\textcite{alexander11}). 
 
 Alongside this account of mathematical cognition, mainstream
 contemporary mathematics has developed its own methodology and
@@ -36,7 +38,7 @@ In conclusion, mathematics is a scientific discipline having not only
 a fundamental cognitive component, necessary in its development, but
 also possessing a collection of general principles and structures
 going beyond a particular school of thought.  Among these general
-processes we want to highlight on this paper the importance that
+processes we want to highlight in this paper the importance that
 conceptual blending has in mathematics, incorporating both cognitive and
 mathematically specific aspects in order to create new mathematical concepts.
 
@@ -55,8 +57,8 @@ mathematically specific aspects in order to create new mathematical concepts.
 %% fields and groups, which can be used to simplify problems in field
 %% theory. 
 
-\subsection{Terminology for concept blending}
-Our notion of concept blending is informed by Category theory, and
+\subsection{Terminology for conceptual blending}
+Our notion of conceptual blending is informed by Category theory, and
 highly influenced by Goguen's work on concepts \parencite{Gog05b}. In
 this paper we use the terminology below, and elucidate the terminology
 by means of a running example -- discovering a version of the integers
@@ -114,12 +116,12 @@ $\lambda x:X.\;f(x)$.
 A theory $G$ common to both may contain a function
 %$\lambda x:\sigma.\;g(x)$. 
 $\lambda x:N.\;func(x)$. 
-When we show a mapping% in this paper 
+When we show a mapping % in this paper 
 we write 
 this as
 \begin{align}
 s&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&func&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&f\\
-\SIdIndex{NAT}&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&N&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&X
+Nat&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&N&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&X
 \end{align}
 \noindent The mapping $\phi(G,\SIdIndex{NAT})$ is a signature morphism from
 $G$ to $\SIdIndex{NAT}$. Note that associated types are also mapped.
@@ -213,7 +215,9 @@ theorems such as
 
 The approach explained above corresponds to Goguen's
 proposal \parencite{Gog99} for implementing blending, but slightly
-simplified (as in \textcite{Kutz2012} and \textcite{KuMoNeCo14}): we use
+simplified % (as in \textcite{Kutz2012} and \textcite{KuMoNeCo14}): 
+(as in \textcite{KuMoNeCo14}): 
+we use
 the normal colimit construction, rather than $\frac{3}{2}$-colimits
 (both described in \textcite{Gog99}).
 
@@ -223,12 +227,13 @@ the normal colimit construction, rather than $\frac{3}{2}$-colimits
 %space, with the restriction that both morphisms share the same source
 %conceptual space.
 
-Additionally we assume that the involved conceptual spaces are always
-given using a CASL specification \parencite{MoHaSaTa08} and that the
+Additionally we assume that the conceptual spaces involved are % always
+given using a CASL specification \parencite{astesiano2002casl} and that the
 morphisms are theorem preserving (i.e.\ map theorems to theorems).
 % (but perhaps not axiom preserving). 
 The reason for these assumptions is that in these cases
-it is well-known how to compute colimits \parencite{Mo98a}; the colimit
+it is well-known how to compute % colimits \parencite{Mo98a}; 
+colimits: the colimit
 specification essentially corresponds to the disjoint union of the two
 target conceptual spaces except for not repeating the symbols given in
 the common source conceptual space.  Moreover, we will be using the
