@@ -187,12 +187,12 @@ A Workshop session follows this communication protocol:
 \item The moderator initialises an empty log and sends a message to the flowcharts to indicate that the session has started. 
 \item The flowcharts start writing messages in the log.
 \item The moderator checks the current state of the workshop by reading the log. \label{step:loop}
-\item The moderator selects the next message in the queue and pass it to the target flowchart. 
-\item The flowchart reads the message and acts accordingly by either (i) modifying its connections or (ii) sending a message back; i.e. writes in the log. 
+\item The moderator selects the next message in the queue and passes it to the target flowchart. 
+\item The flowchart reads the message and acts accordingly, by either (\emph{i}) modifying its connections or; (\emph{ii}) sending a message back, i.e., writing to the log. 
 \item Step \ref{step:loop} is repeated until no further message are left in the queue.
 \end{enumerate}
 
-% This protocol rises the following questions: from the suggestions received (i) which one is the best option?  (ii) how many options do we listen to before we even try to make a decision?   
+% This protocol rises the following questions: from the suggestions received which one is the best option?  How many options do we listen to before we even try to make a decision?   
 
 \paragraph{Example.}
 Figure \ref{poetryGeneratorFlowchart} shows the poetry generator flowchart that generates the poem about the ``demon dog'' presented above. The flowchart uses two linguistic resources: ConceptNet \cite{ConceptNet}, a semantic network of common knowledge, and Disco \cite{Disco}, a semantic similarity words retrieval system. Let us assume the human critic $\mathbf{A}$ has access to the system through a ``UI flowchart'' like a Read-Eval-Print Loop (REPL), and the poetry generator $\mathbf{B}$ is mainly concerned with maintaining a generative flowchart like the one shown in the figure. The following exchange of messages can occur:
