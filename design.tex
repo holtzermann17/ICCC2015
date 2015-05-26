@@ -43,16 +43,14 @@ Where are the various elements of the poem concentrated? & Entropy expert
 \section{Bridges between `theory' and `practice'}
 
 Our \emph{ansatz} is that the Workshop could serve as a way to develop a process-based theory of poetics.
-There are certain prerequisites.  In addition to the presentation of
-written work, an underlying context, shared
+There are certain prerequisites: in particular, an underlying context is required, shared
 (with respect to differing points of view) by the poet and the reader/listener
 (see Figure \ref{fig:cycles}).  Participants are assumed to
 have relatively stable, enduring but evolving, identities -- either might be able to ask
 ``Who am \emph{I}?''  and ``Who are \emph{you}?'' \cite[p. 251]{bakhtin1984problems}. 
 Answers would acknowledge a prepared mind with certain prior questions, abilities, involvements, and so on.
-However, in the Workshop, the discussion focuses solely on the work itself.
-The Workshop provides an objective space in which the poet and readers can observe and
-participate in the creative process.
+However, within the Workshop dialogues, the discussion focuses solely on the work itself.
+Persistent identities allow participants to learn from these exchanges.
 
 Table \ref{tab:questions_for_human_readers} contains a list of questions that a reasonably
 sophisticated poetry reader might ask about poems.  This is complemented by a list of
@@ -60,7 +58,7 @@ questions that could be addressed, in a straightforward programmatic manner (Tab
 Each of the examples listed in the right-hand column of Table \ref{tab:questions_for_human_readers} (and a plethora
 that are not listed) present a way of thinking about the poem.  We can see these as roughly analogous to the agents in Table \ref{tab:questions_for_computational_agents} \cite{minsky2006emotion}.
 
-To begin, in response to a computer-generated poem:
+To illustrate, in response to a computer-generated poem:
 
 {\itshape
 \begin{verse}
@@ -148,9 +146,9 @@ and Clark with notions drawn from Table
 \begin{quotation}
 ~\vspace{-1\baselineskip}
 \begin{enumerate}
-\item begins with \emph{I}/\emph{me}, locating the \emph{poor, earth born} poet
+\item The passage begins with \emph{I}/\emph{me}, locating the \emph{poor, earth born} poet
 \item \emph{thee}/\emph{thy} is another person, possibly the reader, who becomes \emph{startled}
-\item singular \emph{I} contrasts with the class \emph{man}
+\item Singular \emph{I} contrasts with the class \emph{man}
 \item \emph{sorry} is a sad emotion
 \item \emph{truly} exaggerates sorry
 \item \emph{dominion} is large
@@ -178,10 +176,10 @@ We've demonstrated that the computer is capable of asking objective questions of
 Keeping in mind the current limitations of FloWr -- no looping or conditionals, only running one flowchart at a time and in one direction -- a {\em conversation} between ProcessNodes or flowcharts is not immediately feasible.  Figure \ref{fig:workshop_schematic} represents a hypothetical design in which a Workshop could take place with a minimally-altered version of FloWr. As shown in Figure \ref{fig:workshop_schematic}, each participant in the Workshop would be represented by a single node. One of these nodes is a {\em moderator} in charge of dictating the interaction between the participants of the Workshop, while the rest represent {\em flowcharts} that have the ability to modify their own connections according to the discussions from the Workshop -- this can be achieved by exploiting the scripting mechanism of FloWr and dynamically loading the new structure of the flowchart. Moreover, a shared \emph{log} would contain the history of the messages exchanged during the Workshop and a queue of messages waiting to be delivered. We define four different types of messages that can be exchanged:
 \begin{itemize}
 % \item {\bf\em advertisement} of the overall capabilities of a participant.
-\item {\bf\em comments} about specific elements of a poem, or more general appreciations of it.
-\item {\bf\em questions} about specific details of a participant's capabilities; for instance, the questions can vary from simple requests of sources of information (e.g. files, input from another node, which resources a flowchart uses, etc.) to process-specific details (e.g. current conditions, purpose, other outstanding questions, etc.)
+\item {\bf\em comments} about specific elements of a poem, or more general statements about how the poem affects this reader.
+\item {\bf\em questions} to facilitate comprehension of this commentary; for instance, the questions can vary from simple requests of sources of information (e.g. files, input from another node, which resources a flowchart uses, etc.) to process-specific details (e.g. current conditions, purpose, other outstanding questions, etc.)
 \item {\bf\em answers} would be associated to previous questions and may contain simple text such as an url for the source of information, or a piece of script representing a node used by a flowchart.
-\item {\bf\em suggestions} are changes proposed by one participant to another. Similar to the answer, this can be as simple as suggesting the change of an information source, or more complex as suggesting the replacement of a node for an alternative node.
+\item {\bf\em suggestions} are changes proposed by one participant to another. Similar to the answer, this can be as simple as suggesting the change of an information source, or more complex, such as suggesting the replacement of a node for an alternative node.
 \end{itemize}
 
 A Workshop session follows this communication protocol:
@@ -206,13 +204,13 @@ Figure \ref{poetryGeneratorFlowchart} shows the poetry generator flowchart that 
 \item \textbf{Action executed by participant $\mathbf{B}$}: Receives suggestions, creates several alternative versions of the script, executes them and decides which one is most coherent and which conveys a sense of narrative.
 \end{enumerate}
 
-\noindent From this exchange, the computer might learn (without ever being explicitly told) that expressive terms and narratives are related, and it might find a way to produce coherent poems with a narrative structure.
+\noindent From this exchange, the computer might learn (without ever being explicitly told) that expressive terms and narratives are related, and it might begin to discover a way to produce coherent poems with a narrative structure.
 
 \medskip
 
-Since the computer has source code instead of a brain, we can use it to do control studies with process.  However, in general source code does not completely determine process: contextual effects are what make an experiment an experiment.  As described in \cite{cook2013mechanics}, code does often include hints about context.  This is related to our theme of embedding process within an artefact.
+Since the computer has source code instead of a brain, we can use it to do control studies with process.  However, in general source code does not uniquely determine process: contextual effects are what make an experiment an experiment.  As described in \cite{cook2013mechanics}, code may include hints about its expected operating context.  This is related to our theme of embedding process within an artefact.
 %
-In this connection, one extension to FloWr that would help to facilitate dialogue between flowcharts would be to add machine-readable \emph{commentary} to ProcessNodes.  Commentaries would label a node's inputs and outputs, describe its basic purpose, and providing information about procedure, conditional behaviour, mappings between processes and elements of the poem (like the mapping between Disco3 and ``lonely encounter''). 
+In this connection, one extension to FloWr that would help to facilitate dialogue between flowcharts would be to add machine-readable \emph{commentary} to ProcessNodes.  Commentaries would label a node's inputs and outputs, describe its basic purpose, and provide information about procedure, conditional behaviour, mappings between processes and elements of a generated poem (like the mapping between Disco3 and ``lonely encounter''). 
 % This would enable basic procedural communication between flowcharts and would also allow the system to identify where to apply suggestions for new versions of a flowchart as suggested in a workshop session. 
 
 \begin{figure}[t]
@@ -223,8 +221,7 @@ In this connection, one extension to FloWr that would help to facilitate dialogu
 \end{center}
 \end{figure}
 
-Altered versions of a flowchart \cite{charnley2014flowr} can be seen as parallel solutions that could be executed and compared on a population basis with respect to some pre-specified metrics in order to make an informed decision on which suggestion(s) to follow, as hinted in the last step of the example.  In \cite{colton-assessingprogress} we explored the related idea of modelling system progress over time.  Learning new rules contextually would offer one clear measure of progress.  While these features sound good, we caution the reader that FloWr is still a research prototype, and considerable work would be required to realise the ideas we've described in FloWr or any other platform we're aware of.
-
+Altered versions of a flowchart \cite{charnley2014flowr} can be seen as parallel solutions that could be executed and compared on a population basis with respect to some pre-specified metrics in order to make an informed decision on which suggestion(s) to follow, as hinted in the last step of the example.  In \cite{colton-assessingprogress} we explored the related idea of modelling system progress over time.  Learning new rules contextually would offer one clear measure of progress.  Caveat lector: considerable work would be required to realise the ideas we've described in FloWr or any other platform we're aware of.
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "mathsICCC"
