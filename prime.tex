@@ -66,12 +66,12 @@ ring with unity.  An ideal $I$ is a subset of $R$ satisfying the
 following axiom:
 \[(\forall i,j\in I)(\forall r\in R)(i+(-j)\in I \wedge r*i\in I).\]
 
-Let us define a unary relation (predicate) $isideal$
+Let us define a unary relation (predicate) $\Id{isideal}$
 on the set (sort) of subsets of $P(R)$ corresponding to this definition.
 % , as follows: $isideal(I)$
 % if and only if $I$ is an ideal of $R$.
 Now, we define
-\[{\rm Id}(R)=\left\{A \in P(R) : isideal(A) \right\}.\]
+\[{\rm Id}(R)=\left\{A \in P(R) : \Id{isideal}(A) \right\}.\]
 % Here, ${\rm Spec}_IR$ is considered as a subsort of the sort $P(R)$.
 
 %Ideals are ``multiplied'' together using the following definition:
@@ -114,7 +114,7 @@ as a binary relation over the sort ${\rm Id}(R)$.
 
 Summarizing, our first conceptual space consists of sorts $R,
 \textrm{Id}(R)$ and $P(R)$; operations $+, *, 0_R, 1_R, 1_{\iota}$ and
-$ \cdot_{\iota}$; and the relations $\subseteq$ and $isideal$.
+$ \cdot_{\iota}$; and the relations $\subseteq$ and $\Id{isideal}$.
 
 
 % Here we add all the corresponding axioms defining $R$ as a commutative ring, the explicit former definition of $isideal$, ${\rm Id}(R)$ and $\cdot_{\iota}$; and the axiom guaranteeing that  $1_{\iota}$ is the neutral element for $\cdot_{\iota}$.
@@ -141,21 +141,21 @@ commutative monoid.
 We define also an upside-down divisibility relation $\dannydiv$ defined as
 %
 %\[e\dannydiv g:=g|e.\]
-$e\dannydiv g:=g|e$,  i.e.\ there exists an integer $c$ such that $e=cg$.
+$e\dannydiv g:=g|e$,  i.e.\ there exists an integer $c$ such that $e=c * g$.
 % (This makes the commonality more obvious notationally, though
 % it is not necessary for the blending machinery.)
 % We re-write the classical divisibility relation
 % on this way in order to obtain the right primality condition on the
 %blend.  
-Let us define a unary relation $isprime$ on $\mathbb{Z}$ as
-follows: for all $p\in \mathbb{Z}$, $isprime(p)$ holds if $p\neq 1$
+Let us define a unary relation $\Id{isprime}$ on $\mathbb{Z}$ as
+follows: for all $p\in \mathbb{Z}$, $\Id{isprime}(p)$ holds if $p\neq 1$
 % and the following (primality) condition holds:
 and:
 %
 \[(\forall a,b\in \mathbb{Z})\: \bigl( (ab \dannydiv p)\rightarrow (a \dannydiv p \vee b \dannydiv p) \bigr).\] 
 %\[(\forall a,b\in \mathbb{Z})\: ( (ab \dannydiv p)\rightarrow (a \dannydiv p \vee b \dannydiv p) ).\] 
 Besides, we define the set (sort) of the prime numbers as 
-\[ Prime=\left\{ p\in \mathbb{Z}: isprime(p)\right\}\]
+\[ \Id{Prime}=\left\{ p\in \mathbb{Z}: \Id{isprime}(p)\right\}\]
 % Now, it is an
 % elementary fact to see that this condition is an equivalent form of
 % the standard definition of prime number given in the classical number
@@ -164,7 +164,7 @@ Besides, we define the set (sort) of the prime numbers as
 % \cite{Apostol76}). 
 In the CASL language, we consider
 $\mathbb{Z}$ as the sort of the integer numbers, $*$ as a binary
-operation, $prime$ as a predicate and $\dannydiv$ as a binary
+operation, $\Id{prime}$ as a predicate and $\dannydiv$ as a binary
 relation, any of them defined over the sort $\mathbb{Z}$.
 We denote this conceptual space by $\mathbb{P}$.
 
@@ -245,7 +245,7 @@ $\dannydiv$ as a binary relation, without taking into account its formal definit
 % corresponding symbolic identifications i.e., an element $P \in G$
 Now after computing the colimit, we obtain that
 any element $P \in G$
-(i.e., an ideal of $S$) satisfies the predicate $isprime$ if and only
+(i.e., an ideal of $S$) satisfies the predicate $\Id{isprime}$ if and only
 if
 \begin{align*}
 P\neq S \wedge (\forall X,Y\in G={\rm Id}(S)) & (X\cdot_{\iota}Y\subseteq P\\
@@ -258,7 +258,7 @@ P\neq S \wedge (\forall X,Y\in G={\rm Id}(S)) & (X\cdot_{\iota}Y\subseteq P\\
 % %
 % \[ P\neq S \wedge (\forall a,b\in S)(ab\in B\rightarrow (a\in P \vee
 % b\in P)).\]
-Thus, the predicate $isprime$ turns out to be the
+Thus, the predicate $\Id{isprime}$ turns out to be the
 predicate characterizing the primality of ideals of $S$ and the set
 (sort) $Prime$ turns out to be the set of prime ideals of $S$.
 
@@ -268,8 +268,8 @@ predicate characterizing the primality of ideals of $S$ and the set
 
 Using the weakened input spaces, the blending space consists of the
 axioms assuring that $S$ is a commutative ring with unity, $G$ is the
-set of ideals of $S$, $isprime$ is the predicate specifying primality
-for ideals of $S$ and $Prime$ is the collection of all prime ideals of
+set of ideals of $S$, $\Id{isprime}$ is the predicate specifying primality
+for ideals of $S$ and $\Id{Prime}$ is the collection of all prime ideals of
 $S$.
 
 
@@ -312,8 +312,8 @@ doing this implementation and therefore it could be seen as a form of
 After computing the corresponding colimit in HETS and interpreting
 "RingElt" as the sort containing the elements of the ring $S$, the
 theory defining the blend corresponds to the axioms defining a CDR
-(S), the set of all its ideals (Generic), the set all its prime ideals
-(SimplePrime) and a primality predicate (IsPrime).  We present 
+(\Id{S}), the set of all its ideals (\Id{Generic}), the set all its prime ideals
+(\Id{SimplePrime}) and a primality predicate (\Id{IsPrime}).  We present 
 in Listing~\ref{listing:prime_colim}
 just the theory corresponding to the colimit (with some details
 omitted). 

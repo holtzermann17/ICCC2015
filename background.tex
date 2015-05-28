@@ -100,41 +100,57 @@ Notice that these formulations obviously refer to
 partial representations of the genuine concepts
 employed by mathematicians.  
 In the conceptual space with theory $\SIdIndex{NAT}$, an example of an axiom is 
-$\forall x. \neg s(x) = 0$ -- that is that zero is not a successor element.
+%$\forall x. \neg s(x) = 0$ -- that is that zero is not a successor element.
+$\forall x. \neg \: 0 = \Id{s}(x)$ -- that is that zero is not a successor element.
 %the least element of the natural numbers. 
 The conceptual space with theory $\SIdIndex{FUNC}$ has an axiom
 %$\forall x.\;f(f^{-1}) x = x$. 
-$\forall x.\;f(finv(x)) = x$. 
+$\forall x.\:\:\Id{f}(\Id{finv}(x)) = x$. 
 %where heuristics for transformation, such as {\em consider
 %the negative} and {\em drop a constraint}, are suggested.
 
 {\bf Signature morphisms} between conceptual spaces are mappings from
 the symbols of the source conceptual space into the symbols of the other
-conceptual space. For example $\SIdIndex{NAT}$ contains a function $\lambda
-x:\textrm{Nat}.\;s(x)$ to denote the successor, and $\SIdIndex{FUNC}$ contains a function
-$\lambda x:X.\;f(x)$. 
-A theory $G$ common to both may contain a function
-%$\lambda x:\sigma.\;g(x)$. 
-$\lambda x:N.\;func(x)$. 
+conceptual space. 
+%
+%For example $\SIdIndex{NAT}$ contains a function $\lambda
+%x:\Id{Nat}.\;\Id{s}(x)$ to denote the successor, and $\SIdIndex{FUNC}$ contains a function
+%$\lambda x:\Id{X}.\;\Id{f}(x)$. 
+%A theory $G$ common to both may contain a function
+%%$\lambda x:\sigma.\;g(x)$. 
+%$\lambda x:\Id{N}.\;\Id{func}(x)$. 
+For example $\SIdIndex{NAT}$ contains a function $\lambda
+x:\Id{Nat}.\;\Id{s}(x)$ that maps $x$ to its successor, and
+$\SIdIndex{FUNC}$ contains a function defined over a set $X$ that maps
+each element to an image $\lambda x:\Id{X}.\;\Id{f}(x)$.  A theory $G$
+with a morphism to both $\SIdIndex{NAT}$ and $\SIdIndex{FUNC}$ might
+contain a function $\lambda x:\Id{N}.\;\Id{func}(x)$ that takes every
+number in some set $\Id{N}$ to its image under $\Id{func}$.
+%
 When we show a mapping % in this paper 
 we write 
 this as
 \begin{align}
-s&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&func&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&f\\
-Nat&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&N&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&X
+  \Id{s}&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&\Id{func}&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&\Id{f}\\
+  \Id{Nat}&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&\Id{N}&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&\Id{X}
 \end{align}
 \noindent The mapping $\phi(G,\SIdIndex{NAT})$ is a signature morphism from
 $G$ to $\SIdIndex{NAT}$. Note that associated types are also mapped.
 
-{\bf Input Spaces} refers to two or more conceptual spaces of
+{\bf Input Spaces} refer to two or more conceptual spaces of
 interest. 
 
 {\bf Generic spaces} are conceptual spaces that possess commonality
 between input spaces. 
 
+%{\bf Colimits} are conceptual spaces representing a blend of input
+%spaces with respect to a given generic space and set of signature
+%morphisms. These are uniquely computed given a generic space and set of
+%morphisms. Here is a diagrammatic representation of such a computation
+%in our example using theories $\SIdIndex{NAT}$ and $\SIdIndex{FUNC}:$
 {\bf Colimits} are conceptual spaces representing a blend of input
-spaces with respect to a given generic space and set of signature
-morphisms. These are uniquely computed given a generic space and set of
+spaces with respect to a given generic space and a set of signature
+morphisms. These are uniquely computed given a generic space and a set of
 morphisms. Here is a diagrammatic representation of such a computation
 in our example using theories $\SIdIndex{NAT}$ and $\SIdIndex{FUNC}:$
 %\begin{center}
@@ -168,10 +184,23 @@ the computed blend is inconsistent due to the emergent axioms in the
 computed colimit. The only type existing within the colimit is from now
 on referred to as $\mathbb{Z}$ to distinguish it from the natural
 numbers. Notice that in the colimit it holds that:
-\begin{eqnarray*}
-\forall x: \mathbb{Z}. \neg\; 0 &=&s(x)\\
-\forall x:\mathbb{Z}.\;s(s^{-1}( x)) &=& x
-\end{eqnarray*}
+%\begin{eqnarray*}
+%  \forall x: \mathbb{Z}. \neg\; \Id{zero} &=&\Id{s}(x)\\
+%%\forall x:\mathbb{Z}.\;s(s^{-1}( x)) &=& x
+%\forall x:\mathbb{Z}.\; \Id{s}(\Id{sinv}( x)) &=& x
+%\end{eqnarray*}
+%\[
+%  \begin{array}{lc@{\: = \:}c}
+%    \forall x: \mathbb{Z}. \neg & \Id{zero} & \Id{s}(x)\\
+%    \forall x: \mathbb{Z}. & \Id{s}(\Id{sinv}(x)) & x \\
+%  \end{array}
+%\]
+\begin{center}
+  $\forall x: \mathbb{Z}. \neg \:\:   \Id{zero} = \Id{s}(x)$
+\end{center}
+\begin{center}
+  $\forall x: \mathbb{Z}. \:\: \Id{s}(\Id{sinv}(x)) = x$ \:.
+\end{center}
 This is an inconsistency, as from the second axiom we see 
 that there is an
 element for which 0 is the successor.
@@ -179,7 +208,7 @@ element for which 0 is the successor.
 {\bf Weakening} refers to the process of weakening the input
 theories by removing symbols or axioms. If we remove the axiom 
 $$
-\forall x: \mathbb{N}. \neg\; 0 = s(x)
+\forall x: \Id{Nat}. \neg \:\: \Id{zero} = \Id{s}(x)
 $$
 then the resulting computed colimit contains a mathematical theory
 which is consistent.  
@@ -196,19 +225,22 @@ need to be discovered. For example in the new theory
 %the following axioms exists
 the following axiom appears
 \begin{eqnarray*}
-\forall x,y:\mathbb{Z}. s(x) + y &=& s(x+y)
+%\forall x,y:\mathbb{Z}. \: s(x) + y &=& s(x+y)
+  \forall x,y:\mathbb{Z}. \:\: \Id{s}(x) + y &=& \Id{s}(x+y) \:,
 \end{eqnarray*}
 %but we also are interested in additional axioms such as
 but we also are interested in theorems such as
 \begin{eqnarray*}
-\forall x,y:\mathbb{Z}. s^{-1}(x) + y &=& s^{-1}(x+y)
+%\forall x,y:\mathbb{Z}. s^{-1}(x) + y &=& s^{-1}(x+y)
+  \forall x,y:\mathbb{Z}. \:\: \Id{sinv} (x) + y &=& \Id{sinv} (x+y) \:.
 \end{eqnarray*}
 Finding suitable theorems is an example of running the blend, and from which it
 is possible to discover and prove 
 %such 
 theorems such as
 \begin{eqnarray*}
-\forall x,y:\mathbb{Z}. s^{-1}(x) + s(y) &=& x+y
+%\forall x,y:\mathbb{Z}. s^{-1}(x) + s(y) &=& x+y
+  \forall x,y:\mathbb{Z}. \:\: \Id{sinv}(x) + \Id{s}(y) &=& x+y \:.
 \end{eqnarray*}
 
 \subsection{Technologies}

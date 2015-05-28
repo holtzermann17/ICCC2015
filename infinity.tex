@@ -54,7 +54,8 @@ Listing \ref{fig:inv}, and call this theory $\SIdIndex{Func}$.
 %\> \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z}\\
 \> \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y}\\
 %\> \Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{Nat} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a}\\
-\> \Ax{\bullet} \Ax{\neg} \=\Id{s}(\Id{x}) \Ax{=} \Id{zero}\\
+\> \Ax{\bullet} \Ax{\neg} \=\Id{zero} \Ax{=} \Id{s}(\Id{x}) \\
+%\> \Ax{\bullet} \Ax{\neg} \=\Id{s}(\Id{x}) \Ax{=} \Id{zero}\\
 \> \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y})\\
 \> \Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y}\\
 \KW{end}
@@ -86,26 +87,28 @@ Listing \ref{fig:inv}, and call this theory $\SIdIndex{Func}$.
 \subsubsection{Identifying a Generic Space}
 In order to incorporate the notion of blending here we want to be able
 to identify a ``generic'' component of each theory and compute the
-colimit (also known as pushout).
+%colimit (also known as pushout).
+colimit.
 %as discusses in \S\ref{sec:background}. 
 We can use the
 HDTP system \parencite{GustKS2006,Schmidt2010} to discover a common theory
 and signature morphism between symbols in the
 two theories $\SIdIndex{Nat}$ and $\SIdIndex{Func}$. The Generic theory
 $\SIdIndex{Gen}$
-contains a sort $N$ and a function $func$, and the morphisms from the
+contains a sort $\Id{N}$ and a function $\Id{func}$, and the morphisms from the
 Generic theory to $\SIdIndex{Nat}$ and $\SIdIndex{Func}$ are:
 \begin{align}
 %s&&\leftarrow_{g_\SIdIndex{Nat}}&&func&&\rightarrow_{g_\SIdIndex{Func}}&&f\\
 %Nat&&\leftarrow_{g_\SIdIndex{Nat}}&&N&&\rightarrow_{g_\SIdIndex{Func}}&&X
-s&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&func&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&f\\
-Nat&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&N&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&X
+  \Id{s}&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&\Id{func}&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&\Id{f}\\
+  \Id{Nat}&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&\Id{N}&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&\Id{X}
 \end{align}
 Here the successor function is identified in the mapping with the
-function in the theory $\SIdIndex{Func}$, and $g_K$ (where $K$ is either
-$\SIdIndex{NAT}$ or $\SIdIndex{FUNC}$) is the label for
-the set of symbol mappings determined by the signature morphism from
-the Generic space to the theory $K$.
+function in the theory $\SIdIndex{Func}$.
+%function in the theory $\SIdIndex{Func}$, and $g_K$ (where $K$ is either
+%$\SIdIndex{NAT}$ or $\SIdIndex{FUNC}$) is the label for
+%the set of symbol mappings determined by the signature morphism from
+%the Generic space to the theory $K$.
 
 \subsubsection{Computing the Colimit}
 The HETS system \parencite{MossakowskiEA06} can then be exploited to
@@ -141,7 +144,8 @@ find a new theory by computing the colimit:
     \arrow{ur}
   \end{tikzcd}
 \end{center}
-This generates the theory shown in Listing \ref{fig:inconsistentintegers}.
+This generates the theory shown in Listing \ref{fig:inconsistentintegers}
+(for the sake of understanding it is used $\Id{p}$, for predecessor, instead of $\Id{sinv}$).
 
 \begin{listing}[!ht]
 \begin{mdframed}
@@ -172,15 +176,21 @@ This generates the theory shown in Listing \ref{fig:inconsistentintegers}.
 \> \OP \=\Id{s} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
 \> \OP \=\Id{zero} \Ax{:} \Id{N}\\
 %\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(1)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(1)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet}
+\=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=}
+\Id{y}\\% \`{\small{}\KW{\%}(1)\KW{\%}}\\
 %\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{N} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(3)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \Ax{\neg} \=\Id{s}(\Id{x}) \Ax{=} \Id{zero} \`{\small{}\KW{\%}(2)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(3)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(4)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(1\Ax{\_}5)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \Ax{\neg}
+\=\Id{zero} \Ax{=} \Id{s}(\Id{x})\\% \`{\small{}\KW{\%}(2)\KW{\%}}\\
+%\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \Ax{\neg} \=\Id{s}(\Id{x}) \Ax{=} \Id{zero} \`{\small{}\KW{\%}(2)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet}
+\=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y})\\% \`{\small{}\KW{\%}(3)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+}
+\Id{y} \Ax{=} \Id{y}\\% \`{\small{}\KW{\%}(4)\KW{\%}}\\
 \> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet}
-\=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x}
-\`{\small{}\KW{\%}(2\Ax{\_}6)\KW{\%}}\\
+\=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x}\\% \`{\small{}\KW{\%}(1\Ax{\_}5)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet}
+\=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x}\\% \`{\small{}\KW{\%}(2\Ax{\_}6)\KW{\%}}\\
 \KW{end}
 \end{hetcasl}
 \end{mdframed}
@@ -191,16 +201,30 @@ This generates the theory shown in Listing \ref{fig:inconsistentintegers}.
 
 \subsubsection{Removal of Inconsistencies}
 This theory is automatically determined to be inconsistent due to the axioms
-\begin{eqnarray}
-%\forall x : \mathbb{Z} . \neg s(x) &=& 0 \label{eq:limnat1}\\
-\forall x : \mathbb{Z} . \neg \: 0 &=& s(x) \label{eq:limnat1}\\
-\forall x : \mathbb{Z} . s(p(x)) &=& x \label{eq:sucpre}
-\end{eqnarray}
-Removal from Listing~\ref{fig:nats}
-of the limiting axiom (\ref{eq:limnat1}) results in 
-generating a blend theory 
-which is very
-similar to what we understand to be the integers as shown in Listing~\ref{fig:integers}.
+\begin{equation}
+  \forall x : \mathbb{Z} . \neg \:\: \Id{zero} = \Id{s}(x) 
+  \label{eq:limnat1}
+\end{equation}
+\begin{equation}
+  \forall x : \mathbb{Z} . \:\: \Id{s} (\Id{p}(x)) = x 
+  \label{eq:sucpre}
+\end{equation}
+%\begin{eqnarray}
+%%\forall x : \mathbb{Z} . \neg s(x) &=& 0 \label{eq:limnat1}\\
+%  \forall x : \mathbb{Z} . \neg \: \Id{zero} &=& \Id{s}(x) \label{eq:limnat1}\\
+%  \forall x : \mathbb{Z} . \: \Id{s} (\Id{p}(x)) &=& x \label{eq:sucpre}
+%\end{eqnarray}
+%Removal from Listing~\ref{fig:nats} of the limiting axiom (\ref{eq:limnat1}) 
+Removal 
+of the limiting axiom (\ref{eq:limnat1}) 
+from Listing~\ref{fig:nats} 
+%Removal from Listing~\ref{fig:nats} of the axiom 
+%%$\forall x. \neg \: 0 = s(x)$ 
+%%$\forall x. \neg \: \Id{zero} = s(x)$ 
+%$\forall x: \Id{Nat}. \neg \: \Id{zero} = s(x)$ 
+results in generating a blend theory which is very
+similar to what we understand to be the integers as shown in
+Listing~\ref{fig:integers}.
 \begin{listing}[!ht]
 \begin{mdframed}
 %\begin{hetcasl}
@@ -227,12 +251,18 @@ similar to what we understand to be the integers as shown in Listing~\ref{fig:in
 \> \OP \=\Id{s} \Ax{:} \=\Id{N} \Ax{\rightarrow} \Id{N}\\
 \> \OP \=\Id{zero} \Ax{:} \Id{N}\\
 %\> \Ax{\forall} \=\Id{x}, \Id{y}, \Id{z} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{y} \Ax{\wedge} \=\Id{s}(\Id{x}) \Ax{=} \Id{z} \Ax{\Rightarrow} \=\Id{y} \Ax{=} \Id{z} \`{\small{}\KW{\%}(1)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=} \Id{y} \`{\small{}\KW{\%}(1)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet}
+\=\Id{s}(\Id{x}) \Ax{=} \Id{s}(\Id{y}) \Ax{\Rightarrow} \=\Id{x} \Ax{=}
+\Id{y}\\% \`{\small{}\KW{\%}(1)\KW{\%}}\\
 %\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Ax{\exists} \Id{a} \Ax{:} \Id{N} \Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{=} \Id{a} \`{\small{}\KW{\%}(3)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y}) \`{\small{}\KW{\%}(2)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+} \Id{y} \Ax{=} \Id{y} \`{\small{}\KW{\%}(3)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(1\Ax{\_}4)\KW{\%}}\\
-\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x} \`{\small{}\KW{\%}(2\Ax{\_}5)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x}, \Id{y} \Ax{:} \Id{N} \=\Ax{\bullet}
+\=\Id{s}(\Id{x}) \Ax{+} \Id{y} \Ax{=} \Id{s}(\=\Id{x} \Ax{+} \Id{y})\\% \`{\small{}\KW{\%}(2)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{y} \Ax{:} \Id{N} \=\Ax{\bullet} \=\Id{zero} \Ax{+}
+\Id{y} \Ax{=} \Id{y}\\% \`{\small{}\KW{\%}(3)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet}
+\=\Id{s}(\Id{p}(\Id{x})) \Ax{=} \Id{x}\\% \`{\small{}\KW{\%}(1\Ax{\_}4)\KW{\%}}\\
+\> \Ax{\forall} \=\Id{x} \Ax{:} \Id{N} \=\Ax{\bullet}
+\=\Id{p}(\Id{s}(\Id{x})) \Ax{=} \Id{x}\\% \`{\small{}\KW{\%}(2\Ax{\_}5)\KW{\%}}\\
 \KW{end}
 \end{hetcasl}
 \end{mdframed}
