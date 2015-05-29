@@ -74,8 +74,8 @@ transcending mapped boundaries \parencite{boden}, and form the input spaces
 to our blend. 
 
 As an example of two conceptual spaces, consider one as a theory
-$\SIdIndex{NAT}$ --
-a theory of the natural numbers, and $\SIdIndex{FUNC}$ -- a theory of a total
+$\SIdIndex{Nat}$ --
+a theory of the natural numbers, and $\SIdIndex{Func}$ -- a theory of a total
 unary function with an inverse. 
 %The terminology here used obviously refers to the fact that these two
 %conceptual spaces are partial representations of the genuine concepts
@@ -93,17 +93,17 @@ rejecting
 the parallel postulate opened up fascinating new areas of
 non-Euclidean geometry.
 
-The precise formulations for $\SIdIndex{NAT}$ and $ \SIdIndex{FUNC}$ can
+The precise formulations for $\SIdIndex{Nat}$ and $ \SIdIndex{Func}$ can
 be found in Listings~\ref{fig:nats} and \ref{fig:inv}. 
 Notice that these formulations obviously refer to 
 %the fact that these two conceptual spaces are 
 partial representations of the genuine concepts
 employed by mathematicians.  
-In the conceptual space with theory $\SIdIndex{NAT}$, an example of an axiom is 
+In the conceptual space with theory $\SIdIndex{Nat}$, an example of an axiom is 
 %$\forall x. \neg s(x) = 0$ -- that is that zero is not a successor element.
 $\forall x. \neg \: 0 = \Id{s}(x)$ -- that is that zero is not a successor element.
 %the least element of the natural numbers. 
-The conceptual space with theory $\SIdIndex{FUNC}$ has an axiom
+The conceptual space with theory $\SIdIndex{Func}$ has an axiom
 %$\forall x.\;f(f^{-1}) x = x$. 
 $\forall x.\:\:\Id{f}(\Id{finv}(x)) = x$. 
 %where heuristics for transformation, such as {\em consider
@@ -113,17 +113,17 @@ $\forall x.\:\:\Id{f}(\Id{finv}(x)) = x$.
 the symbols of the source conceptual space into the symbols of the other
 conceptual space. 
 %
-%For example $\SIdIndex{NAT}$ contains a function $\lambda
-%x:\Id{Nat}.\;\Id{s}(x)$ to denote the successor, and $\SIdIndex{FUNC}$ contains a function
+%For example $\SIdIndex{Nat}$ contains a function $\lambda
+%x:\Id{Nat}.\;\Id{s}(x)$ to denote the successor, and $\SIdIndex{Func}$ contains a function
 %$\lambda x:\Id{X}.\;\Id{f}(x)$. 
 %A theory $G$ common to both may contain a function
 %%$\lambda x:\sigma.\;g(x)$. 
 %$\lambda x:\Id{N}.\;\Id{func}(x)$. 
-For example $\SIdIndex{NAT}$ contains a function $\lambda
+For example $\SIdIndex{Nat}$ contains a function $\lambda
 x:\Id{Nat}.\;\Id{s}(x)$ that maps $x$ to its successor, and
-$\SIdIndex{FUNC}$ contains a function defined over a set $X$ that maps
+$\SIdIndex{Func}$ contains a function defined over a set $X$ that maps
 each element to an image $\lambda x:\Id{X}.\;\Id{f}(x)$.  A theory $G$
-with a morphism to both $\SIdIndex{NAT}$ and $\SIdIndex{FUNC}$ might
+with a morphism to both $\SIdIndex{Nat}$ and $\SIdIndex{Func}$ might
 contain a function $\lambda x:\Id{N}.\;\Id{func}(x)$ that takes every
 number in some set $\Id{N}$ to its image under $\Id{func}$.
 %
@@ -131,11 +131,11 @@ When we show a mapping % in this paper
 we write 
 this as
 \begin{align}
-  \Id{s}&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&\Id{func}&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&\Id{f}\\
-  \Id{Nat}&&\leftarrow_{\phi(G,\SIdIndex{NAT})}&&\Id{N}&&\rightarrow_{\phi(G,\SIdIndex{FUNC})}&&\Id{X}
+  \Id{s}&&\leftarrow_{\phi(G,\SIdIndex{Nat})}&&\Id{func}&&\rightarrow_{\phi(G,\SIdIndex{Func})}&&\Id{f}\\
+  \Id{Nat}&&\leftarrow_{\phi(G,\SIdIndex{Nat})}&&\Id{N}&&\rightarrow_{\phi(G,\SIdIndex{Func})}&&\Id{X}
 \end{align}
-\noindent The mapping $\phi(G,\SIdIndex{NAT})$ is a signature morphism from
-$G$ to $\SIdIndex{NAT}$. Note that associated types are also mapped.
+\noindent The mapping $\phi(G,\SIdIndex{Nat})$ is a signature morphism from
+$G$ to $\SIdIndex{Nat}$. Note that associated types are also mapped.
 
 {\bf Input Spaces} refer to two or more conceptual spaces of
 interest. 
@@ -147,21 +147,21 @@ between input spaces.
 %spaces with respect to a given generic space and set of signature
 %morphisms. These are uniquely computed given a generic space and set of
 %morphisms. Here is a diagrammatic representation of such a computation
-%in our example using theories $\SIdIndex{NAT}$ and $\SIdIndex{FUNC}:$
+%in our example using theories $\SIdIndex{Nat}$ and $\SIdIndex{Func}:$
 {\bf Colimits} are conceptual spaces representing a blend of input
 spaces with respect to a given generic space and a set of signature
 morphisms. These are uniquely computed given a generic space and a set of
 morphisms. Here is a diagrammatic representation of such a computation
-in our example using theories $\SIdIndex{NAT}$ and $\SIdIndex{FUNC}:$
+in our example using theories $\SIdIndex{Nat}$ and $\SIdIndex{Func}:$
 %\begin{center}
 %  \begin{diagram}[size=7mm]
 %    &       &   $G$   &       & \\
-%    & \ldTo^{\rotatebox{-45}{$\phi(G,\SIdIndex{NAT})$}} &       &
-%    \rdTo^{\rotatebox{45}{$\phi(G,\SIdIndex{FUNC})$}} &          \\
-%    \SIdIndex{$\SIdIndex{NAT}$} &       &   &       &
-%    \SIdIndex{$\SIdIndex{FUNC}$} \\
-%    & \rdTo_{\rotatebox{45}{$\phi(B,\SIdIndex{NAT})$}} &       &
-%    \ldTo_{\rotatebox{-45}{$\phi(B,\SIdIndex{FUNC})$}} &  \\
+%    & \ldTo^{\rotatebox{-45}{$\phi(G,\SIdIndex{Nat})$}} &       &
+%    \rdTo^{\rotatebox{45}{$\phi(G,\SIdIndex{Func})$}} &          \\
+%    \SIdIndex{$\SIdIndex{Nat}$} &       &   &       &
+%    \SIdIndex{$\SIdIndex{Func}$} \\
+%    & \rdTo_{\rotatebox{45}{$\phi(B,\SIdIndex{Nat})$}} &       &
+%    \ldTo_{\rotatebox{-45}{$\phi(B,\SIdIndex{Func})$}} &  \\
 %    & & $Colimit$ & & 
 %  \end{diagram}
 %\end{center}
@@ -169,9 +169,9 @@ in our example using theories $\SIdIndex{NAT}$ and $\SIdIndex{FUNC}:$
   \begin{tikzcd}[column sep=normal, row sep=small]
     & \textrm{Colimit}
     \\
-    \SIdIndex{NAT} \arrow{ur}{\phi(B,\SIdIndex{NAT})} & & \SIdIndex{FUNC} \arrow{ul}[swap]{\phi(B,\SIdIndex{FUNC})} \\
-    & G \arrow{ul}{\phi(G,\SIdIndex{NAT})}
-    \arrow{ur}[swap]{\phi(G,\SIdIndex{FUNC})}
+    \SIdIndex{Nat} \arrow{ur}{\phi(B,\SIdIndex{Nat})} & & \SIdIndex{Func} \arrow{ul}[swap]{\phi(B,\SIdIndex{Func})} \\
+    & G \arrow{ul}{\phi(G,\SIdIndex{Nat})}
+    \arrow{ur}[swap]{\phi(G,\SIdIndex{Func})}
   \end{tikzcd}
 \end{center}
 The conceptual space represented by the Colimit is often referred to
@@ -179,7 +179,7 @@ as the {\em blend}.
 
 {\bf Internal Evaluation} constitutes a variety of techniques to determine whether a computed colimit is viable as a conceptual space. In our example, since the conceptual spaces are mathematical theories, we can exploit the notion of consistency. This is a way of evaluating whether a
 blend is not only creative, but also valid. In the example of theories
-$\SIdIndex{NAT}$ and $\SIdIndex{FUNC}$,
+$\SIdIndex{Nat}$ and $\SIdIndex{Func}$,
 the computed blend is inconsistent due to the emergent axioms in the
 computed colimit. The only type existing within the colimit is from now
 on referred to as $\mathbb{Z}$ to distinguish it from the natural
