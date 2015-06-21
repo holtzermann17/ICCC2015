@@ -1,0 +1,288 @@
+\documentclass[letterpaper]{article}
+\usepackage{iccc}
+
+\usepackage{dialogue}
+
+\usepackage{etoolbox}
+
+\makeatletter
+\appto{\PreDialogue}{\global\@newlistfalse}
+\makeatother
+
+\newcommand{\jc}[1]{\speak{Joe}{#1}}
+\newcommand{\aj}[1]{\speak{Anna}{#1}}
+\newcommand{\tl}[1]{\speak{Teresa}{#1}}
+\newcommand{\cg}[1]{\speak{Christian}{#1}}
+
+\usepackage{censor}
+\usepackage{enumitem}
+\usepackage{times}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage[T1]{fontenc}
+\usepackage{csquotes}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage[style=apa,natbib,backend=biber,url=false]{biblatex}
+\let\cite\citep
+\usepackage[ddmmyyyy]{datetime}
+\renewcommand*{\multicitedelim}{\addsemicolon\space}%
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.97}
+% \usepackage[firstpage]{draftwatermark}
+% \SetWatermarkColor{light-gray}
+% \SetWatermarkText{\shortstack{Draft\\\today\\\currenttime}}
+% \SetWatermarkScale{0.75}
+
+\usepackage{tikz}
+\usetikzlibrary{quotes,decorations.text}
+\usepackage{figures/circle_arcs_setup}
+
+\usepackage[framemethod=tikz]{mdframed}
+\mdfsetup{
+skipabove=\baselineskip,
+skipbelow=\baselineskip,
+innertopmargin=3pt,
+innerbottommargin=5pt
+}
+
+\newcommand*{\sourceatright}[1]{\unskip\hspace{1em plus 1fill}%
+\nolinebreak[3]\hspace*{\fill}\mbox{#1}}%LaTeX Hacks 
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@verbatim}
+  {\verbatim@font}
+  {\verbatim@font\footnotesize}
+  {}{}
+\makeatother
+
+\usepackage[
+  bookmarks=false,
+  pdfpagelabels=false,
+  hyperfootnotes=false,
+  hyperindex=false,
+  pageanchor=false,
+%  colorlinks,
+  hidelinks
+]{hyperref}
+
+\DeclareLanguageMapping{british}{british-apa}
+% \addbibresource{papers.bib}
+\addbibresource{poetryICCC.bib} %
+
+%% \urlstyle{tt}
+\AtBeginBibliography{\def\UrlFont{\footnotesize\tt}}
+\renewcommand*{\finalnamedelim}{%
+  \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+  \addspace\&\&\space\space}
+%
+\AtEveryCitekey{\renewcommand*{\finalnamedelim}{%
+  \ifthenelse{\value{listcount}>\maxprtauth}
+    {}
+    {\ifthenelse{\value{liststop}>2}
+       {\finalandcomma\addspace\bibstring{and}\space}
+       {\addspace\bibstring{and}\space}}}}
+
+\AtBeginDocument{\renewcommand*\finalandcomma{\addcomma}}
+\AtBeginBibliography{%
+  \renewcommand*{\finalnamedelim}{%
+    \ifthenelse{\value{listcount}>\maxprtauth}
+      {}
+      {\finalandcomma\addspace\bibstring{and}\space}}}
+
+% \pdfinfo{
+% /Title (Test)
+% /Subject (Proceedings of ICCC)
+% /Author (ICCC)}
+% The file iccc.sty is the style file for ICCC proceedings.
+
+\title{Computational Poetry Workshop: Making Sense of Work in Progress\\[.2cm](A play in one act)}
+%% \author{J. Corneli\thanks{Corresponding author. Email: {\tt j.corneli@gold.ac.uk}} \\ Goldsmiths College
+%% \And A. Jordanous \\ University of Kent \\
+%% \And R. Shepperd \\ Goldsmiths College
+%% \And \textbf{M. T. Llano}  \\ Goldsmiths College
+%% \AND \textbf{J. Misztal}  \\ Jagiellonian University
+%% \And \textbf{S. Colton}  \\ Goldsmiths College
+%% \And \textbf{C. Guckelsberger}  \\ Goldsmiths College
+%% }
+\setcounter{secnumdepth}{0}
+
+\thispagestyle{plain}
+\pagestyle{plain}
+
+\begin{document} 
+\begin{center}
+\textbf{Computational Poetry Workshop: Making Sense of Work in Progress}\\[.2cm](A play in one act)
+\end{center}
+
+\bigskip
+
+%\maketitle
+%% \begin{abstract}
+%% \begin{quote}
+%% Creativity cannot exist in a vacuum; it develops through feedback,
+%% learning, reflection and social interaction with others. However, this perspective
+%% has been relatively under-investigated in computational creativity
+%% research, which typically examines systems that operate
+%% individually. 
+%% % We develop a set of requirements for creativity systems
+%% % that can incorporate communication and give and receive
+%% % feedback. 
+%% % As a thought experiment to test these ideas, 
+%% We develop a thought experiment showing how structured dialogues can help develop the
+%% creative aspects of computer poetry.
+%% Centrally in this approach, we ask questions of a poem, inviting it to tell us in what way it may be considered a ``creative making.''
+
+%% % in what way can CC enhance the human workshop?
+
+%% \medskip
+
+%% \textbf{Keywords}: computer poetry, social creativity, flowcharts, Writer's Workshops
+%% \end{quote}
+%% \end{abstract}
+
+% Study papers
+% These will be papers which draw on allied fields such as psychology, philosophy, cognitive science or mathematics;
+% or which appeal to broader areas of Artificial Intelligence and Computer Science in general;
+% or which appeal to studies of the field of Computational Creativity as a whole.
+% The emphasis here is on presenting enlightening novel perspectives related to the building,
+% assessment or deployment of systems ranging from autonomously creative systems to creativity support tools.
+% Such perspectives can be presented through a variety of approaches including ethnographical studies,
+% thought experiments, comparison with studies of human creativity and surveys.
+
+
+%% TODO LIST FOR REVISION
+% - trim the introduction
+
+%% \begin{mdframed}
+%% {\small
+%% \vspace{-.3cm}
+%% \tableofcontents
+%% }
+%% \end{mdframed}
+%% \newpage
+
+%% \begin{quote}
+%% {\small `We \emph{can} talk,' said the Tiger-lily: `when there's anybody worth talking to.'\\
+%% \sourceatright{Through the Looking Glass, Lewis Carroll}}
+%% \end{quote}
+
+
+
+\textbf{Dramatis Personae.}
+
+\smallskip
+
+\begin{tabular}{lp{.7\columnwidth}}
+\sc{Joe} & Presenting author \\
+\sc{Anna} & Reviewer 1 \\
+\sc{Teresa} & Reviewer 2 \\
+\sc{Christian} & Workshop moderator \\
+\end{tabular}
+
+\bigskip
+
+%% \section*{Initial backdrop}
+
+%% \includegraphics[width=\columnwidth]{boink}
+
+%% \bigskip
+
+
+\section*{Scene 1}
+
+\begin{dialogue}
+\direct{The workshop participants have gathered to discuss the paper
+  ``Computational Poetry Workshop: Making Sense of Work in Progress.''}
+
+\smallskip
+
+\cg{If you could move these chairs together in a sort of circle\ldots}
+
+\direct{They move the chairs into more of a semi-circle, so that the audience can see them too.}
+
+\aj{If we can all see each other that should be fine.}
+
+\cg{I guess you've all had a chance to read the paper already?}
+
+\direct{The reviewers nod and say ``yeah.''}
+
+\cg{Joe, could you give us a quick summary and highlight the things you're most interested in getting feedback about? 
+I guess, given the content of the paper, you're pretty much familiar with the way this sort of thing works, but,
+just to be clear, once you're done with that quick presentation, we'll give you feedback, and you should just take
+notes. OK?}
+
+\smallskip
+
+\direct{As \refer{Joe} speaks, the pieces of text in italics appear one by one as bullet points on a single slide behind the authors.  That slide stays on screen throughout the rest of Scene 1.}
+
+\begin{mdframed}
+\begin{itemize}
+\item  \emph{How has the social dimension of creativity has been explored in CC to date?}
+\item \emph{Give artefacts more agency, design computer programs with more autonomy, and focus research effort on understanding creative evolution.}
+\item \emph{Ask: ``How a created artefact can tell us about its own making?''}
+\item \emph{A theory of poetics rooted in the making of boundary-crossing objects and processes.}
+\item \emph{The paper is claiming that workshops are suitable environments for autonomous learning and development of the creative process.}
+\end{itemize}
+\end{mdframed}
+
+\jc{Sure.  OK, so, this paper is for ICCC'15, the International Conference on Computational Creativity.  It's already been accepted for publication but I want to improve it so that it's a bit more clear, since the reviewers expressed some doubts.  The paper starts out by looking at \emph{how the social dimension of creativity has been explored in CC to date.}  It basically says that the ideas of social interaction, feedback, and evaluation have frequently been discussed in CC, but that implementation and theorisation around these topics have been more limited.  It then goes on to suggest that we what should do is \emph{give artefacts more agency, design computer programs with more autonomy, and focus research effort on understanding creative evolution.}  I want to check with you if that part is clear, because the perspective isn't exactly traditional.  The underlying idea is much more broadly applicable than CC, and it \emph{asks: ``How a created artefact can tell us about its own making?''}  The paper takes this idea and runs with it a bit, to suggest that in principle computers can engage in dialogue about poems.  Out of this comes the more profound idea of \emph{a theory of poetics rooted in the making of boundary-crossing objects and processes.}  That sounds a bit abstract, so I want to make sure it's coming across well.  After presenting these more theoretical ideas, the paper makes some initial steps towards a computational simulation.  It develops a thought experiment in which an improved version of the FloWr system that's being developed in the CCG group at Goldsmiths could be used to run ``writers workshops'' for computer poetry.  There are lots of technical facilities that could make that easier, but the main thing I want to get feedback from you on today is what you think about the core idea of the workshop approach. \emph{The paper is claiming that workshops are suitable environments for autonomous learning and development of the creative process.}  Finally, it makes some sort of political claims about dialogue within CC, but the basic thrust here is that we should be getting our computer programs talking to each other.  I'm curious to know what you guys think about that.  And, yeah, that's it.}
+
+\section*{Scene 2}
+
+\direct{Joe takes notes on what people are saying and these appear on the screen.}
+
+\cg{Thanks Joe.  Does anyone want to sum up what they think the paper is about? \direct{Looks around.}  I guess I'll start.  The paper studies how social interaction through dialogue can be applied to computational creativity processes.  It uses poetry generation as an example and aims to develop a ``thought experiment'' in this domain.}
+
+\tl{I'd say it's basically a study about how to use social creativity to generate poems. The proposal consists on using the Writer’s Workshop model to maintain a dialogue between different poetry generators and poetry critics in order to improve the final poem.  In the paper, there are presented different questions that could be asked by a person when reading a poem, and the questions that a computer could ask.  Then, the results are compared.  Finally, the proposal is applied showing a hypothetical adapted design of the FloWr system with a human critic and a poetry generator.}
+
+\cg{Thanks Teresa, I think that's a good summary.  You're right, the questions that people and computers can ask form a pretty central part of the paper.  Maybe that has to do with the ``theory of poetics that is rooted in the making of boundary-crossing objects and processes'' although frankly that's still pretty abstract for me.  Anna, what do you think?  What does the paper accomplish?}
+
+\aj{Well, first of all, I think this paper makes a reasonable start toward describing a workshop-style collaboration on writing (and reading) poetry.  It does only preliminary work toward this, but raises a lot of interesting questions.  For example, it made me wonder how a workshop approach differs from more traditional peer review -- if at all?  Like Teresa said, it seems like the paper is making the case that the workshop is not just useful for reviewing things after they've created but for helping create them in the first place.  Although there is some interesting tension there.  If the emphasis is on poetry generation it would probably be useful to include a more thorough review of systems like Slant (by Montfort, P\'erez y P\'erez and Harrell), which is a blackboard-based multi-agent system.  But I can see that the workshop idea is a bit different from more traditional multi-agent systems like that one.}
+
+\tl{I think it's really nice to see the discussion of process as the content of a poem, not because everyone would agree that this is correct but because it asserts a particular, deliberate perspective on poetry.  Christian, I think what the philosophical ideas are saying is that the poem is a sort of dialogue that the reader gets involved with -- but I agree that could be said a lot more simply.  Another thing is that the way in which the agency is split up on page 4 (a separate counting agent and breathing agent) of course does not represent the different perspectives of workshop participants.  A workshop where everyone has the same sort of expertise, along these lines, could be successful as a computer program.  But if it is very culturally homogeneous, it's not going to say anything very interesting.  My question is how this model can include cultural and idiosyncratic differences in ways that are given first-order representations, given how important those differences are.}
+
+\cg{OK. Now I think we're getting into the question ``What could be improved about the paper?''  So, what do you think about that?}
+
+\tl{To be honest, it is sometimes difficult to read.  I also think a
+  better example with more participants could be useful to understand
+  the proposal.  In fact, at some point quite a few more examples and experiments
+  will really be needed, to really evaluate the proposal, but I
+  understand that the current version is a study paper rather than a
+  technical paper.}
+
+\aj{Following on from what Teresa said, my only concern here is that too little has been done in term of modeling and system-building for others to effectively build upon, or argue for or against.}
+
+\cg{I think the idea of the workshop and of a process-based theory of poetics is really intriguing.  But the current elaboration is quite far from discussing the actual computational characteristics the agents should have to make this work.  I think the paper is really more at the level of a discussion than a thought experiment.  I find it a bit hard to see the computational focus, although maybe that's because you're trying to make the paper do double duty as a kind of manifesto.  But, don't get me wrong, I think it is a beginning of a very interesting challenge and food for thought for later discussion and more precise elaboration.  Oh, and there are also a few typos should be corrected, I can pass you a list that I found.  Any other comments?}
+
+\direct{Looks around.}
+
+\cg{Joe, do you have any questions about the comments so far?}
+
+\jc{\direct{A bit hurt that the philosophical ideas haven't come across better.}  No, thanks, I think that's all pretty clear.}
+
+\cg{I think there's a lot there, but it would be good if the work was presented with some more structure.  If not in the paper itself, then at the conference: a well structured and concrete presentation, perhaps following an example that looks into the role of different agents could help spark the discussion.  With that, let's take some questions and comments from the audience.}
+
+\bigskip
+
+\direct{(Possible) Applause, and Q\&A.}
+
+\end{dialogue}
+%% \input{introduction} 
+%% \input{background} 
+%% \input{philosophy_and_methods} 
+%% \input{design}
+%% \input{discussion}
+%% \input{conclusions}
+
+%% \section*{Acknowledgements} \label{sec:acknowledgements}
+%% This research has been supported by EPSRC grants EP/L00206X and
+%% EP/J004049, and the Future and Emerging Technologies (FET) programme
+%% within the Seventh Framework Programme for Research of the European
+%% Commission, under FET-Open Grant numbers: 611553 (COINVENT) and 611560
+%% (WHIM).
+
+\printbibliography
+
+\end{document}
