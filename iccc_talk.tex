@@ -1,6 +1,9 @@
 \documentclass[letterpaper]{article}
 \usepackage{iccc}
 
+\usepackage{lineno}
+%\modulolinenumbers[5]
+
 \usepackage{dialogue}
 
 \usepackage{etoolbox}
@@ -208,6 +211,7 @@ J. Corneli, A. Jordanous, R. Shepperd, M. T. Llano,\\J. Misztal, S. Colton, and 
 
 \section*{Scene 1}
 
+\begin{linenumbers}
 \begin{dialogue}
 \direct{The workshop participants have gathered to discuss the paper
   ``Computational Poetry Workshop: Making Sense of Work in Progress.''}
@@ -299,8 +303,15 @@ J. Corneli, A. Jordanous, R. Shepperd, M. T. Llano,\\J. Misztal, S. Colton, and 
   here is that we should be getting our computer programs talking to
   each other.  I'm curious to know what you guys think about that.
   And, yeah, that's it.}
+\end{dialogue}
+\end{linenumbers}
 
 \section*{Scene 2}
+
+\setcounter{linenumber}{1}
+
+\begin{linenumbers}
+\begin{dialogue}
 
 \direct{The projection switches to a blank screen again.  \refer{Joe} takes
   notes on what people are saying, and these notes accumulate on the
@@ -420,6 +431,8 @@ J. Corneli, A. Jordanous, R. Shepperd, M. T. Llano,\\J. Misztal, S. Colton, and 
 \direct{(Possible) Applause, and Q\&A.}
 
 \end{dialogue}
+\end{linenumbers}
+
 %% \input{introduction} 
 %% \input{background} 
 %% \input{philosophy_and_methods} 
